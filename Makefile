@@ -6,7 +6,7 @@
 #    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/06 15:46:03 by plau             ###   ########.fr        #
+#    Updated: 2023/06/06 15:51:17 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,10 @@ DSRCS		= srcs					\
 DOBJS		= objs/
 
 # all these files doesn't require directory path ya
-FILES		=	valid_test	\
+FILES		=	valid_check_file \
 				render_test	\
+				utils
+				
 
 FOBJS		= $(addprefix $(DOBJS), $(addsuffix .o, $(FILES:.c=.o)))
 

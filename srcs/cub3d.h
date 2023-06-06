@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/06 15:16:12 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/06 18:05:20 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,31 @@
 # define WIN_H		1280
 # define WIN_W		800
 
+/* Vector struct */
+typedef struct s_vector
+{
+	int	x;
+	int	y;
+}	t_vector;
+
+/* Map struct */
+typedef struct s_map
+{
+	t_vector	size;
+	
+}	t_map;
+
+/* Main struct */
+typedef struct s_game
+{
+	void	*mlx;
+	t_map	map;
+}	t_game;
+
 /* 1. Validation */
-void	valid_check_file(int argc, char **argv);
+void	valid_check_file(int argc, char **argv, t_game *game);
 
 /* Utils */
-void	print_error_exit(char *str);
+void	utils_print_error_exit(char *str);
 
 #endif

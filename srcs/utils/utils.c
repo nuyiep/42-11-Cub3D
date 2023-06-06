@@ -6,15 +6,15 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
-/*   Updated: 2023/06/06 15:20:22 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/06 18:14:13 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-void	print_error_exit(char *str)
+void	utils_print_error_exit(char *str)
 {
 	ft_printf(str);
 	ft_printf("\n");
-	EXIT_FAILURE;
+	exit(EXIT_FAILURE);
 }
