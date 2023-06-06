@@ -6,21 +6,13 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:14 by plau              #+#    #+#             */
-/*   Updated: 2023/06/03 15:49:10 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/06 12:30:33 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
-	t_gm	gm;
-
-	c3d_init_gm(&gm);
-	c3d_check_file(&gm, ac, av);
-	c3d_hooks(&gm);
-	mlx_loop(gm.mlx);
-	c3d_success_exit();
 	return (0);
 }
-
