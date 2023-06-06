@@ -1,0 +1,15 @@
+
+Raycasting
+	- render 3D environments to a 2D screen 
+  - assumptions
+      - all borders of the maps are closed
+      - map has constant height
+  - map is a 2D square grid, and each square 
+    can either be 0 (=no wall), or 1(=wall)
+  - for every x of the screen, send out a ray
+    that starts at the player location and 
+    with a direction that depends on both the player's 
+    looking direction, and the x-coordinate of the screen
+
+DDA Line Drawing Algorithm
+  -
