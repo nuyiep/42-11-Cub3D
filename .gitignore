@@ -58,3 +58,5 @@ objects/
 test*
 *.py
 valgrind*
+.gitignore
+.DS_Store

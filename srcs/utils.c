@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/02 17:25:14 by plau              #+#    #+#             */
-/*   Updated: 2023/06/06 15:35:46 by plau             ###   ########.fr       */
+/*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
+/*   Updated: 2023/06/06 15:20:22 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int main(int argc, char **argv)
+void	print_error_exit(char *str)
 {
-	valid_check_file(argc, argv);
-	(void)argc;
-	(void)argv;
-	return (0);
+	ft_printf(str);
+	ft_printf("\n");
+	EXIT_FAILURE;
 }

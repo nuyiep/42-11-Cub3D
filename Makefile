@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+         #
+#    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/06 15:24:42 by zwong            ###   ########.fr        #
+#    Updated: 2023/06/06 15:35:27 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,50 +65,3 @@ fclean: clean
 re: fclean all
 
 .PHONY:	all clean fclean re
-
-# NAME		=	cub3D
-# LIBFT		=	libft/libft.a
-# CC			=	gcc
-# RM			=	rm -rf
-# MKDIR		=	mkdir -p
-# CFLAGS		=	-Wall -Wextra -Werror -Imlx
-# # CFLAGS		=	-fsanitize=address -g3
-# MLXFLAGS	=	-L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
-# SRCsS_FILES	=	main \
-# 				c3d_checkelement \
-# 				c3d_checkfile \
-# 				c3d_exit \
-# 				c3d_hook \
-# 				c3d_init
-				
-# SRCsS		= 	$(addprefix $(SRCsS_DIR), $(addsuffix .c, $(SRCsS_FILES)))
-# OBJS		= 	$(addprefix $(OBJS_DIR), $(addsuffix .o, $(SRCsS_FILES)))
-# SRCsS_DIR	=	srcss/
-# LIBFT_DIR	=	libft/
-# OBJS_DIR	=	objs/
-
-# all:			
-# 				$(MKDIR) $(OBJS_DIR)
-# 				make libft
-# 				make $(NAME)
-
-# $(OBJS_DIR)%.o: $(SRCsS_DIR)%.c
-# 				$(CC) $(CFLAGS) -c $< -o $@
-
-# $(NAME):		$(OBJS)
-# 				$(CC) $(CFLAGS) $(LIBFT) $(MLX) $(OBJS) $(MLXFLAGS) -o $(NAME)
-
-# libft:
-# 				make -C $(LIBFT_DIR)
-
-# clean:
-# 				$(RM) $(OBJS_DIR)
-# 				make clean -C $(LIBFT_DIR)
-
-# fclean:			clean
-# 				make fclean -C $(LIBFT_DIR)
-# 				$(RM) $(NAME)
-
-# re:				fclean all
-
-# .PHONY:			all bonus libft clean fclean re
