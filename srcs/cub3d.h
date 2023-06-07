@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 #include "../libft/srcs/libft.h"
+#include <stdio.h>
 #include <mlx.h>
 
 /* Mac key codes */
@@ -31,10 +32,67 @@
 # define WIN_H		1280
 # define WIN_W		800
 
+typedef struct s_img
+{
+	void		*ptr;
+	char		*addr;
+	int			bpp;
+	int			line_len;
+	int			endian;
+	t_vector	size;
+}	t_img;
+
+typedef struct s_rgb
+{
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+	int				hex;
+}	t_rgb;
+
+/* X and Y vector */
+typedef struct s_vector
+{
+	int x;
+	int y;
+}	t_vector;
+
+typedef struct s_map
+{
+	char		**map;
+	t_rgb		c_rgb;
+	t_rgb		f_rgb;
+	t_img		n_img;
+	t_img		e_img;
+	t_img		s_img;
+	t_img		w_img;
+	t_img		d_img;
+	t_img		*main;
+	t_img		imgw;
+	t_vector	size;
+	// t_img	*mini;
+	// int		door_state;
+}	t_map;
+
+/* Master struct for variables */
+typedef struct s_vars
+{
+	void		*mlx;
+	void		*win;
+	t_vector	win_size;
+	t_vector	img_size;
+	t_map		map;
+	// t_ply		player;
+	// t_render	render;
+}	t_vars;
+
+/* Initialization */
+void	init_vars(t_vars *vars);
+
 /* 1. Validation */
 void	valid_check_file(int argc, char **argv);
 
 /* Utils */
-void	print_error_exit(char *str);
+void	print_error_exit(char *str, char *arg);
 
 #endif

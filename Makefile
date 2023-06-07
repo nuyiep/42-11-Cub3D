@@ -15,7 +15,8 @@ NAME		= cub3d
 CC			= gcc
 MLX			= mlx/libmlx.a
 CFLAGS		= -Wall -Wextra -Werror -Imlx
-MLXFLAGS	= -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
+MLXFLAGS	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+# MLXFLAGS	= -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
 FSANS		= -fsanitize=address -g3
 
 DSRCS		= srcs					\
@@ -23,13 +24,16 @@ DSRCS		= srcs					\
 			  srcs/parsing			\
 			  srcs/render			\
 			  srcs/controls			\
+			  srcs/initialize		\
 			  srcs/utils			\
 
 DOBJS		= objs/
 
 # all these files doesn't require directory path ya
-FILES		=	valid_test	\
-				render_test	\
+FILES		=	valid_check_file	\
+				init_vars			\
+				ctrl_run_hooks		\
+				utils				\
 
 FOBJS		= $(addprefix $(DOBJS), $(addsuffix .o, $(FILES:.c=.o)))
 
@@ -47,7 +51,7 @@ $(DOBJS)%.o: %.c
 
 ${NAME}:	srcs/main.c ${LIBD}/${LIBA} ${PRINTFD}/${PRINTFA} ${FOBJS}
 	@echo "Compiling: srcs/main.c"
-	@${CC} ${CFLAGS} -I. srcs/main.c ${FOBJS} ${LIBD}/${LIBA} ${MLX} ${MLXFLAGS} -o ${NAME}
+	@${CC} ${CFLAGS} -I. srcs/main.c ${FOBJS} ${LIBD}/${LIBA} ${MLXFLAGS} -o ${NAME}
 
 ${LIBD}/${LIBA}:
 	@make -C ${LIBD}
