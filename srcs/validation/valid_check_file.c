@@ -15,7 +15,7 @@
 void	valid_check_argc_and_argc_format(int argc, char **argv)
 {
 	if (argc != 2)
-		print_error_exit("Invalid number of arguments");
+		print_error_exit("Invalid number of arguments", NULL);
 	(void)argv;	
 }
 

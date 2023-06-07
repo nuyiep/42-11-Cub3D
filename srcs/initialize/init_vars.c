@@ -27,6 +27,7 @@ static void	init_map(t_vars *vars)
 
 static void	init_player(t_vars *vars)
 {
+	(void)vars;
 	return ;
 }
 

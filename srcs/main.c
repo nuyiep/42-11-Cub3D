@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 	init_vars(vars);
 
 	// Then, run all the hooks to start the mlx game
-	ctrl_run_hooks();
+	ctrl_run_hooks(vars);
 
 	// Temporary testing
 	{

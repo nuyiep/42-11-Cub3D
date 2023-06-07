@@ -32,6 +32,13 @@
 # define WIN_H		1280
 # define WIN_W		800
 
+/* X and Y vector */
+typedef struct s_vector
+{
+	int x;
+	int y;
+}	t_vector;
+
 typedef struct s_img
 {
 	void		*ptr;
@@ -49,13 +56,6 @@ typedef struct s_rgb
 	unsigned int	b;
 	int				hex;
 }	t_rgb;
-
-/* X and Y vector */
-typedef struct s_vector
-{
-	int x;
-	int y;
-}	t_vector;
 
 typedef struct s_map
 {
@@ -91,6 +91,9 @@ void	init_vars(t_vars *vars);
 
 /* 1. Validation */
 void	valid_check_file(int argc, char **argv);
+
+/* 4. Controls */
+void	ctrl_run_hooks(t_vars *vars);
 
 /* Utils */
 void	print_error_exit(char *str, char *arg);

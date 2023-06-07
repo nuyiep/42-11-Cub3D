@@ -9,7 +9,7 @@
  * 
  * @param vars 
  */
-void	hooks_main(t_vars *vars)
+void	ctrl_run_hooks(t_vars *vars)
 {
 	mlx_hook(vars->win, 2, 1, NULL, vars); // key hook
 	mlx_hook(vars->win, 17, 0, NULL, vars); // exit hook
