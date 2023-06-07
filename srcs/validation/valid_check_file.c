@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:35:16 by plau              #+#    #+#             */
-/*   Updated: 2023/06/07 20:25:10 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/07 20:41:37 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ void	valid_check_argc_and_argc_format(int argc, char **argv)
 void	valid_check_each_line(t_game *game, char *file)
 {
 	int		fd;
-	char	*str;
 	int		count;
-	int		i;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -37,10 +35,7 @@ void	valid_check_each_line(t_game *game, char *file)
 	count = ft_count_lines(fd);
 	ft_printf("Total number of lines: %d\n", count);
 	close(fd);
-	i = 0;
-	fd = open(file, O_RDONLY);
-	str = get_next_line(fd);
-	split_elements(game, str);
+	split_file_into_three_parts(file, game, count);
 }
 
 /* Main function to check file */

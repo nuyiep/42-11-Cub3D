@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/07 20:23:49 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/07 20:41:25 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_map
 	t_img		e_img;
 	t_img		w_img;
 	t_img		s_img;
-	
+
 }	t_map;
 
 /* Main struct */
@@ -65,7 +65,7 @@ typedef struct s_game
 
 /* 1. Validation */
 void	valid_check_file(int argc, char **argv, t_game *game);
-void	split_elements(t_game *game, char *str);
+void	split_file_into_three_parts(char *file, t_game *game, int count);
 
 /* Utils */
 void	utils_print_error_exit(char *str);
