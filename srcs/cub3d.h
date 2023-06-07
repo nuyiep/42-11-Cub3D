@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/06 18:05:20 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/07 20:23:49 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,21 @@ typedef struct s_vector
 	int	y;
 }	t_vector;
 
+/* Image struct */
+typedef struct s_img
+{
+	void	*ptr;
+	char	*str;
+}	t_img;
+
 /* Map struct */
 typedef struct s_map
 {
 	t_vector	size;
+	t_img		n_img;
+	t_img		e_img;
+	t_img		w_img;
+	t_img		s_img;
 	
 }	t_map;
 
@@ -54,8 +65,11 @@ typedef struct s_game
 
 /* 1. Validation */
 void	valid_check_file(int argc, char **argv, t_game *game);
+void	split_elements(t_game *game, char *str);
 
 /* Utils */
 void	utils_print_error_exit(char *str);
+char	*ft_trim_space_tab(char *str);
+int		ft_count_lines(int fd);
 
 #endif

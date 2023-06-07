@@ -6,7 +6,7 @@
 #    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/06 15:51:17 by plau             ###   ########.fr        #
+#    Updated: 2023/06/07 18:16:51 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ DOBJS		= objs/
 # all these files doesn't require directory path ya
 FILES		=	valid_check_file \
 				render_test	\
-				utils
+				utils \
+				valid_separate_elements
 				
 
 FOBJS		= $(addprefix $(DOBJS), $(addsuffix .o, $(FILES:.c=.o)))
@@ -45,11 +46,11 @@ all:		$(NAME)
 $(DOBJS)%.o: %.c
 	@mkdir -p objs/
 	@echo "Compiling: $<"
-	@$(CC) $(CFLAGS) -I. -c $< -o $@
+	@$(CC) $(CFLAGS) $(FSANS) -I. -c $< -o $@
 
 ${NAME}:	srcs/main.c ${LIBD}/${LIBA} ${PRINTFD}/${PRINTFA} ${FOBJS}
 	@echo "Compiling: srcs/main.c"
-	@${CC} ${CFLAGS} -I. srcs/main.c ${FOBJS} ${LIBD}/${LIBA} ${MLX} ${MLXFLAGS} -o ${NAME}
+	@${CC} ${CFLAGS} $(FSANS) -I. srcs/main.c ${FOBJS} ${LIBD}/${LIBA} ${MLX} ${MLXFLAGS} -o ${NAME}
 
 ${LIBD}/${LIBA}:
 	@make -C ${LIBD}
