@@ -10,11 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-void	print_error_exit(char *str)
+/**
+ * @brief Prints out an error message with an optional [argument] befre EXITING program
+ * 
+ * @param str error message
+ * @param arg optional argument
+ */
+void	print_error_exit(char *str, char *arg)
 {
-	ft_printf(str);
-	ft_printf("\n");
-	EXIT_FAILURE;
+	ft_putstr_fd(str, 2);
+	
+	if (arg != NULL)
+	{
+		ft_putstr_fd(": ", 2);
+		ft_putstr_fd(arg, 2);
+	}
+	ft_putstr_fd("\n", 2);
+	exit(EXIT_FAILURE);
 }

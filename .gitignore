@@ -59,3 +59,4 @@ test*
 *.py
 valgrind*
 .DS_store
+mlx_linux
