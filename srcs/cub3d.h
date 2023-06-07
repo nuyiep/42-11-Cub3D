@@ -31,6 +31,14 @@
 /* Player prefs */
 # define WIN_H		1280
 # define WIN_W		800
+# define MINI_H		60
+# define MINI_W		60
+# define MINI_PX	15
+
+/* Colors */
+# define RED		0xFF0000
+# define GREEN		0x00FF00
+# define BLUE		0x0000FF
 
 /* X and Y vector */
 typedef struct s_vector

@@ -41,11 +41,11 @@ int main(int argc, char **argv)
 	{
 		t_img img;
 
-		img.ptr = mlx_new_image(vars->mlx, WIN_W, WIN_H);
-		img.addr = mlx_get_data_addr(img.ptr, &img.bpp, &img.line_len, &img.endian);
+		img.ptr = mlx_new_image(vars->mlx, WIN_W, WIN_H); // this holds the space of the image
+		img.addr = mlx_get_data_addr(img.ptr, &img.bpp, &img.line_len, &img.endian); // this holds the memory address of the the space
 
-		my_mlx_pixel_put(&img, 10, 10, 230);
-		mlx_put_image_to_window(vars->mlx, vars->win, img.ptr, 0, 0);
+		my_mlx_pixel_put(&img, 10, 10, 230); // putting a pixel at x, y coordinate with color
+		mlx_put_image_to_window(vars->mlx, vars->win, img.ptr, 0, 0); // then render the whole img to mlx window
 
 		mlx_loop(vars->mlx);
 	}
