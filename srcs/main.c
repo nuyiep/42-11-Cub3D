@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:14 by plau              #+#    #+#             */
-/*   Updated: 2023/06/07 20:27:23 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/08 15:58:24 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int main(int argc, char **argv)
 {
-	t_game	game;
+	t_vars	vars;
 
-	valid_check_file(argc, argv, &game);
+	valid_check_file(argc, argv, &vars);
+	system("leaks -q cub3d");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:35:16 by plau              #+#    #+#             */
-/*   Updated: 2023/06/07 20:41:37 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/08 13:05:23 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	valid_check_argc_and_argc_format(int argc, char **argv)
 }
 
 /* Open file to check every line */
-void	valid_check_each_line(t_game *game, char *file)
+void	valid_check_each_line(t_vars *vars, char *file)
 {
 	int		fd;
 	int		count;
@@ -35,13 +35,12 @@ void	valid_check_each_line(t_game *game, char *file)
 	count = ft_count_lines(fd);
 	ft_printf("Total number of lines: %d\n", count);
 	close(fd);
-	split_file_into_three_parts(file, game, count);
+	split_file_into_three_parts(file, vars, count);
 }
 
 /* Main function to check file */
-void	valid_check_file(int argc, char **argv, t_game *game)
+void	valid_check_file(int argc, char **argv, t_vars *vars)
 {
 	valid_check_argc_and_argc_format(argc, argv);
-	valid_check_each_line(game, argv[1]);
-	//system("leaks -q cub3d");
+	valid_check_each_line(vars, argv[1]);
 }

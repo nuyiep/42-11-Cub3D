@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
-/*   Updated: 2023/06/07 19:09:51 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/08 16:02:28 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	utils_print_error_exit(char *str)
 	exit(EXIT_FAILURE);
 }
 
-/* Trim space and tab */
-char	*ft_trim_space_tab(char *str)
+/* Trim space, tab and newline */
+char	*ft_trim_space_tab_newline(char *str)
 {
 	int		i;
 	int		k;
@@ -33,10 +33,14 @@ char	*ft_trim_space_tab(char *str)
 	k = 0;
 	count = 0;
 	count = ft_strlen(str);
-	while (str[i] == ' ' || str[i] == '\t')
-		i++;
-	count = count - i;
+	while (str[k] != '\0')
+	{
+		if (str[i] == ' ' || str[i] == '\t')
+			i++;
+		k++;
+	}
 	after_trim = malloc(sizeof(char) * count);
+	k = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] != '\n')
@@ -62,6 +66,7 @@ int	ft_count_lines(int fd)
 	{
 		str = get_next_line(fd);
 		count++;
+		free(str);
 	}
 	return (count);
 }

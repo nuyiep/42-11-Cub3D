@@ -6,7 +6,7 @@
 #    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/07 18:16:51 by plau             ###   ########.fr        #
+#    Updated: 2023/06/08 15:58:21 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,11 +46,13 @@ all:		$(NAME)
 $(DOBJS)%.o: %.c
 	@mkdir -p objs/
 	@echo "Compiling: $<"
-	@$(CC) $(CFLAGS) $(FSANS) -I. -c $< -o $@
+	@$(CC) $(CFLAGS) -I. -c $< -o $@
+	# @$(CC) $(CFLAGS) $(FSANS) -I. -c $< -o $@
 
 ${NAME}:	srcs/main.c ${LIBD}/${LIBA} ${PRINTFD}/${PRINTFA} ${FOBJS}
 	@echo "Compiling: srcs/main.c"
-	@${CC} ${CFLAGS} $(FSANS) -I. srcs/main.c ${FOBJS} ${LIBD}/${LIBA} ${MLX} ${MLXFLAGS} -o ${NAME}
+	@${CC} ${CFLAGS} -I. srcs/main.c ${FOBJS} ${LIBD}/${LIBA} ${MLX} ${MLXFLAGS} -o ${NAME}
+	# @${CC} ${CFLAGS} $(FSANS) -I. srcs/main.c ${FOBJS} ${LIBD}/${LIBA} ${MLX} ${MLXFLAGS} -o ${NAME}
 
 ${LIBD}/${LIBA}:
 	@make -C ${LIBD}

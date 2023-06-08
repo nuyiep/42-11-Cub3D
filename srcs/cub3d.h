@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/07 20:41:25 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/08 14:47:29 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,35 +41,52 @@ typedef struct s_vector
 /* Image struct */
 typedef struct s_img
 {
-	void	*ptr;
-	char	*str;
+	void		*ptr;
+	char		*addr;
+	int			bpp;
+	int			line_len;
+	int			endian;
+	t_vector	size;
 }	t_img;
+
+/* RGB struct - Ceiling and Floor */
+typedef struct s_rgb
+{
+	unsigned int	r;
+	unsigned int	g;
+	unsigned int	b;
+	int				hex;
+}	t_rgb;
 
 /* Map struct */
 typedef struct s_map
 {
-	t_vector	size;
+	t_rgb		c_rgb;
+	t_rgb		f_rgb;
 	t_img		n_img;
 	t_img		e_img;
-	t_img		w_img;
 	t_img		s_img;
-
+	t_img		w_img;
+	t_img		*main;
+	t_img		imgw;
+	t_vector	size;
 }	t_map;
 
 /* Main struct */
-typedef struct s_game
+typedef struct s_vars
 {
 	void	*mlx;
 	t_map	map;
-}	t_game;
+}	t_vars;
 
 /* 1. Validation */
-void	valid_check_file(int argc, char **argv, t_game *game);
-void	split_file_into_three_parts(char *file, t_game *game, int count);
+void	valid_check_file(int argc, char **argv, t_vars *vars);
+void	split_file_into_three_parts(char *file, t_vars *vars, int count);
 
 /* Utils */
 void	utils_print_error_exit(char *str);
-char	*ft_trim_space_tab(char *str);
+char	*ft_trim_space_tab_newline(char *str);
 int		ft_count_lines(int fd);
+void	free_all(t_vars *vars);
 
 #endif
