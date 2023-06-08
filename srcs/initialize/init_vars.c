@@ -7,27 +7,31 @@ static void	init_mlx_window(t_vars *vars)
 	vars->win = mlx_new_window(vars->mlx, WIN_W, WIN_H, "cub3d");
 }
 
-static void	init_map(t_vars *vars)
-{
-	vars->map.n_img.ptr = NULL;
-	vars->map.e_img.ptr = NULL;
-	vars->map.s_img.ptr = NULL;
-	vars->map.w_img.ptr = NULL;
-	vars->map.d_img.ptr = NULL;
-	vars->map.map = NULL;
-	vars->map.c_rgb.hex = -1;
-	vars->map.f_rgb.hex = -1;
-	vars->map.main = ft_calloc(1, sizeof(t_img));
-	// vars->map.door_state = D_OPEN;
-	// vars->map.mini = ft_calloc(1, sizeof(t_img));
-	vars->map.imgw.ptr = mlx_new_image(vars->mlx, WIN_W, WIN_H);
-	// vars->map.imgw.addr = mlx_get_data_addr(vars->map.imgw.ref, &vars->map.imgw.bpp,
-	// 		&vars->map.imgw.sl, &vars->map.imgw.end);
-}
+// static void	init_map(t_vars *vars)
+// {
+// 	vars->map.n_img.ptr = NULL;
+// 	vars->map.e_img.ptr = NULL;
+// 	vars->map.s_img.ptr = NULL;
+// 	vars->map.w_img.ptr = NULL;
+// 	vars->map.d_img.ptr = NULL;
+// 	vars->map.map = NULL;
+// 	vars->map.c_rgb.hex = -1;
+// 	vars->map.f_rgb.hex = -1;
+// 	vars->map.main = ft_calloc(1, sizeof(t_img));
+// 	// vars->map.door_state = D_OPEN;
+// 	// vars->map.mini = ft_calloc(1, sizeof(t_img));
+// 	vars->map.imgw.ptr = mlx_new_image(vars->mlx, WIN_W, WIN_H);
+// 	// vars->map.imgw.addr = mlx_get_data_addr(vars->map.imgw.ref, &vars->map.imgw.bpp,
+// 	// 		&vars->map.imgw.sl, &vars->map.imgw.end);
+// }
 
 static void	init_player(t_vars *vars)
 {
-	(void)vars;
+	vars->player.pos.x = WIN_W / 2;
+	vars->player.pos.y = WIN_H / 2;
+	vars->player.dir.x = cos(-PI/2) * 60;
+	vars->player.dir.y = sin(-PI/2) * 60;
+	vars->player.rotate = -PI/2;
 	return ;
 }
 
@@ -39,6 +43,6 @@ static void	init_player(t_vars *vars)
 void	init_vars(t_vars *vars)
 {
 	init_mlx_window(vars);
-	init_map(vars);
+	// init_map(vars);
 	init_player(vars);
 }

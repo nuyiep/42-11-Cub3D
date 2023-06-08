@@ -3,19 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/06 15:16:12 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/08 16:13:32 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include "../libft/srcs/libft.h"
-#include <stdio.h>
-#include <mlx.h>
+# include "../libft/srcs/libft.h"
+# include <stdio.h>
+# include <math.h>
+# include <mlx.h>
 
 /* Mac key codes */
 # define KEY_ESC	53
@@ -29,8 +30,8 @@
 # define EXIT_MASK	0
 
 /* Player prefs */
-# define WIN_H		1280
-# define WIN_W		800
+# define WIN_H		800
+# define WIN_W		1280
 # define MINI_H		60
 # define MINI_W		60
 # define MINI_PX	15
@@ -40,12 +41,23 @@
 # define GREEN		0x00FF00
 # define BLUE		0x0000FF
 
+# define PI			3.141592653589793238
+# define ROT_SPD	0.7853
+# define MOV_SPD	0.05
+
 /* X and Y vector */
 typedef struct s_vector
 {
 	int x;
 	int y;
 }	t_vector;
+
+/* Doubles X and Y vector */
+typedef struct s_dvector
+{
+	double	x;
+	double	y;
+}	t_dvector;
 
 typedef struct s_img
 {
@@ -82,6 +94,14 @@ typedef struct s_map
 	// int		door_state;
 }	t_map;
 
+typedef struct s_ply
+{
+	t_img		img;
+	t_vector	pos;
+	t_dvector	dir;
+	double		rotate;
+}	t_ply;
+
 /* Master struct for variables */
 typedef struct s_vars
 {
@@ -90,7 +110,7 @@ typedef struct s_vars
 	t_vector	win_size;
 	t_vector	img_size;
 	t_map		map;
-	// t_ply		player;
+	t_ply		player;
 	// t_render	render;
 }	t_vars;
 
@@ -100,10 +120,17 @@ void	init_vars(t_vars *vars);
 /* 1. Validation */
 void	valid_check_file(int argc, char **argv);
 
+/* 3. Render */
+int		render_main(t_vars *vars);
+void	draw_player(t_vars *vars);
+void	draw_dir(t_vars *vars);
+
 /* 4. Controls */
 void	ctrl_run_hooks(t_vars *vars);
 
 /* Utils */
 void	print_error_exit(char *str, char *arg);
+int		success_exit();
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 #endif
