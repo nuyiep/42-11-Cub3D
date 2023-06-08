@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/08 16:13:32 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/08 19:25:30 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,22 @@
 # define WIN_H		800
 # define WIN_W		1280
 # define MINI_H		60
-# define MINI_W		60
-# define MINI_PX	15
+# define MINI_W		96
+# define MINI_PX	5
 
 /* Colors */
 # define RED		0xFF0000
 # define GREEN		0x00FF00
 # define BLUE		0x0000FF
+# define TBROWN		0x80964B00
+# define TGREY		0x80808080
+# define TWHITE		0x80FFFFFF
+# define TBLACK		0x80000000
+# define TRANS		0xFF000000
 
 # define PI			3.141592653589793238
-# define ROT_SPD	0.7853
-# define MOV_SPD	0.05
+# define ROT_SPD	0.1
+# define MOV_SPD	0.025
 
 /* X and Y vector */
 typedef struct s_vector
@@ -90,7 +95,7 @@ typedef struct s_map
 	t_img		*main;
 	t_img		imgw;
 	t_vector	size;
-	// t_img	*mini;
+	t_img		*mini;
 	// int		door_state;
 }	t_map;
 
@@ -124,6 +129,7 @@ void	valid_check_file(int argc, char **argv);
 int		render_main(t_vars *vars);
 void	draw_player(t_vars *vars);
 void	draw_dir(t_vars *vars);
+void	generate_minimap(t_vars *vars);
 
 /* 4. Controls */
 void	ctrl_run_hooks(t_vars *vars);

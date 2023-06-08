@@ -42,19 +42,19 @@ void	rotate_player(int keycode, t_vars *vars)
 
 	if (keycode == KEY_LEFT)
 	{
-		vars->player.rotate -= 0.1;
+		vars->player.rotate -= ROT_SPD;
 		if (vars->player.rotate < 0)
 			vars->player.rotate += (2 * PI);
-		vars->player.dir.x = cos(vars->player.rotate) * 60;
-		vars->player.dir.y = sin(vars->player.rotate) * 60;
+		vars->player.dir.x = cos(vars->player.rotate) * 120;
+		vars->player.dir.y = sin(vars->player.rotate) * 120;
 	}
 	else if (keycode == KEY_RIGHT)
 	{
-		vars->player.rotate += 0.1;
+		vars->player.rotate += ROT_SPD;
 		if (vars->player.rotate > 2 * PI)
 			vars->player.rotate -= (2 * PI);
-		vars->player.dir.x = cos(vars->player.rotate) * 60;
-		vars->player.dir.y = sin(vars->player.rotate) * 60;
+		vars->player.dir.x = cos(vars->player.rotate) * 120;
+		vars->player.dir.y = sin(vars->player.rotate) * 120;
 	}
 }
 
@@ -69,7 +69,7 @@ static int	key_input(int keycode, t_vars *vars)
 {
 	(void)vars;
 	if (keycode == KEY_ESC)
-		exit(EXIT_SUCCESS);
+		success_exit();
 
 	move_player_vertical(keycode, vars);
 	move_player_horizontal(keycode, vars);
