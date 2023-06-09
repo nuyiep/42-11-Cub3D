@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:35:16 by plau              #+#    #+#             */
-/*   Updated: 2023/06/08 13:05:23 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/09 19:08:39 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,29 @@ void	valid_check_argc_and_argc_format(int argc, char **argv)
 		utils_print_error_exit("Invalid file format");
 }
 
+// void	init_map(int fd, t_vars *vars, int count)
+// {
+// 	int	i;
+// 	int	j;
+
+// 	i = 0;
+// 	vars->map.map = malloc(sizeof(char *) * (count + 1));
+// 	if (vars->map.map == NULL)
+// 		return ;
+// 	while (i < count && vars->map.map[i] != NULL)
+// 	{
+// 		j = 0;
+		
+// 		while (vars->map.map[i][j] != '\0')
+// 			j++;
+// 		vars->map.map[i] = malloc(sizeof(char *) * (j + 1));
+// 		i++;
+// 	}
+// 	ft_printf("MAP count %d\n", count);
+// 	// ft_printf("MAP column %d\n", column);
+// 	(void)fd;
+// }
+
 /* Open file to check every line */
 void	valid_check_each_line(t_vars *vars, char *file)
 {
@@ -32,9 +55,11 @@ void	valid_check_each_line(t_vars *vars, char *file)
 	if (fd == -1)
 		utils_print_error_exit("Failed to open file");
 	count = 0;
-	count = ft_count_lines(fd);
-	ft_printf("Total number of lines: %d\n", count);
+	count = ft_count_lines(fd, vars);
+	vars->map.map = malloc(sizeof(char *) * (count + 1));
 	close(fd);
+	fd = open(file, O_RDONLY);
+	ft_printf("Total number of lines: %d\n", count);
 	split_file_into_three_parts(file, vars, count);
 }
 

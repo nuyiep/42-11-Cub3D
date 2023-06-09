@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
-/*   Updated: 2023/06/08 16:02:28 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/09 19:06:55 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_trim_space_tab_newline(char *str)
 			i++;
 		k++;
 	}
-	after_trim = malloc(sizeof(char) * count);
+	after_trim = malloc(sizeof(char) * count + 1);
 	k = 0;
 	while (str[i] != '\0')
 	{
@@ -55,7 +55,7 @@ char	*ft_trim_space_tab_newline(char *str)
 }
 
 /* Count total number of lines in .cub file */
-int	ft_count_lines(int fd)
+int	ft_count_lines(int fd, t_vars *vars)
 {
 	char	*str;
 	int		count;
@@ -68,5 +68,12 @@ int	ft_count_lines(int fd)
 		count++;
 		free(str);
 	}
+	vars->map.temp_map_total_line = count;
 	return (count);
+}
+
+void	free_all(t_vars *vars)
+{
+	ft_freesplit(vars->map.map);
+	free(vars->map.main);
 }

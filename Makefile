@@ -6,7 +6,7 @@
 #    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/08 15:58:21 by plau             ###   ########.fr        #
+#    Updated: 2023/06/09 18:36:38 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ DSRCS		= srcs					\
 			  srcs/render			\
 			  srcs/controls			\
 			  srcs/utils			\
+			  srcs/initialize		\
 
 DOBJS		= objs/
 
@@ -31,7 +32,9 @@ DOBJS		= objs/
 FILES		=	valid_check_file \
 				render_test	\
 				utils \
-				valid_separate_elements
+				valid_separate_elements \
+				parse \
+				init_vars
 				
 
 FOBJS		= $(addprefix $(DOBJS), $(addsuffix .o, $(FILES:.c=.o)))

@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:18 by plau              #+#    #+#             */
-/*   Updated: 2023/06/08 15:30:33 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/09 20:49:14 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 static void	init_mlx_window(t_vars *vars)
 {
 	vars->mlx = mlx_init();
-	//vars->win = mlx_new_window(vars->mlx, WIN_W, WIN_H, "cub3d");
+	// vars->win = mlx_new_window(vars->mlx, WIN_W, WIN_H, "cub3d");
 }
 
 static void	init_map(t_vars *vars)
@@ -25,9 +25,8 @@ static void	init_map(t_vars *vars)
 	vars->map.e_img.ptr = NULL;
 	vars->map.s_img.ptr = NULL;
 	vars->map.w_img.ptr = NULL;
-	vars->mlx = NULL;
 	//vars->map.d_img.ptr = NULL;
-	//vars->map.map = NULL;
+	vars->map.map = NULL;
 	vars->map.c_rgb.hex = -1;
 	vars->map.f_rgb.hex = -1;
 	vars->map.main = ft_calloc(1, sizeof(t_img));
@@ -36,6 +35,7 @@ static void	init_map(t_vars *vars)
 	// vars->map.imgw.ptr = mlx_new_image(vars->mlx, WIN_W, WIN_H);
 	// vars->map.imgw.addr = mlx_get_data_addr(vars->map.imgw.ref, &vars->map.imgw.bpp,
 	// 		&vars->map.imgw.sl, &vars->map.imgw.end);
+	vars->map.temp_map_total_line = 0;
 }
 
 static void	init_player(t_vars *vars)

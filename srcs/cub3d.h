@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/08 14:47:29 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/09 19:18:15 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_rgb
 /* Map struct */
 typedef struct s_map
 {
+	char		**map;
 	t_rgb		c_rgb;
 	t_rgb		f_rgb;
 	t_img		n_img;
@@ -70,12 +71,14 @@ typedef struct s_map
 	t_img		*main;
 	t_img		imgw;
 	t_vector	size;
+	int			temp_map_total_line;
 }	t_map;
 
 /* Main struct */
 typedef struct s_vars
 {
 	void	*mlx;
+	// void	*win;
 	t_map	map;
 }	t_vars;
 
@@ -83,10 +86,16 @@ typedef struct s_vars
 void	valid_check_file(int argc, char **argv, t_vars *vars);
 void	split_file_into_three_parts(char *file, t_vars *vars, int count);
 
+/* Initialization */
+void	init_vars(t_vars *vars);
+
+/* Parsing */
+int		parse_store_map(t_vars *vars, char *str, int k);
+
 /* Utils */
 void	utils_print_error_exit(char *str);
 char	*ft_trim_space_tab_newline(char *str);
-int		ft_count_lines(int fd);
+int		ft_count_lines(int fd, t_vars *vars);
 void	free_all(t_vars *vars);
 
 #endif
