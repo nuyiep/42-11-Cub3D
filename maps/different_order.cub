@@ -10,15 +10,14 @@ EA ./sprites/east.xpm
 SO ./sprites/south.xpm
 
 F 1,1,1    
-wawawa
-ztzzz
 
 
-	111111
-1S0001
+
+	111111    
+	1S0001
 100001
 100001
-111111
+111111     
 
 
-y
+

@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
-/*   Updated: 2023/06/09 19:06:55 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/10 17:43:56 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,33 +24,32 @@ void	utils_print_error_exit(char *str)
 /* Trim space, tab and newline */
 char	*ft_trim_space_tab_newline(char *str)
 {
-	int		i;
 	int		k;
 	char	*after_trim;
 	int		count;
 
-	i = 0;
 	k = 0;
 	count = 0;
 	count = ft_strlen(str);
 	while (str[k] != '\0')
 	{
-		if (str[i] == ' ' || str[i] == '\t')
-			i++;
-		k++;
+		if (str[k] == ' ' || str[k] == '\t' || str[k] =='\n')
+			k++;
+		else
+			break ;
 	}
 	after_trim = malloc(sizeof(char) * count + 1);
-	k = 0;
-	while (str[i] != '\0')
+	int	j = 0;
+	while (str[k] != '\0')
 	{
-		if (str[i] != '\n')
+		if (str[k] != '\n')
 		{
-			after_trim[k] = str[i];
-			k++;
+			after_trim[j] = str[k];
+			j++;
 		}
-		i++;
+		k++;
 	}
-	after_trim[k] = '\0';
+	after_trim[j] = '\0';
 	return (after_trim);
 }
 
@@ -76,4 +75,17 @@ void	free_all(t_vars *vars)
 {
 	ft_freesplit(vars->map.map);
 	free(vars->map.main);
+}
+
+/* Print map */
+void	print_map(t_vars *vars)
+{
+	int	i;
+
+	i = 0;
+	while (vars->map.map[i] != NULL)
+	{
+		ft_printf("%s\n", vars->map.map[i]);
+		i++;
+	}
 }
