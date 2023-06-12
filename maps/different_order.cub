@@ -4,12 +4,12 @@ WE 				./sprites/west.xpm
 
 
 
-C 225,30,0				
+C 1,30,29			
 
 EA ./sprites/east.xpm
 SO ./sprites/south.xpm
 
-F 1,1,1    
+F 1,1,1000    
         
 
 1111111
