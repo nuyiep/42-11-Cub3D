@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:41:51 by plau              #+#    #+#             */
-/*   Updated: 2023/06/12 16:43:42 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/12 17:46:31 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,4 @@ void	get_map_trim_newline(t_vars *vars, char **temp_map)
 	}
 	vars->map.map[k] = NULL;
 	ft_freesplit(temp_map);
-	k = 0;
-	while (vars->map.map[k] != NULL)
-	{
-		ft_printf("%s", vars->map.map[k]);
-		k++;
-	}
 }	

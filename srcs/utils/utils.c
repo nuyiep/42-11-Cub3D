@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
-/*   Updated: 2023/06/12 16:54:36 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/12 17:46:49 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,9 @@ void	print_map(t_vars *vars)
 	int	i;
 
 	i = 0;
-	ft_printf("Start\n");
 	while (vars->map.map[i] != NULL)
 	{
-		ft_printf("%s\n", vars->map.map[i]);
+		ft_printf("%s", vars->map.map[i]);
 		i++;
 	}
 }
