@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:18 by plau              #+#    #+#             */
-/*   Updated: 2023/06/12 14:29:24 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/12 17:40:24 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static void	init_map(t_vars *vars)
 	// vars->map.imgw.ptr = mlx_new_image(vars->mlx, WIN_W, WIN_H);
 	// vars->map.imgw.addr = mlx_get_data_addr(vars->map.imgw.ref, &vars->map.imgw.bpp,
 	// 		&vars->map.imgw.sl, &vars->map.imgw.end);
-	vars->map.temp_map_total_line = 0;
 }
 
 static void	init_player(t_vars *vars)
