@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:35:16 by plau              #+#    #+#             */
-/*   Updated: 2023/06/09 20:59:46 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/12 16:46:33 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,26 @@ void	valid_check_argc_and_argc_format(int argc, char **argv)
 }
 
 /* Open file to check every line */
-void	valid_check_each_line(t_vars *vars, char *file)
+char	**valid_check_each_line(t_vars *vars, char *file)
 {
 	int		fd;
-	int		count;
+	int		temp_map_size_x;
+	char	**temp_map;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		utils_print_error_exit("Failed to open file");
-	count = 0;
-	count = ft_count_lines(fd, vars);
-	vars->map.map = malloc(sizeof(char *) * (count + 1));
+	temp_map_size_x = ft_count_lines(fd);
+	temp_map = malloc(sizeof(char *) * (temp_map_size_x + 1));
 	close(fd);
 	fd = open(file, O_RDONLY);
-	ft_printf("Total number of lines: %d\n", count);
-	split_file_into_three_parts(file, vars, count);
+	split_file_into_three_parts(file, vars, temp_map_size_x, temp_map);
+	return (temp_map);
 }
 
 /* Main function to check file */
-void	valid_check_file(int argc, char **argv, t_vars *vars)
+char	**valid_check_file(int argc, char **argv, t_vars *vars)
 {
 	valid_check_argc_and_argc_format(argc, argv);
-	valid_check_each_line(vars, argv[1]);
+	return (valid_check_each_line(vars, argv[1]));
 }

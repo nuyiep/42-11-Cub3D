@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:18 by plau              #+#    #+#             */
-/*   Updated: 2023/06/09 20:49:14 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/12 14:29:24 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	init_map(t_vars *vars)
 	vars->map.w_img.ptr = NULL;
 	//vars->map.d_img.ptr = NULL;
 	vars->map.map = NULL;
+	vars->map.size.y = 0;
 	vars->map.c_rgb.hex = -1;
 	vars->map.f_rgb.hex = -1;
 	vars->map.main = ft_calloc(1, sizeof(t_img));

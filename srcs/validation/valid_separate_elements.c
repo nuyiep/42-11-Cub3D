@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:59 by plau              #+#    #+#             */
-/*   Updated: 2023/06/09 21:37:54 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/12 16:56:42 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	split_elements_north_east(t_vars *vars, char *str, int x)
 		split = ft_split(str, ' ');
 		after_trim = ft_trim_space_tab_newline(split[1]);
 		ft_printf("AFTER TRIM: %s\n", after_trim);
-		// vars->map.n_img.ptr = mlx_xpm_file_to_image(vars->mlx, 
-		// 	after_trim, &vars->map.n_img.size.x, &vars->map.n_img.size.y);
-		// if (vars->map.n_img.ptr == NULL || split[2] != NULL)
-		// 	utils_print_error_exit("Invalid north texture");
-		// vars->map.n_img.addr = mlx_get_data_addr(vars->map.n_img.ptr, 
-		// 	&vars->map.n_img.bpp, &vars->map.n_img.line_len, 
-		// 	&vars->map.n_img.endian);
+		vars->map.n_img.ptr = mlx_xpm_file_to_image(vars->mlx,
+				after_trim, &vars->map.n_img.size.x, &vars->map.n_img.size.y);
+		if (vars->map.n_img.ptr == NULL || split[2] != NULL)
+			utils_print_error_exit("Invalid north texture");
+		vars->map.n_img.addr = mlx_get_data_addr(vars->map.n_img.ptr,
+				&vars->map.n_img.bpp, &vars->map.n_img.line_len,
+				&vars->map.n_img.endian);
 		free(after_trim);
 		ft_freesplit(split);
 		x++;
@@ -43,7 +43,6 @@ int	split_elements_north_east(t_vars *vars, char *str, int x)
 		ft_freesplit(split);
 		x++;
 	}
-	(void)vars;
 	return (x);
 }
 
@@ -113,7 +112,8 @@ int	split_elements_floor_ceiling(t_vars *vars, char *str, int x)
 }
 
 /* Split file content into 2 parts: N, S, W, E, C, F v map */
-void	split_file_into_three_parts(char *file, t_vars *vars, int count)
+void	split_file_into_three_parts(char *file, t_vars *vars, int count,
+				char **temp_map)
 {
 	int		fd;
 	int		i;
@@ -137,10 +137,10 @@ void	split_file_into_three_parts(char *file, t_vars *vars, int count)
 			x = split_elements_floor_ceiling(vars, str, x);
 		}
 		if (x == 7)
-			k = parse_store_map(vars, str, k);
+			k = parse_store_map(str, k, temp_map);
 		i++;
 		free(str);
 	}
-	vars->map.map[k] = NULL;
+	temp_map[k] = NULL;
 	close(fd);
 }

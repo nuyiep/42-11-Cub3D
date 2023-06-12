@@ -6,15 +6,15 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/10 17:54:41 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/12 16:51:54 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#include "../libft/srcs/libft.h"
-#include <mlx.h>
+# include "../libft/srcs/libft.h"
+# include <mlx.h>
 
 /* Mac key codes */
 # define KEY_ESC	53
@@ -70,35 +70,34 @@ typedef struct s_map
 	t_img		w_img;
 	t_img		*main;
 	t_img		imgw;
-	t_vector	size_before;
-	t_vector	size_after;
-	int			temp_map_total_line;
+	t_vector	size;
 }	t_map;
 
 /* Main struct */
 typedef struct s_vars
 {
 	void	*mlx;
-	// void	*win;
+	void	*win;
 	t_map	map;
 }	t_vars;
 
 /* 1. Validation */
-void	valid_check_file(int argc, char **argv, t_vars *vars);
-void	split_file_into_three_parts(char *file, t_vars *vars, int count);
-void	map_checking(t_vars *vars);
+char	**valid_check_file(int argc, char **argv, t_vars *vars);
+void	split_file_into_three_parts(char *file, t_vars *vars,
+			int count, char **temp_map);
+void	map_checking(t_vars *vars, char **temp_map);
 
 /* Initialization */
 void	init_vars(t_vars *vars);
 
 /* Parsing */
-int		parse_store_map(t_vars *vars, char *str, int k);
-void	get_map_trim_newline(t_vars *vars);
+int		parse_store_map(char *str, int k, char **map);
+void	get_map_trim_newline(t_vars *vars, char **temp_map);
 
 /* Utils */
 void	utils_print_error_exit(char *str);
 char	*ft_trim_space_tab_newline(char *str);
-int		ft_count_lines(int fd, t_vars *vars);
+int		ft_count_lines(int fd);
 void	free_all(t_vars *vars);
 void	print_map(t_vars *vars);
 void	update_map(t_vars *vars, char **after_trim);

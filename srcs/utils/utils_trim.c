@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:07:03 by plau              #+#    #+#             */
-/*   Updated: 2023/06/10 17:55:45 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/12 14:53:34 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,34 +43,4 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (ft_strdup(""));
 	trimstr = ft_substr(&s1[start], 0, end - start + 1);
 	return (trimstr);
-}
-
-/* Calculate the number of rows for after trim */
-int	after_trim_rows(char **after_trim)
-{
-	int row;
-
-	row = 0;
-	while (after_trim[row] != NULL)
-		row++;
-	return (row);
-}
-
-/* Update map */
-void	update_map(t_vars *vars, char **after_trim)
-{
-	int	i;
-	int	row;
-
-	i = 0;
-	row = 0;
-	row = after_trim_rows(after_trim);
-	while (after_trim[i] != NULL)
-	{
-		free(vars->map.map[i]);
-		vars->map.map[i] = ft_strdup(after_trim[i]);
-		i++;
-	}
-
-	vars->map.map[i] = NULL;
 }

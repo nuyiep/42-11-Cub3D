@@ -6,19 +6,15 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:23:37 by plau              #+#    #+#             */
-/*   Updated: 2023/06/10 17:05:55 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/12 16:47:43 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int	parse_store_map(t_vars *vars, char *str, int k)
+int	parse_store_map(char *str, int k, char **temp_map)
 {
-	int	y;
-
-	y = ft_strlen(str);
-	
-	vars->map.map[k] = ft_strdup(str);
+	temp_map[k] = ft_strdup(str);
 	k++;
 	return (k);
 }
