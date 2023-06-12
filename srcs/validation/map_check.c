@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:00:50 by plau              #+#    #+#             */
-/*   Updated: 2023/06/12 16:42:47 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/12 20:54:58 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	check_invalid_character(char **temp_map)
 		while (temp_map[i][j] != '\0')
 		{
 			if (ft_strchr("10NSWED \t\n", temp_map[i][j]) == NULL)
-					utils_print_error_exit("Map contains invalid character");
+				utils_print_error_exit("Map contains invalid character");
 			j++;
 		}
 		i++;

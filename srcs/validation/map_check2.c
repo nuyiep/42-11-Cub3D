@@ -6,13 +6,13 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:41:51 by plau              #+#    #+#             */
-/*   Updated: 2023/06/12 17:46:31 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/12 20:55:07 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-int		count_temp_map_lines(char **temp_map)
+int	count_temp_map_lines(char **temp_map)
 {
 	int	i;
 
@@ -24,11 +24,6 @@ int		count_temp_map_lines(char **temp_map)
 
 /* After trim, no more new line at the end of each line */
 /* Save the total number of lines to vars->map.size.y */
-/*
-this function has memory leaks that I can't fix
-can you show me where is the leaks and how to fix it?
-where is the leaks?
-*/
 void	get_map_trim_newline(t_vars *vars, char **temp_map)
 {
 	int		i;
