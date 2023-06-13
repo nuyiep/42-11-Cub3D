@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:59 by plau              #+#    #+#             */
-/*   Updated: 2023/06/13 16:43:12 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/13 17:40:54 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,17 @@ int	split_elements_ceiling(t_vars *vars, char *str, int x)
 
 int	store_textures(t_vars *vars, char *str, int x)
 {
-	x = split_elements_north(vars, str, x);
-	x = split_elements_south(vars, str, x);
-	x = split_elements_east(vars, str, x);
-	x = split_elements_west(vars, str, x);
-	x = split_elements_floor(vars, str, x);
-	x = split_elements_ceiling(vars, str, x);
+	if (x == 6)
+		x++;
+	if (x < 6)
+	{
+		x = split_elements_north(vars, str, x);
+		x = split_elements_south(vars, str, x);
+		x = split_elements_east(vars, str, x);
+		x = split_elements_west(vars, str, x);
+		x = split_elements_floor(vars, str, x);
+		x = split_elements_ceiling(vars, str, x);
+	}
 	return (x);
 }
 
@@ -83,14 +88,10 @@ void	split_elements(t_vars *vars, int count, int fd, char **temp_map)
 	while (i < count - 1)
 	{
 		str = get_next_line(fd);
-		if (x == 6)
-			x++;
-		if (x < 6)
-			x = store_textures(vars, str, x);
+		x = store_textures(vars, str, x);
 		if (x == 7)
 		{
-			if (check == 0)
-				check = check_correct_order(str, check);
+			check = check_correct_order(str, check);
 			k = store_map(str, k, temp_map);
 		}
 		i++;
@@ -102,7 +103,7 @@ void	split_elements(t_vars *vars, int count, int fd, char **temp_map)
 }
 
 /* Split file content into 2 parts: N, S, W, E, C, F v map */
-void	split_file_into_three_parts(char *file, t_vars *vars, int count,
+void	split_file_into_two_parts(char *file, t_vars *vars, int count,
 				char **temp_map)
 {
 	int		fd;

@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:35:16 by plau              #+#    #+#             */
-/*   Updated: 2023/06/13 14:19:18 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/13 17:41:02 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**valid_check_each_line(t_vars *vars, char *file)
 	temp_map = malloc(sizeof(char *) * (temp_map_size_x + 1));
 	close(fd);
 	fd = open(file, O_RDONLY);
-	split_file_into_three_parts(file, vars, temp_map_size_x, temp_map);
+	split_file_into_two_parts(file, vars, temp_map_size_x, temp_map);
 	return (temp_map);
 }
 
