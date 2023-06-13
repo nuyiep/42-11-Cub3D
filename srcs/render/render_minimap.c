@@ -4,10 +4,12 @@ void	draw_player(t_vars *vars)
 {
 	t_dvector	pos;
 
-	double h_ratio = (double)WIN_H / (double)(MINI_H * MINI_PX);
-	double w_ratio = (double)WIN_W / (double)(MINI_W * MINI_PX);
-	pos.x = vars->player.pos.x / w_ratio;
-	pos.y = vars->player.pos.y / h_ratio;
+	// double h_ratio = (double)WIN_H / (double)(MINI_S * MINI_PX);
+	// double w_ratio = (double)WIN_W / (double)(MINI_S * MINI_PX);
+	// pos.x = vars->player.pos.x / w_ratio;
+	// pos.y = vars->player.pos.y / h_ratio;
+	pos.x = MINI_S * MINI_PX / 2;
+	pos.y = MINI_S * MINI_PX / 2;
 	my_mlx_pixel_put(vars->map.mini,  pos.x - 1, pos.y - 1, GREEN);
 	my_mlx_pixel_put(vars->map.mini,  pos.x, pos.y - 1, GREEN);
 	my_mlx_pixel_put(vars->map.mini,  pos.x + 1, pos.y - 1, GREEN);
@@ -24,10 +26,12 @@ void	draw_dir(t_vars *vars)
 	t_dvector	pos;
 	t_dvector	dir;
 
-	double h_ratio = (double)WIN_H / (double)(MINI_H * MINI_PX);
-	double w_ratio = (double)WIN_W / (double)(MINI_W * MINI_PX);
-	pos.x = vars->player.pos.x / w_ratio;
-	pos.y = vars->player.pos.y / h_ratio;
+	// double h_ratio = (double)WIN_H / (double)(MINI_S * MINI_PX);
+	// double w_ratio = (double)WIN_W / (double)(MINI_S * MINI_PX);
+	// pos.x = vars->player.pos.x / w_ratio;
+	// pos.y = vars->player.pos.y / h_ratio;
+	pos.x = MINI_S * MINI_PX / 2;
+	pos.y = MINI_S * MINI_PX / 2;
 	dir.x = vars->player.dir.x;
 	dir.y = vars->player.dir.y;
 	my_mlx_pixel_put(vars->map.mini,  (int)dir.x * 0.6 + pos.x, (int)dir.y * 0.6 + pos.y, RED);
@@ -56,32 +60,71 @@ void	draw_dir(t_vars *vars)
 	my_mlx_pixel_put(vars->map.mini,  (int)dir.x * 0.175 + pos.x, (int)dir.y * 0.175 + pos.y, RED);
 }
 
-void	create_minimap(t_vars *vars)
+void	colour_block(t_img *img, int start_x, int start_y, int size, int colour)
 {
+	int y;
+	int x;
+
+	y = 0;
+	while (y < size)
+	{
+		x = 0;
+		while (x < size)
+		{
+			my_mlx_pixel_put(img, start_x + x, start_y + y, colour);
+			x++;
+		}
+		y++;
+	}
+}
+
+// NEXT: Wall collision stop movement
+void	draw_minimap(t_vars *vars)
+{
+	t_vector	cur;
+	t_vector	max;
+	t_vector	min;
+	t_vector	scale;
+
 	if (vars->map.mini->ptr != NULL)
 		mlx_destroy_image(vars->mlx, vars->map.mini->ptr);
-	vars->map.mini->ptr = mlx_new_image(vars->mlx, MINI_W * MINI_PX, MINI_H * MINI_PX);
+	vars->map.mini->ptr = mlx_new_image(vars->mlx, MINI_S * MINI_PX, MINI_S * MINI_PX);
 	vars->map.mini->addr = mlx_get_data_addr(vars->map.mini->ptr,
 				&vars->map.mini->bpp, &vars->map.mini->line_len, &vars->map.mini->endian);
-	
-	int x;
-	int y;
 
-	y = -1;
-	while (++y < MINI_H * MINI_PX)
+	colour_block(vars->map.mini, 0, 0, MINI_S * MINI_PX, TGREY);
+
+	min.y = vars->player.pos.y - (5 * MINI_PX) - 1;
+	max.y = vars->player.pos.y + (5 * MINI_PX) + 1;
+	min.x = vars->player.pos.x - (5 * MINI_PX) - 1;
+	max.x = vars->player.pos.x + (5 * MINI_PX) + 1;
+
+	cur.y = min.y;
+	while (++cur.y < max.y)
 	{
-		x = -1;
-		while (++x < MINI_W * MINI_PX)
+		cur.x = min.x;
+		while (++cur.x < max.x)
 		{
-			my_mlx_pixel_put(vars->map.mini, x, y, TGREY);
+			int map_x = cur.x / MINI_PX;
+			int map_y = cur.y / MINI_PX;
+			scale.y = (cur.y - min.y) * SCALE;
+			scale.x = (cur.x - min.x) * SCALE;
+
+			if (map_x < 0 || map_y < 0 || map_x > (vars->map.size.x - 1) || map_y > (vars->map.size.y - 1))
+				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, TRANS);
+			else if (vars->map.map[map_y][map_x] == '1')
+				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, BLUE);
+				// my_mlx_pixel_put(vars->map.mini, cur.x - min.x, cur.y - min.y, BLUE);
+			else if (vars->map.map[map_y][map_x] == '0')
+				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, TGREY);
+				// my_mlx_pixel_put(vars->map.mini, cur.x - min.x, cur.y - min.y, TRANS);
 		}
 	}
 }
 
-void	generate_minimap(t_vars *vars)
+void	render_minimap(t_vars *vars)
 {
-	// create_map(vars);
-	create_minimap(vars);
+	draw_minimap(vars);
 	draw_player(vars);
 	draw_dir(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->map.mini->ptr, 0, 0);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: schuah <schuah@student.42kl.edu.my>        +#+  +:+       +#+         #
+#    By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/03 13:10:50 by schuah            #+#    #+#              #
-#    Updated: 2023/03/01 14:20:44 by schuah           ###   ########.fr        #
+#    Updated: 2023/06/09 15:54:30 by zwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC_FILES		=	ft_isalpha \
 					ft_isprint \
 					ft_strlen \
 					ft_memset \
+					ft_modulus \
 					ft_bzero \
 					ft_memcpy \
 					ft_memmove \

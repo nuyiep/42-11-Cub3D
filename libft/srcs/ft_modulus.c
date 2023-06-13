@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_main.c                                      :+:      :+:    :+:   */
+/*   ft_modulus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/08 12:01:14 by zwong             #+#    #+#             */
-/*   Updated: 2023/06/13 18:55:15 by zwong            ###   ########.fr       */
+/*   Created: 2023/06/09 15:53:41 by zwong             #+#    #+#             */
+/*   Updated: 2023/06/09 15:53:54 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "libft.h"
 
-int	render_main(t_vars *vars)
+int	ft_modulus(int i)
 {
-	mlx_clear_window(vars->mlx, vars->win);
-	render_minimap(vars);
-	return (0);
+	if (i < 0)
+		return (-i);
+	return (i);
 }
