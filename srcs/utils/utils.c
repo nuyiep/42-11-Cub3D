@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
-/*   Updated: 2023/06/12 18:38:52 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/13 17:27:57 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,38 +19,6 @@ void	utils_print_error_exit(char *str)
 	ft_printf(str);
 	ft_printf("\n");
 	exit(EXIT_FAILURE);
-}
-
-/* Trim space, tab and newline */
-char	*ft_trim_space_tab_newline(char *str)
-{
-	int		k;
-	char	*after_trim;
-	int		count;
-	int		j;
-
-	k = 0;
-	count = ft_strlen(str);
-	while (str[k] != '\0')
-	{
-		if (str[k] == ' ' || str[k] == '\t' || str[k] == '\n')
-			k++;
-		else
-			break ;
-	}
-	after_trim = malloc(sizeof(char) * count + 1);
-	j = 0;
-	while (str[k] != '\0')
-	{
-		if (str[k] != '\n')
-		{
-			after_trim[j] = str[k];
-			j++;
-		}
-		k++;
-	}
-	after_trim[j] = '\0';
-	return (after_trim);
 }
 
 /* Count total number of lines in .cub file */
@@ -77,14 +45,14 @@ void	free_all(t_vars *vars)
 }
 
 /* Print map */
-void	print_map(t_vars *vars)
+void	print_map(char **map)
 {
 	int	i;
 
 	i = 0;
-	while (vars->map.map[i] != NULL)
+	while (map[i] != NULL)
 	{
-		ft_printf("%s", vars->map.map[i]);
+		ft_printf("%s", map[i]);
 		i++;
 	}
 }

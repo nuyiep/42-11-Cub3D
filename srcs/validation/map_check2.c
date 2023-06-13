@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:41:51 by plau              #+#    #+#             */
-/*   Updated: 2023/06/12 20:55:07 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/13 17:17:16 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,9 @@ int	count_temp_map_lines(char **temp_map)
 	return (i);
 }
 
-/* After trim, no more new line at the end of each line */
-/* Save the total number of lines to vars->map.size.y */
-void	get_map_trim_newline(t_vars *vars, char **temp_map)
+void	store_map_size_y(t_vars *vars, char **temp_map)
 {
 	int		i;
-	int		k;
 	char	*temp_trim_str;
 
 	i = 0;
@@ -39,6 +36,18 @@ void	get_map_trim_newline(t_vars *vars, char **temp_map)
 		free(temp_trim_str);
 		i++;
 	}
+}
+
+/* Save temp_map into map struct */
+/* Save the total number of lines to vars->map.size.y */
+void	get_map_trim_newline(t_vars *vars, char **temp_map)
+{
+	int		i;
+	int		k;
+	char	*temp_trim_str;
+
+	i = 0;
+	store_map_size_y(vars, temp_map);
 	vars->map.map = malloc(sizeof(char *) * (vars->map.size.y + 1));
 	i = 0;
 	k = 0;
@@ -54,5 +63,4 @@ void	get_map_trim_newline(t_vars *vars, char **temp_map)
 		i++;
 	}
 	vars->map.map[k] = NULL;
-	ft_freesplit(temp_map);
-}	
+}

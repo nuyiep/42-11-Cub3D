@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:35:16 by plau              #+#    #+#             */
-/*   Updated: 2023/06/12 21:28:15 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/13 14:19:18 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,24 +44,24 @@ void	check_all_textures_valid(t_vars *vars)
 {
 	if (vars->map.n_img.ptr == NULL || vars->map.s_img.ptr == NULL
 		|| vars->map.w_img.ptr == NULL || vars->map.e_img.ptr == NULL)
-		utils_print_error_exit("North/South/East/West texture not valid");
+		utils_print_error_exit("North/South/East/West not valid");
 	if ((vars->map.c_rgb.r < 0 || vars->map.c_rgb.r > 255)
 		|| (vars->map.c_rgb.g < 0 || vars->map.c_rgb.g > 255)
 		|| (vars->map.c_rgb.b < 0 || vars->map.c_rgb.b > 255))
-		utils_print_error_exit("Ceiling colour format not valid");
+		utils_print_error_exit("Ceiling not valid");
 	if ((vars->map.f_rgb.r < 0 || vars->map.f_rgb.r > 255)
 		|| (vars->map.f_rgb.g < 0 || vars->map.f_rgb.g > 255)
 		|| (vars->map.f_rgb.b < 0 || vars->map.f_rgb.b > 255))
-		utils_print_error_exit("Floor colour format not valid");
+		utils_print_error_exit("Floor not valid");
 }
 
 /* Main function to check file */
 char	**valid_check_file(int argc, char **argv, t_vars *vars)
 {
-	char	**temp;
+	char	**temp_map;
 
 	valid_check_argc_and_argc_format(argc, argv);
-	temp = valid_check_each_line(vars, argv[1]);
+	temp_map = valid_check_each_line(vars, argv[1]);
 	check_all_textures_valid(vars);
-	return (temp);
+	return (temp_map);
 }

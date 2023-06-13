@@ -6,7 +6,7 @@
 #    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/12 21:11:39 by plau             ###   ########.fr        #
+#    Updated: 2023/06/13 15:41:33 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,11 +34,11 @@ FILES		=	valid_check_file \
 				utils \
 				utils_trim \
 				valid_separate_elements \
+				valid_separate_directions \
 				parse \
 				init_vars \
 				map_check \
 				map_check2
-				
 
 FOBJS		= $(addprefix $(DOBJS), $(addsuffix .o, $(FILES:.c=.o)))
 

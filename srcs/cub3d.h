@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/12 16:51:54 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/13 16:43:18 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,20 +86,25 @@ char	**valid_check_file(int argc, char **argv, t_vars *vars);
 void	split_file_into_three_parts(char *file, t_vars *vars,
 			int count, char **temp_map);
 void	map_checking(t_vars *vars, char **temp_map);
+int		check_correct_order(char *str, int check);
 
 /* Initialization */
 void	init_vars(t_vars *vars);
 
 /* Parsing */
-int		parse_store_map(char *str, int k, char **map);
+int		store_map(char *str, int k, char **temp_map);
 void	get_map_trim_newline(t_vars *vars, char **temp_map);
+int		split_elements_north(t_vars *vars, char *str, int x);
+int		split_elements_south(t_vars *vars, char *str, int x);
+int		split_elements_east(t_vars *vars, char *str, int x);
+int		split_elements_west(t_vars *vars, char *str, int x);
 
 /* Utils */
 void	utils_print_error_exit(char *str);
 char	*ft_trim_space_tab_newline(char *str);
 int		ft_count_lines(int fd);
 void	free_all(t_vars *vars);
-void	print_map(t_vars *vars);
+void	print_map(char **map);
 void	update_map(t_vars *vars, char **after_trim);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:14 by plau              #+#    #+#             */
-/*   Updated: 2023/06/12 21:11:31 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/13 17:19:40 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	init_vars(&vars);
 	temp_map = valid_check_file(argc, argv, &vars);
 	map_checking(&vars, temp_map);
-	print_map(&vars);
+	print_map(vars.map.map);
 	free_all(&vars);
 	system("leaks -q cub3d");
 	return (0);
