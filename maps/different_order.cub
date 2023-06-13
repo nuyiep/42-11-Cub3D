@@ -4,7 +4,7 @@ WE 				./sprites/west.xpm
 
 
 
-C 1,30,29			
+C 1,30,2 
 
 EA ./sprites/east.xpm
 

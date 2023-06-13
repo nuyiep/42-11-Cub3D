@@ -6,12 +6,13 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:41:51 by plau              #+#    #+#             */
-/*   Updated: 2023/06/13 17:17:16 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/13 17:44:04 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+/* Count temporary map lines */
 int	count_temp_map_lines(char **temp_map)
 {
 	int	i;
@@ -22,6 +23,7 @@ int	count_temp_map_lines(char **temp_map)
 	return (i);
 }
 
+/* Store map size y into struct */
 void	store_map_size_y(t_vars *vars, char **temp_map)
 {
 	int		i;

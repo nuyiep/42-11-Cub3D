@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
-/*   Updated: 2023/06/13 17:27:57 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/13 18:05:21 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_count_lines(int fd)
 	return (count + 1);
 }
 
+/* Free allocated memory */
 void	free_all(t_vars *vars)
 {
 	ft_freesplit(vars->map.map);
@@ -53,6 +54,26 @@ void	print_map(char **map)
 	while (map[i] != NULL)
 	{
 		ft_printf("%s", map[i]);
+		i++;
+	}
+}
+
+/* Check if rbg is digit */
+void	check_rgb_format(char **split)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (split[i] != NULL)
+	{
+		j = 0;
+		while (split[i][j] != '\0')
+		{
+			if (split[i][j] < '0' || split[i][j] > '9')
+				utils_print_error_exit("Invalid RGB format");
+			j++;
+		}
 		i++;
 	}
 }

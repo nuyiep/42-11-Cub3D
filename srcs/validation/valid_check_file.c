@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:35:16 by plau              #+#    #+#             */
-/*   Updated: 2023/06/13 17:41:02 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/13 17:50:31 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ char	**valid_check_each_line(t_vars *vars, char *file)
 	return (temp_map);
 }
 
+/* Check whether all textures are valid */
+/* North, South, West, East, Ceiling and Floor */
 void	check_all_textures_valid(t_vars *vars)
 {
 	if (vars->map.n_img.ptr == NULL || vars->map.s_img.ptr == NULL

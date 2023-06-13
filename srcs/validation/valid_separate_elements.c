@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:59 by plau              #+#    #+#             */
-/*   Updated: 2023/06/13 17:40:54 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/13 18:07:30 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	split_elements_floor(t_vars *vars, char *str, int x)
 		after_trim = ft_trim_space_tab_newline(split[1]);
 		ft_freesplit(split);
 		split = ft_split(after_trim, ',');
+		check_rgb_format(split);
 		vars->map.f_rgb.r = ft_atoi(split[0]);
 		vars->map.f_rgb.g = ft_atoi(split[1]);
 		vars->map.f_rgb.b = ft_atoi(split[2]);
@@ -46,6 +47,7 @@ int	split_elements_ceiling(t_vars *vars, char *str, int x)
 		after_trim = ft_trim_space_tab_newline(split[1]);
 		ft_freesplit(split);
 		split = ft_split(after_trim, ',');
+		check_rgb_format(split);
 		vars->map.c_rgb.r = ft_atoi(split[0]);
 		vars->map.c_rgb.g = ft_atoi(split[1]);
 		vars->map.c_rgb.b = ft_atoi(split[2]);
