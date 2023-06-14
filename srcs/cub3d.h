@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/13 17:59:17 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/14 15:13:47 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,16 @@ void	split_file_into_two_parts(char *file, t_vars *vars,
 			int count, char **temp_map);
 void	map_checking(t_vars *vars, char **temp_map);
 int		check_correct_order(char *str, int check);
+void	check_only_one_player(t_vars *vars);
+void	check_invalid_character(char **temp_map);
+void	check_middle_zeros_surrounded_by_ones(t_vars *vars);
 
 /* Initialization */
 void	init_vars(t_vars *vars);
 
 /* Parsing */
 int		store_map(char *str, int k, char **temp_map);
+void	store_map_size_y(t_vars *vars, char **temp_map);
 void	get_map_trim_newline(t_vars *vars, char **temp_map);
 int		split_elements_north(t_vars *vars, char *str, int x);
 int		split_elements_south(t_vars *vars, char *str, int x);
@@ -106,6 +110,5 @@ int		ft_count_lines(int fd);
 void	free_all(t_vars *vars);
 void	print_map(char **map);
 void	check_rgb_format(char **split);
-void	update_map(t_vars *vars, char **after_trim);
 
 #endif

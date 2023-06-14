@@ -6,7 +6,7 @@
 #    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/13 15:41:33 by plau             ###   ########.fr        #
+#    Updated: 2023/06/14 15:09:40 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,16 +29,16 @@ DSRCS		= srcs					\
 DOBJS		= objs/
 
 # all these files doesn't require directory path ya
-FILES		=	valid_check_file \
-				render_test	\
-				utils \
+FILES		=	init_vars \
+				parse_directions \
+				parse_elements \
+				parse_map2 \
+				parse_store_map \
 				utils_trim \
-				valid_separate_elements \
-				valid_separate_directions \
-				parse \
-				init_vars \
-				map_check \
-				map_check2
+				utils \
+				valid_check_file \
+				valid_map_wall \
+				valid_map
 
 FOBJS		= $(addprefix $(DOBJS), $(addsuffix .o, $(FILES:.c=.o)))
 
