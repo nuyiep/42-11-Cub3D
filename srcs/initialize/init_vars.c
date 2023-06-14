@@ -38,19 +38,22 @@ static void	init_map(t_vars *vars)
 	vars->map.size.x = 42;
 	vars->map.size.y = 20;
 	// vars->map.door_state = D_OPEN;
-	// vars->map.imgw.addr = mlx_get_data_addr(vars->map.imgw.ref, &vars->map.imgw.bpp,
-	// 		&vars->map.imgw.sl, &vars->map.imgw.end);
+	vars->map.imgw.addr = mlx_get_data_addr(vars->map.imgw.ptr, &vars->map.imgw.bpp,
+			&vars->map.imgw.line_len, &vars->map.imgw.endian);
 }
 
 static void	init_player(t_vars *vars)
 {
-	// vars->player.mpos.x = 13;
-	// vars->player.mpos.y = 9;
-	vars->player.pos.x = 13 * MINI_PX; // 2D - Centre of MLX window
+	vars->player.mpos.x = 8;
+	vars->player.mpos.y = 11;
+	vars->player.pos.x = 8 * MINI_PX; // 2D - Centre of MLX window
 	vars->player.pos.y = 11 * MINI_PX; // 2D
-	vars->player.dir.x = cos(-PI/2) * 120; // N
-	vars->player.dir.y = sin(-PI/2) * 120; // N
+	vars->player.dir.x = cos(-PI/2); // N
+	vars->player.dir.y = sin(-PI/2); // N
+	vars->player.plane.x = 1; // N
+	vars->player.plane.y = 0; // N
 	vars->player.rotate = -PI/2;
+	vars->player.protate = -PI;
 	return ;
 }
 

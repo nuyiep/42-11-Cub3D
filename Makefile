@@ -6,7 +6,7 @@
 #    By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/08 12:13:48 by zwong            ###   ########.fr        #
+#    Updated: 2023/06/14 17:42:48 by zwong            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ FILES		=	valid_check_file	\
 				init_vars			\
 				render_main			\
 				render_minimap		\
+				render_raycast		\
 				ctrl_run_hooks		\
 				utils				\
 

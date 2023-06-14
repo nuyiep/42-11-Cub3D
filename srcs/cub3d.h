@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/13 18:59:57 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/14 19:51:04 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 
 # define PI			3.141592653589793238
 # define ROT_SPD	0.1
-# define MOV_SPD	0.025
+# define MOV_SPD	3
 
 /* X and Y vector */
 typedef struct s_vector
@@ -104,11 +104,31 @@ typedef struct s_map
 typedef struct s_ply
 {
 	t_img		img;
-	t_dvector	pos;
 	t_vector	mpos;
+	t_dvector	pos;
 	t_dvector	dir;
+	t_dvector	plane;
 	double		rotate;
 }	t_ply;
+
+typedef struct s_rayinfo
+{
+	t_dvector	delta_dist;
+	t_dvector	side_dist;
+	t_dvector	offset;
+	t_dvector	raydir;
+	t_dvector	step;
+	t_vector	map;
+	double		perp_wall_dist;
+	double		camera_x;
+	double		wall_x;
+	int			line_h;
+	int			d_start;
+	int			d_end;
+	int			tex_x;
+	int			side;
+	int			hit;
+}	t_rayinfo;
 
 /* Master struct for variables */
 typedef struct s_vars
@@ -119,7 +139,7 @@ typedef struct s_vars
 	t_vector	img_size;
 	t_map		map;
 	t_ply		player;
-	// t_render	render;
+	t_rayinfo	ray_info;
 }	t_vars;
 
 /* Initialization */
@@ -133,6 +153,7 @@ int		render_main(t_vars *vars);
 void	draw_player(t_vars *vars);
 void	draw_dir(t_vars *vars);
 void	render_minimap(t_vars *vars);
+void	render_rays(t_vars *vars);
 
 /* 4. Controls */
 void	ctrl_run_hooks(t_vars *vars);
