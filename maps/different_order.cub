@@ -1,8 +1,8 @@
 NO ./sprites/north.xpm
 
-WE 				./sprites/west.xpm
+WE ./sprites/west.xpm
 
-F 1,1,100
+F 1,1,100 
 
 
 C 1,30,2 

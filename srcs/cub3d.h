@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/14 15:13:47 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/14 15:18:42 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ typedef struct s_vars
 }	t_vars;
 
 /* 1. Validation */
-char	**valid_check_file(int argc, char **argv, t_vars *vars);
+char	**valid_check_file_textures(int argc, char **argv, t_vars *vars);
 void	split_file_into_two_parts(char *file, t_vars *vars,
 			int count, char **temp_map);
 void	map_checking(t_vars *vars, char **temp_map);

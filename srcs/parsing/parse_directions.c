@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_separate_directions.c                        :+:      :+:    :+:   */
+/*   parse_directions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:55 by plau              #+#    #+#             */
-/*   Updated: 2023/06/13 16:08:28 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/14 15:29:23 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-/* Split North elements */
+/* Store North image pointer and address into struct */
 int	split_elements_north(t_vars *vars, char *str, int x)
 {
 	char	**split;
@@ -36,7 +36,7 @@ int	split_elements_north(t_vars *vars, char *str, int x)
 	return (x);
 }
 
-/* Split South elements */
+/* Store South image pointer and address into struct */
 int	split_elements_south(t_vars *vars, char *str, int x)
 {
 	char	**split;
@@ -60,7 +60,7 @@ int	split_elements_south(t_vars *vars, char *str, int x)
 	return (x);
 }
 
-/* Split East elements */
+/* Store East image pointer and address into struct */
 int	split_elements_east(t_vars *vars, char *str, int x)
 {
 	char	**split;
@@ -84,7 +84,7 @@ int	split_elements_east(t_vars *vars, char *str, int x)
 	return (x);
 }
 
-/* Split West elements */
+/* Store West image pointer and address into struct */
 int	split_elements_west(t_vars *vars, char *str, int x)
 {
 	char	**split;

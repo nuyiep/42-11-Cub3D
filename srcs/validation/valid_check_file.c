@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:35:16 by plau              #+#    #+#             */
-/*   Updated: 2023/06/13 17:50:31 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/14 15:20:22 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	valid_check_argc_and_argc_format(int argc, char **argv)
 }
 
 /* Open file to check every line */
+/* Then start parsing at [split_file_into_two_parts] */
 char	**valid_check_each_line(t_vars *vars, char *file)
 {
 	int		fd;
@@ -58,7 +59,7 @@ void	check_all_textures_valid(t_vars *vars)
 }
 
 /* Main function to check file */
-char	**valid_check_file(int argc, char **argv, t_vars *vars)
+char	**valid_check_file_textures(int argc, char **argv, t_vars *vars)
 {
 	char	**temp_map;
 

@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid_separate_elements.c                          :+:      :+:    :+:   */
+/*   parse_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:59 by plau              #+#    #+#             */
-/*   Updated: 2023/06/13 18:40:51 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/14 15:32:01 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
 /* Split elements for Floor */
+/* Store Floor RGB into struct */
 int	split_elements_floor(t_vars *vars, char *str, int x)
 {
 	char	**split;
@@ -36,6 +37,7 @@ int	split_elements_floor(t_vars *vars, char *str, int x)
 }
 
 /* Split elements for Ceiling */
+/* Store Ceiling RGB into struct */
 int	split_elements_ceiling(t_vars *vars, char *str, int x)
 {
 	char	**split;
@@ -58,6 +60,7 @@ int	split_elements_ceiling(t_vars *vars, char *str, int x)
 	return (x);
 }
 
+/* Store textures into struct */
 int	store_textures(t_vars *vars, char *str, int x)
 {
 	if (x == 6)
@@ -74,7 +77,7 @@ int	store_textures(t_vars *vars, char *str, int x)
 	return (x);
 }
 
-/* Split elements */
+/* Split elements to textures and temporary map */
 void	split_elements(t_vars *vars, int count, int fd, char **temp_map)
 {
 	int		i;
@@ -104,7 +107,12 @@ void	split_elements(t_vars *vars, int count, int fd, char **temp_map)
 		utils_print_error_exit("Incorrect elements");
 }
 
+/* Main function for parsing */
 /* Split file content into 2 parts: N, S, W, E, C, F v map */
+/* Parsing for textures & map */
+/* Parsing rules set by our team:  */
+/* 		[Direction textures] Don't allow spaces or tabs after textures */
+/* 		[Floor & Ceiling] 	Don't allow tabs after F/C	*/
 void	split_file_into_two_parts(char *file, t_vars *vars, int count,
 				char **temp_map)
 {

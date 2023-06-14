@@ -6,7 +6,7 @@
 #    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/14 15:09:40 by plau             ###   ########.fr        #
+#    Updated: 2023/06/14 15:31:02 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,13 +32,13 @@ DOBJS		= objs/
 FILES		=	init_vars \
 				parse_directions \
 				parse_elements \
-				parse_map2 \
 				parse_store_map \
 				utils_trim \
 				utils \
 				valid_check_file \
+				valid_map \
 				valid_map_wall \
-				valid_map
+				valid_map_elements
 
 FOBJS		= $(addprefix $(DOBJS), $(addsuffix .o, $(FILES:.c=.o)))
 
