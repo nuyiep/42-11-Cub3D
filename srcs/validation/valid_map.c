@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_check.c                                        :+:      :+:    :+:   */
+/*   valid_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:00:50 by plau              #+#    #+#             */
-/*   Updated: 2023/06/14 14:58:19 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/14 17:12:04 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,5 @@ void	map_checking(t_vars *vars, char **temp_map)
 	check_only_one_player(vars);
 	ft_freesplit(temp_map);
 	surrounded_by_walls(vars);
+	pad_map_with_spaces(vars);
 }
