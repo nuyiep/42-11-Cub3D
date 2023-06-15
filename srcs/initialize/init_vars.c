@@ -53,7 +53,6 @@ static void	init_player(t_vars *vars)
 	vars->player.plane.x = 1; // N
 	vars->player.plane.y = 0; // N
 	vars->player.rotate = -PI/2;
-	vars->player.protate = -PI;
 	return ;
 }
 

@@ -36,25 +36,31 @@ void	move_player_horizontal(int keycode, t_vars *vars)
 
 void	rotate_player(int keycode, t_vars *vars)
 {
+	double plane_rotate;
+	
 	if (keycode == KEY_LEFT)
 	{
 		vars->player.rotate -= ROT_SPD;
+		
+		plane_rotate = vars->player.rotate + (PI / 2);
 		if (vars->player.rotate < 0)
 			vars->player.rotate += (2 * PI);
 		vars->player.dir.x = cos(vars->player.rotate);
 		vars->player.dir.y = sin(vars->player.rotate);
-		vars->player.plane.x = cos(vars->player.rotate);
-		vars->player.plane.y = sin(vars->player.rotate);
+		vars->player.plane.x = cos(plane_rotate);
+		vars->player.plane.y = sin(plane_rotate);
 	}
 	else if (keycode == KEY_RIGHT)
 	{
 		vars->player.rotate += ROT_SPD;
+		plane_rotate = vars->player.rotate + (PI / 2);
+
 		if (vars->player.rotate > 2 * PI)
 			vars->player.rotate -= (2 * PI);
 		vars->player.dir.x = cos(vars->player.rotate);
 		vars->player.dir.y = sin(vars->player.rotate);
-		vars->player.plane.x = cos(vars->player.rotate);
-		vars->player.plane.y = sin(vars->player.rotate);
+		vars->player.plane.x = cos(plane_rotate);
+		vars->player.plane.y = sin(plane_rotate);
 	}
 }
 

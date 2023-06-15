@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/14 19:51:04 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/15 13:19:47 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@
 # define TGREY		0xE0E0E0E0
 # define TWHITE		0x80FFFFFF
 # define TBLACK		0x80000000
-# define TRANS		0xFF000000
+# define BLACK		0xFF000000
 
 # define PI			3.141592653589793238
 # define ROT_SPD	0.1
