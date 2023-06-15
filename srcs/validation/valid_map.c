@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:00:50 by plau              #+#    #+#             */
-/*   Updated: 2023/06/14 17:12:04 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/15 18:18:52 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 /* Check whether the first and last line contains only of 1. */
 /* Must contain 1 only. Only when 1 is present, spaces are allowed */
-void	check_first_and_last_line(t_vars *vars)
+void	check_first_and_last_line(t_vars *vars, char **temp_map)
 {
 	int	i;
 
 	i = 0;
-	while (vars->map.map[0][i] != '\0')
+	while (temp_map[0][i] != '\0')
 	{
-		if (ft_strchr("1 \n", vars->map.map[0][i]) == NULL)
+		if (ft_strchr("1 \n", temp_map[0][i]) == NULL)
 			utils_print_error_exit("Map not surrounded by walls- first line");
 		i++;
 	}
 	i = 0;
-	while (vars->map.map[vars->map.size.y - 1][i] != '\0')
+	while (temp_map[vars->map.size.y - 1][i] != '\0')
 	{
-		if (ft_strchr("1 \n", vars->map.map[vars->map.size.y - 1][i]) == NULL)
+		if (ft_strchr("1 \n", temp_map[vars->map.size.y - 1][i]) == NULL)
 			utils_print_error_exit("Map not surrounded by walls- last line");
 		i++;
 	}
@@ -49,7 +49,7 @@ void	check_line_first_last_character(char *temp_after_trim)
 }
 
 /* Check whether map is surrounded by walls (1) */
-void	surrounded_by_walls(t_vars *vars)
+void	surrounded_by_walls(t_vars *vars, char **temp_map)
 {
 	int		i;
 	int		j;
@@ -57,29 +57,28 @@ void	surrounded_by_walls(t_vars *vars)
 
 	i = 1;
 	j = 0;
-	check_first_and_last_line(vars);
-	while (vars->map.map[i] != NULL)
+	check_first_and_last_line(vars, temp_map);
+	while (temp_map[i] != NULL)
 	{
 		j = 0;
-		while (vars->map.map[i][j] != '\0')
+		while (temp_map[i][j] != '\0')
 		{
-			temp_after_trim = ft_strtrim(vars->map.map[i], " \t\n");
+			temp_after_trim = ft_strtrim(temp_map[i], " \t\n");
 			check_line_first_last_character(temp_after_trim);
 			free(temp_after_trim);
 			j++;
 		}
 		i++;
 	}
-	check_middle_zeros_surrounded_by_ones(vars);
+	check_middle_zeros_surrounded_by_ones(vars, temp_map);
 }
 
 /* Main function for map checking */
 void	map_checking(t_vars *vars, char **temp_map)
 {
 	check_invalid_character(temp_map);
-	get_map_trim_newline(vars, temp_map);
-	check_only_one_player(vars);
-	ft_freesplit(temp_map);
-	surrounded_by_walls(vars);
-	pad_map_with_spaces(vars);
+	temp_map = get_map_trim_newline(vars, temp_map);
+	check_only_one_player(temp_map);
+	surrounded_by_walls(vars, temp_map);
+	pad_map_with_spaces(vars, temp_map);
 }

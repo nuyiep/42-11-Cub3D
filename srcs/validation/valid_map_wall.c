@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:57:29 by plau              #+#    #+#             */
-/*   Updated: 2023/06/14 15:09:57 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/15 15:53:47 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ int	find_map_size_x(int temp_len, int max)
 	return (max);
 }
 
-void	check_for_spaces(t_vars *vars, int i, int j)
+void	check_for_spaces(char **temp_map, int i, int j)
 {
-	if (ft_strchr("10NSWE", vars->map.map[i - 1][j]) == NULL
-		|| ft_strchr("10NSWE", vars->map.map[i + 1][j]) == NULL
-		|| ft_strchr("10NSWE", vars->map.map[i][j + 1]) == NULL
-		|| ft_strchr("10NSWE", vars->map.map[i][j - 1]) == NULL
+	if (ft_strchr("10NSWE", temp_map[i - 1][j]) == NULL
+		|| ft_strchr("10NSWE", temp_map[i + 1][j]) == NULL
+		|| ft_strchr("10NSWE", temp_map[i][j + 1]) == NULL
+		|| ft_strchr("10NSWE", temp_map[i][j - 1]) == NULL
 		)
 		utils_print_error_exit("Map is not surrounded by wall");
 }
 
 /* Check whether the middle zeros are surrounded by ones */
 /* up, down, left, right need to be surrounded by ones */
-void	check_middle_zeros_surrounded_by_ones(t_vars *vars)
+void	check_middle_zeros_surrounded_by_ones(t_vars *vars, char **temp_map)
 {
 	int	i;
 	int	j;
@@ -45,12 +45,12 @@ void	check_middle_zeros_surrounded_by_ones(t_vars *vars)
 	while (i < (vars->map.size.y - 1))
 	{
 		j = 1;
-		temp_len = ft_strlen(vars->map.map[i]);
+		temp_len = ft_strlen(temp_map[i]);
 		max = find_map_size_x(temp_len, max);
 		while (j < (temp_len - 1))
 		{
-			if (vars->map.map[i][j] == '0')
-				check_for_spaces(vars, i, j);
+			if (temp_map[i][j] == '0')
+				check_for_spaces(temp_map, i, j);
 			j++;
 		}
 		i++;

@@ -6,12 +6,13 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:07:03 by plau              #+#    #+#             */
-/*   Updated: 2023/06/13 17:31:01 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/15 18:36:30 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+/* Wong's ft_strtrim */
 int	is_trimchar(char c, char const *set)
 {
 	while (*set)
@@ -23,6 +24,7 @@ int	is_trimchar(char c, char const *set)
 	return (0);
 }
 
+/* Wong's ft_strtrim */
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*trimstr;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_map2.c                                       :+:      :+:    :+:   */
+/*   valid_map_elements.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:41:51 by plau              #+#    #+#             */
-/*   Updated: 2023/06/14 15:11:56 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/15 15:49:09 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,16 @@ int	check_correct_order(char *str, int check)
 
 /* Save temp_map into map struct */
 /* Save the total number of lines to vars->map.size.y */
-void	get_map_trim_newline(t_vars *vars, char **temp_map)
+char	**get_map_trim_newline(t_vars *vars, char **temp_map)
 {
 	int		i;
 	int		k;
 	char	*temp_trim_str;
+	char	**new_temp_map;
 
 	i = 0;
 	store_map_size_y(vars, temp_map);
-	vars->map.map = malloc(sizeof(char *) * (vars->map.size.y + 1));
+	new_temp_map = malloc(sizeof(char *) * (vars->map.size.y + 1));
 	i = 0;
 	k = 0;
 	while (temp_map[i] != NULL)
@@ -60,17 +61,19 @@ void	get_map_trim_newline(t_vars *vars, char **temp_map)
 		temp_trim_str = ft_strtrim(temp_map[i], " \t\n");
 		if (temp_trim_str[0] != '\0')
 		{
-			vars->map.map[k] = ft_strdup(temp_map[i]);
+			new_temp_map[k] = ft_strdup(temp_map[i]);
 			k++;
 		}
 		free(temp_trim_str);
 		i++;
 	}
-	vars->map.map[k] = NULL;
+	new_temp_map[k] = NULL;
+	ft_freesplit(temp_map);
+	return (new_temp_map);
 }
 
 /* If there is more than one N, S, W or E, exit the program */
-void	check_only_one_player(t_vars *vars)
+void	check_only_one_player(char **temp_map)
 {
 	int	i;
 	int	j;
@@ -78,13 +81,13 @@ void	check_only_one_player(t_vars *vars)
 
 	i = 0;
 	count_player = 0;
-	while (vars->map.map[i] != NULL)
+	while (temp_map[i] != NULL)
 	{
 		j = 0;
-		while (vars->map.map[i][j] != '\0' )
+		while (temp_map[i][j] != '\0' )
 		{
-			if (vars->map.map[i][j] == 'N' || vars->map.map[i][j] == 'S'
-				|| vars->map.map[i][j] == 'W' || vars->map.map[i][j] == 'E')
+			if (temp_map[i][j] == 'N' || temp_map[i][j] == 'S'
+				|| temp_map[i][j] == 'W' || temp_map[i][j] == 'E')
 			{
 				count_player++;
 				if (count_player > 1)
