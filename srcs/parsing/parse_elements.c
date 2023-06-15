@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:59 by plau              #+#    #+#             */
-/*   Updated: 2023/06/15 18:38:43 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/15 19:33:43 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,14 @@ void	split_elements(t_vars *vars, int count, int fd, char **temp_map)
 {
 	int		i;
 	int		x;
+	int		k;
 	char	*str;
 	int		check;
-	int		k;
 
 	i = 0;
 	x = 0;
-	check = 0;
 	k = 0;
+	check = 0;
 	while (i < count - 1)
 	{
 		str = get_next_line(fd);

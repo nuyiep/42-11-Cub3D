@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
-/*   Updated: 2023/06/13 18:05:21 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/15 19:35:55 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	free_all(t_vars *vars)
 	free(vars->map.main);
 }
 
-/* Print map */
+/* Print map for testing only */
 void	print_map(char **map)
 {
 	int	i;
