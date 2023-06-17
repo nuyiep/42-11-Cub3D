@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_trim.c                                       :+:      :+:    :+:   */
+/*   utils_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:07:03 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 17:59:33 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 18:08:27 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,25 +47,15 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (trimstr);
 }
 
-/* Check whether str contains extra characters  */
-/* E.g. NO	./sprites/north.xpm x 				*/
-/* char **split = NO	./sprites/north.xpm x   */
-void	check_extra_character(char **split)
+/* Print map for testing only */
+void	print_map(char **map)
 {
-	int		i;
-	char	*after_trim;
-	int		count;
+	int	i;
 
 	i = 0;
-	count = 0;
-	while (split[i] != NULL)
+	while (map[i] != NULL)
 	{
-		after_trim = ft_strtrim(split[i], " \t\n");
-		if (ft_strlen(after_trim) > 0)
-			count++;
-		free(after_trim);
+		ft_printf("%s", map[i]);
 		i++;
 	}
-	if (count > 2)
-		utils_print_error_exit("Invalid element :|");
 }

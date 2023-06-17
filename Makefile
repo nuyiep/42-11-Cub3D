@@ -6,7 +6,7 @@
 #    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/17 18:01:28 by plau             ###   ########.fr        #
+#    Updated: 2023/06/17 18:08:58 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ FILES		=	init_vars \
 				parse_directions \
 				parse_elements \
 				parse_store_map \
+				utils_element \
 				utils_map \
 				utils \
 				valid_check_file \
