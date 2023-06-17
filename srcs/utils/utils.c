@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
-/*   Updated: 2023/06/15 19:35:55 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/16 17:16:34 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	print_map(char **map)
 	}
 }
 
-/* Check if rbg is digit */
+/* Check if rbg is digit and is between 0 - 255 */
 void	check_rgb_format(char **split)
 {
 	int	i;
@@ -67,13 +67,9 @@ void	check_rgb_format(char **split)
 	i = 0;
 	while (split[i] != NULL)
 	{
-		j = 0;
-		while (split[i][j] != '\0')
-		{
-			if (split[i][j] < '0' || split[i][j] > '9')
-				utils_print_error_exit("Invalid RGB format");
-			j++;
-		}
+		j = ft_atoi(split[i]);
+		if (j < 0 || j > 255)
+			utils_print_error_exit("Invalid RGB format");
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/15 15:57:52 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/16 18:02:24 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,6 @@ void	init_vars(t_vars *vars);
 
 /* Parsing */
 int		store_map(char *str, int k, char **temp_map);
-void	store_map_size_y(t_vars *vars, char **temp_map);
 char	**get_map_trim_newline(t_vars *vars, char **temp_map);
 void	split_file_into_two_parts(char *file, t_vars *vars,
 			int count, char **temp_map);

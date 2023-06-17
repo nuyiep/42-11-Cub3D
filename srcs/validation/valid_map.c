@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:00:50 by plau              #+#    #+#             */
-/*   Updated: 2023/06/15 18:18:52 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 15:40:07 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,27 +53,15 @@ void	surrounded_by_walls(t_vars *vars, char **temp_map)
 {
 	int		i;
 	int		j;
-	char	*temp_after_trim;
 
-	i = 1;
+	i = 0;
 	j = 0;
 	check_first_and_last_line(vars, temp_map);
-	while (temp_map[i] != NULL)
-	{
-		j = 0;
-		while (temp_map[i][j] != '\0')
-		{
-			temp_after_trim = ft_strtrim(temp_map[i], " \t\n");
-			check_line_first_last_character(temp_after_trim);
-			free(temp_after_trim);
-			j++;
-		}
-		i++;
-	}
 	check_middle_zeros_surrounded_by_ones(vars, temp_map);
 }
 
 /* Main function for map checking */
+/* Rules: our map allows for empty lines between map  */
 void	map_checking(t_vars *vars, char **temp_map)
 {
 	check_invalid_character(temp_map);

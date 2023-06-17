@@ -1,16 +1,15 @@
-NO	./sprites/north.xpm     
-EA	./sprites/east.xpm
-SO	./sprites/south.xpm
-WE	./sprites/west.xpm
-D	./sprites/door.xpm
+NO ./sprites/north.xpm
+EA ./sprites/east.xpm
+SO ./sprites/south.xpm
+WE ./sprites/west.xpm
 
-C 225,255,255			
+C 225,255,255		
 F 1,1,1
 
 111111111
 100000101
 101000101
-100100WD1
+100100W11
 100000001
 100100001
 101000001

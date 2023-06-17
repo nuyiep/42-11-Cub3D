@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:59 by plau              #+#    #+#             */
-/*   Updated: 2023/06/15 19:33:43 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 15:38:43 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,6 @@ void	split_elements(t_vars *vars, int count, int fd, char **temp_map)
 		free(str);
 	}
 	temp_map[k] = NULL;
-	if (check == 0)
-		utils_print_error_exit("Incorrect elements");
 }
 
 /* Main function for parsing */
