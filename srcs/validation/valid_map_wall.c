@@ -6,13 +6,13 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:57:29 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 15:36:10 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 18:45:32 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-/* Find map size x */
+/* Find map size x / the max length of each line of the map */
 int	find_map_size_x(int temp_len, int max)
 {
 	if (temp_len > max)
@@ -20,6 +20,9 @@ int	find_map_size_x(int temp_len, int max)
 	return (max);
 }
 
+/* Reading in context: when map content is 0 or player pos (NSWE) */
+/* check its up, down, left, right, if is not 10NSWE  */
+/* print error and exit */
 void	check_for_spaces(char **temp_map, int i, int j)
 {
 	if (ft_strchr("10NSWE", temp_map[i - 1][j]) == NULL
@@ -32,7 +35,7 @@ void	check_for_spaces(char **temp_map, int i, int j)
 
 /* Check whether the middle zeros are surrounded by ones */
 /* up, down, left, right need to be surrounded by ones */
-void	check_middle_zeros_surrounded_by_ones(t_vars *vars, char **temp_map)
+void	check_middle_map_line(t_vars *vars, char **temp_map)
 {
 	int	i;
 	int	j;

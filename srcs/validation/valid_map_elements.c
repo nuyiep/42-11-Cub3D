@@ -6,14 +6,14 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:41:51 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 17:29:21 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 18:38:57 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
 /* Check whether the first element after the last texture is a valid map */
-/* Only contain 1 */
+/* And that the string can only contain 1s */
 int	check_correct_order(char *str, int check)
 {
 	int	i;
@@ -43,8 +43,9 @@ int	check_correct_order(char *str, int check)
 }
 
 /* Get the first line of the map */
-/* If strlen of that line is not zero after trimming */
-/* which means there's content and it is the first line */
+/* By triming that line (trim out) space, tabs and newline */
+/* If the first character is \0, it is not the first line */
+/* Do the same to the next line, until the first character is not \0 */
 int	get_first_line(char **temp_map, int first_line)
 {
 	int		i;
@@ -70,6 +71,8 @@ int	get_first_line(char **temp_map, int first_line)
 }
 
 /* Get last line of map content */
+/* Using the same logic as get_first_line */
+/* Start checking from the last line of the temp_map */
 int	get_last_line(char **temp_map, int last_line)
 {
 	int		i;
@@ -97,7 +100,11 @@ int	get_last_line(char **temp_map, int last_line)
 	return (-2);
 }
 
-/* Save temp_map into map struct */
+/* Save temp_map into new_temp_map */
+/* temp_map 	-> only contains the map content with new lines before */
+/* 					and after map content */
+/* new_temp_map -> trims the newline before and after the map content  */
+/* map struct 	->  is new_temp_map padded with spaces				   */
 /* Save the total number of lines to vars->map.size.y */
 char	**get_map_trim_newline(t_vars *vars, char **temp_map)
 {

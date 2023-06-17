@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 17:52:53 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 18:45:24 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,9 @@ void	map_checking(t_vars *vars, char **temp_map);
 int		check_correct_order(char *str, int check);
 void	check_only_one_player(char **temp_map);
 void	check_invalid_character(char **temp_map);
-void	check_middle_zeros_surrounded_by_ones(t_vars *vars, char **temp_map);
+void	check_middle_map_line(t_vars *vars, char **temp_map);
+void	check_rgb_format(char **split);
+void	check_extra_character(char **split);
 
 /* Initialization */
 void	init_vars(t_vars *vars);
@@ -108,7 +110,5 @@ void	utils_print_error_exit(char *str);
 int		ft_count_lines(int fd);
 void	free_all(t_vars *vars);
 void	print_map(char **map);
-void	check_rgb_format(char **split);
-void	check_extra_character(char **split);
 
 #endif

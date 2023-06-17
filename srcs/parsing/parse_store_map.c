@@ -6,14 +6,14 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:23:37 by plau              #+#    #+#             */
-/*   Updated: 2023/06/16 18:02:21 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 18:29:26 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
 /* Store map into a temporary char ** */
-/* temp_map will include empty lines (if any) */
+/* temp_map will include all empty lines (if any) before and after map */
 int	store_map(char *str, int k, char **temp_map)
 {
 	temp_map[k] = ft_strdup(str);
@@ -22,6 +22,7 @@ int	store_map(char *str, int k, char **temp_map)
 }
 
 /* Malloc my map struct - preparing for padding spaces */
+/* Allocate the maximum number of map.size.x for map  */
 void	malloc_map(t_vars *vars)
 {
 	int	i;
@@ -45,7 +46,6 @@ void	store_final_map_pad_spaces(t_vars *vars, char **temp_map, int i, int j)
 }
 
 /* Pad empty postion within the map with spaces */
-/* Minus 1 to map size x to get the total number of character */
 void	pad_map_with_spaces(t_vars *vars, char **temp_map)
 {
 	int	i;

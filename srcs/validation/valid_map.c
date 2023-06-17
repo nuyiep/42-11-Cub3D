@@ -6,12 +6,15 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:00:50 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 15:40:07 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 18:58:12 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+/* Needed so that the check_middle_map_lines will not enter the  */
+/* 		check_for_spaces function and as there will not be any   */
+/*		other characters other than 1s 							 */
 /* Check whether the first and last line contains only of 1. */
 /* Must contain 1 only. Only when 1 is present, spaces are allowed */
 void	check_first_and_last_line(t_vars *vars, char **temp_map)
@@ -34,20 +37,6 @@ void	check_first_and_last_line(t_vars *vars, char **temp_map)
 	}
 }
 
-/* Check first and last character in the line - middle line in the map */
-void	check_line_first_last_character(char *temp_after_trim)
-{
-	int	len;
-
-	len = 0;
-	if (temp_after_trim[0] != '1')
-		utils_print_error_exit("Map not surrounded by wall- first character");
-	len = ft_strlen(temp_after_trim);
-	len--;
-	if (temp_after_trim[len] != '1')
-		utils_print_error_exit("Map not surrounded by wall- last character");
-}
-
 /* Check whether map is surrounded by walls (1) */
 void	surrounded_by_walls(t_vars *vars, char **temp_map)
 {
@@ -57,11 +46,13 @@ void	surrounded_by_walls(t_vars *vars, char **temp_map)
 	i = 0;
 	j = 0;
 	check_first_and_last_line(vars, temp_map);
-	check_middle_zeros_surrounded_by_ones(vars, temp_map);
+	check_middle_map_line(vars, temp_map);
 }
 
-/* Main function for map checking */
-/* Rules: our map allows for empty lines between map  */
+/* Main function for map checking 	*/
+/* Rules:   						*/
+/* 	 our map allows for empty lines between map */
+/*   doesnt allow for tabs after the last character */
 void	map_checking(t_vars *vars, char **temp_map)
 {
 	check_invalid_character(temp_map);

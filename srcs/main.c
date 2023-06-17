@@ -6,12 +6,13 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:14 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 17:59:20 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 18:56:10 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/* Main function for our program */
 int	main(int argc, char **argv)
 {
 	t_vars	vars;
@@ -22,5 +23,6 @@ int	main(int argc, char **argv)
 	map_checking(&vars, temp_map);
 	print_map(vars.map.map);
 	free_all(&vars);
+	system("leaks -q cub3d");
 	return (0);
 }
