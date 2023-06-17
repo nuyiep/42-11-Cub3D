@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 17:21:16 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 17:52:53 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,6 @@ int		ft_count_lines(int fd);
 void	free_all(t_vars *vars);
 void	print_map(char **map);
 void	check_rgb_format(char **split);
+void	check_extra_character(char **split);
 
 #endif

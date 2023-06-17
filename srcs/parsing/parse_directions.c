@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:55 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 17:11:10 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 17:58:54 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	split_elements_north(t_vars *vars, char *str, int x)
 	split = ft_split_charset(str, " \t");
 	if (ft_strcmp(split[0], "NO") == 0)
 	{
+		check_extra_character(split);
 		after_trim = ft_strtrim(split[1], " \t\n");
 		vars->map.n_img.ptr = mlx_xpm_file_to_image(vars->mlx,
 				after_trim, &vars->map.n_img.size.x, &vars->map.n_img.size.y);
@@ -46,6 +47,7 @@ int	split_elements_south(t_vars *vars, char *str, int x)
 	split = ft_split_charset(str, " \t");
 	if (ft_strcmp(split[0], "SO") == 0)
 	{
+		check_extra_character(split);
 		after_trim = ft_strtrim(split[1], " \t\n");
 		vars->map.s_img.ptr = mlx_xpm_file_to_image(vars->mlx,
 				after_trim, &vars->map.s_img.size.x, &vars->map.s_img.size.y);
@@ -71,6 +73,7 @@ int	split_elements_east(t_vars *vars, char *str, int x)
 	split = ft_split_charset(str, " \t");
 	if (ft_strcmp(split[0], "EA") == 0)
 	{
+		check_extra_character(split);
 		after_trim = ft_strtrim(split[1], " \t\n");
 		vars->map.e_img.ptr = mlx_xpm_file_to_image(vars->mlx,
 				after_trim, &vars->map.e_img.size.x, &vars->map.e_img.size.y);
@@ -96,6 +99,7 @@ int	split_elements_west(t_vars *vars, char *str, int x)
 	split = ft_split_charset(str, " \t");
 	if (ft_strcmp(split[0], "WE") == 0)
 	{
+		check_extra_character(split);
 		after_trim = ft_strtrim(split[1], " \t\n");
 		vars->map.w_img.ptr = mlx_xpm_file_to_image(vars->mlx,
 				after_trim, &vars->map.w_img.size.x, &vars->map.w_img.size.y);

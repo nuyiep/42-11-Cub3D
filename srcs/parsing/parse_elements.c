@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:59 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 17:27:06 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 17:57:51 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	split_elements_floor(t_vars *vars, char *str, int x)
 	split = ft_split_charset(str, " \t");
 	if (ft_strcmp(split[0], "F") == 0)
 	{
+		check_extra_character(split);
 		after_trim = ft_strtrim(split[1], " \t\n");
 		ft_freesplit(split);
 		split = ft_split(after_trim, ',');
@@ -46,6 +47,7 @@ int	split_elements_ceiling(t_vars *vars, char *str, int x)
 	split = ft_split_charset(str, " \t");
 	if (ft_strcmp(split[0], "C") == 0)
 	{
+		check_extra_character(split);
 		after_trim = ft_strtrim(split[1], " \t\n");
 		ft_freesplit(split);
 		split = ft_split(after_trim, ',');
@@ -104,7 +106,7 @@ void	split_elements(t_vars *vars, int count, int fd, char **temp_map)
 	}
 	temp_map[k] = NULL;
 	if (check == 0)
-		utils_print_error_exit("Incorrect elements");
+		utils_print_error_exit("Incorrect element");
 }
 
 /* Main function for parsing */
