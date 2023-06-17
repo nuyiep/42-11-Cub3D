@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/16 18:02:24 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 17:21:16 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ void	pad_map_with_spaces(t_vars *vars, char **temp_map);
 
 /* Utils */
 void	utils_print_error_exit(char *str);
-char	*ft_trim_space_tab_newline(char *str);
 int		ft_count_lines(int fd);
 void	free_all(t_vars *vars);
 void	print_map(char **map);

@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:41:51 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 15:37:43 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 17:29:21 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_correct_order(char *str, int check)
 	i = 0;
 	if (check != 0)
 		return (check);
-	str = ft_trim_space_tab_newline(str);
+	str = ft_strtrim(str, " \t\n");
 	if (ft_strlen(str) < 1)
 	{
 		free(str);

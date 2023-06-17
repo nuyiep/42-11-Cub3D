@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:59 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 15:38:43 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/17 17:27:06 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int	split_elements_floor(t_vars *vars, char *str, int x)
 	char	**split;
 	char	*after_trim;
 
-	split = ft_split(str, ' ');
+	split = ft_split_charset(str, " \t");
 	if (ft_strcmp(split[0], "F") == 0)
 	{
-		after_trim = ft_trim_space_tab_newline(split[1]);
+		after_trim = ft_strtrim(split[1], " \t\n");
 		ft_freesplit(split);
 		split = ft_split(after_trim, ',');
 		check_rgb_format(split);
@@ -43,10 +43,10 @@ int	split_elements_ceiling(t_vars *vars, char *str, int x)
 	char	**split;
 	char	*after_trim;
 
-	split = ft_split(str, ' ');
+	split = ft_split_charset(str, " \t");
 	if (ft_strcmp(split[0], "C") == 0)
 	{
-		after_trim = ft_trim_space_tab_newline(split[1]);
+		after_trim = ft_strtrim(split[1], " \t\n");
 		ft_freesplit(split);
 		split = ft_split(after_trim, ',');
 		check_rgb_format(split);
@@ -103,6 +103,8 @@ void	split_elements(t_vars *vars, int count, int fd, char **temp_map)
 		free(str);
 	}
 	temp_map[k] = NULL;
+	if (check == 0)
+		utils_print_error_exit("Incorrect elements");
 }
 
 /* Main function for parsing */

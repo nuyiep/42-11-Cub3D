@@ -1,9 +1,9 @@
-NO ./sprites/north.xpm
+NO	./sprites/north.xpm		
 EA ./sprites/east.xpm
 SO ./sprites/south.xpm
 WE ./sprites/west.xpm
 
-C 225,255,255		
+C	225,255,255  w
 F 1,1,1
 
 111111111
