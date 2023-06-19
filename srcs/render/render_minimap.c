@@ -21,18 +21,33 @@ void	draw_player(t_vars *vars)
 	my_mlx_pixel_put(vars->map.mini,  pos.x + 1, pos.y + 1, GREEN);
 }
 
-// void	draw_diagonal(t_vars *vars, t_dvector dir, t_dvector length)
-// {
-// 	t_dvector origin;
+void	draw_diagonal(t_vars *vars, t_dvector dir, t_dvector dest)
+{
+	t_dvector origin;
+	t_vector	max;
+	t_vector	min;
+	// (void)dest;
+	// (void)dir;
+	// (void)vars;
+	// int i = 0;
 
-// 	origin.y = -1;
-// 	while (++origin.y < length.y)
-// 	{
-// 		my_mlx_pixel_put(vars->map.main, )
-// 	}
+	min.y = vars->player.pos.y - (5 * MINI_PX) - 1;
+	max.y = vars->player.pos.y + (5 * MINI_PX) + 1;
+	min.x = vars->player.pos.x - (5 * MINI_PX) - 1;
+	max.x = vars->player.pos.x + (5 * MINI_PX) + 1;
+
+	origin.x = MINI_S * MINI_PX / 2;
+	origin.y = MINI_S * MINI_PX / 2;
+	printf("dest (%f, %f)\n", dest.x, dest.y);
+	while (origin.x < (MINI_S * MINI_PX / 2 + (dest.x - min.x) * SCALE * MINI_PX))
+	{
+		origin.x += dir.x;
+		origin.y += dir.y;
+		my_mlx_pixel_put(vars->map.mini, (int)(origin.x), (int)origin.y, GREEN);
+	}
 
 
-// }
+}
 
 void	draw_dir(t_vars *vars)
 {
@@ -162,5 +177,6 @@ void	render_minimap(t_vars *vars)
 	draw_player(vars);
 	draw_dir(vars);
 	draw_plane(vars);
+	// render_rays(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->map.mini->ptr, 0, 0);
 }

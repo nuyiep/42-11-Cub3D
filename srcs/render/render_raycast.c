@@ -8,7 +8,7 @@ void	create_new_ray(t_vars *vars, int ray_i)
 	// printf("PLayer direction: (%f, %f)\n", vars->player.dir.x, vars->player.dir.y);
 
 	// Setting player position in map. Need offset?
-	printf("PLayer map pos: (%d, %d)\n", vars->player.mpos.x, vars->player.mpos.y);
+	// printf("PLayer map pos: (%d, %d)\n", vars->player.mpos.x, vars->player.mpos.y);
 	vars->ray_info.offset.x = vars->player.mpos.x + 0;
 	vars->ray_info.offset.y = vars->player.mpos.y + 0;
 	vars->ray_info.map.x = vars->player.mpos.x + 0;
@@ -75,14 +75,22 @@ static void	check_hit(t_vars *vars)
 		}
 		// printf("Checking wall coordinate (%d, %d)\n", (int)vars->ray_info.map.x, (int)vars->ray_info.map.y);
 		if (vars->map.map[(int)vars->ray_info.map.y][(int)vars->ray_info.map.x] == '1')
+		{
 			vars->ray_info.hit = 1;
+		}
 	}
+
 	if (vars->ray_info.side == 0)
 		vars->ray_info.perp_wall_dist = (vars->ray_info.side_dist.x
 				- vars->ray_info.delta_dist.x);
 	else
 		vars->ray_info.perp_wall_dist = (vars->ray_info.side_dist.y
 				- vars->ray_info.delta_dist.y);
+	// t_dvector dest;
+
+	// dest.x = vars->ray_info.perp_wall_dist * vars->ray_info.raydir.x;
+	// dest.y = vars->ray_info.perp_wall_dist * vars->ray_info.raydir.y;
+	// draw_diagonal(vars, vars->ray_info.raydir, dest);
 }
 
 void	set_length(t_vars *vars)

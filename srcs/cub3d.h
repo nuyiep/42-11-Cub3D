@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/15 13:19:47 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/15 15:24:32 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,7 @@ void	draw_player(t_vars *vars);
 void	draw_dir(t_vars *vars);
 void	render_minimap(t_vars *vars);
 void	render_rays(t_vars *vars);
+void	draw_diagonal(t_vars *vars, t_dvector dir, t_dvector dest);
 
 /* 4. Controls */
 void	ctrl_run_hooks(t_vars *vars);
