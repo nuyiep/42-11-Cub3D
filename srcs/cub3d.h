@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 18:45:24 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/19 15:39:47 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define CUB3D_H
 
 # include "../libft/srcs/libft.h"
+# include <stdio.h>
+# include <math.h>
+# include <fcntl.h>
 # include <mlx.h>
 
 /* Mac key codes */
@@ -28,17 +31,40 @@
 # define EXIT_MASK	0
 
 /* Player prefs */
-# define WIN_H		1280
-# define WIN_W		800
+# define WIN_H		800
+# define WIN_W		1280
+# define MINI_S		19 // don't change
+# define MINI_PX	15 // don't change
+# define SCALE		1.725 // don't change
 
-/* Vector struct */
+/* Colors */
+# define RED		0xFF0000
+# define GREEN		0x00FF00
+# define BLUE		0x0000FF
+# define TBROWN		0x80964B00
+# define TGREY		0xE0E0E0E0
+# define TWHITE		0x80FFFFFF
+# define TBLACK		0x80000000
+# define BLACK		0xFF000000
+
+# define PI			3.141592653589793238
+# define ROT_SPD	0.1
+# define MOV_SPD	3
+
+/* X and Y vector */
 typedef struct s_vector
 {
-	int	x;
-	int	y;
+	int x;
+	int y;
 }	t_vector;
 
-/* Image struct */
+/* Doubles X and Y vector */
+typedef struct s_dvector
+{
+	double	x;
+	double	y;
+}	t_dvector;
+
 typedef struct s_img
 {
 	void		*ptr;
@@ -49,7 +75,6 @@ typedef struct s_img
 	t_vector	size;
 }	t_img;
 
-/* RGB struct - Ceiling and Floor */
 typedef struct s_rgb
 {
 	unsigned int	r;
@@ -58,7 +83,6 @@ typedef struct s_rgb
 	int				hex;
 }	t_rgb;
 
-/* Map struct */
 typedef struct s_map
 {
 	char		**map;
@@ -68,17 +92,54 @@ typedef struct s_map
 	t_img		e_img;
 	t_img		s_img;
 	t_img		w_img;
+	t_img		d_img;
 	t_img		*main;
 	t_img		imgw;
 	t_vector	size;
+	double		mm_scale;
+	t_img		*mini;
+	// int		door_state;
 }	t_map;
 
-/* Main struct */
+typedef struct s_ply
+{
+	t_img		img;
+	t_vector	mpos; // map positions
+	t_dvector	pos; // this is mpos * MINI_PX
+	t_dvector	dir; // North is x = 0. y = -1
+	t_dvector	plane;
+	double		rotate;
+}	t_ply;
+
+typedef struct s_rayinfo
+{
+	t_dvector	delta_dist;
+	t_dvector	side_dist;
+	t_dvector	offset;
+	t_dvector	raydir;
+	t_dvector	step;
+	t_vector	map;
+	double		perp_wall_dist;
+	double		camera_x;
+	double		wall_x;
+	int			line_h;
+	int			d_start;
+	int			d_end;
+	int			tex_x;
+	int			side;
+	int			hit;
+}	t_rayinfo;
+
+/* Master struct for variables */
 typedef struct s_vars
 {
-	void	*mlx;
-	void	*win;
-	t_map	map;
+	void		*mlx;
+	void		*win;
+	t_vector	win_size;
+	t_vector	img_size;
+	t_map		map;
+	t_ply		player;
+	t_rayinfo	ray_info;
 }	t_vars;
 
 /* 1. Validation */
@@ -105,10 +166,24 @@ int		split_elements_east(t_vars *vars, char *str, int x);
 int		split_elements_west(t_vars *vars, char *str, int x);
 void	pad_map_with_spaces(t_vars *vars, char **temp_map);
 
+/* 3. Render */
+int		render_main(t_vars *vars);
+void	draw_player(t_vars *vars);
+void	draw_dir(t_vars *vars);
+void	render_minimap(t_vars *vars);
+void	render_rays(t_vars *vars);
+void	draw_diagonal(t_vars *vars, t_dvector dir, t_dvector dest);
+
+/* 4. Controls */
+void	ctrl_run_hooks(t_vars *vars);
+
 /* Utils */
 void	utils_print_error_exit(char *str);
+void	print_error_exit(char *str, char *arg);
 int		ft_count_lines(int fd);
 void	free_all(t_vars *vars);
 void	print_map(char **map);
+int		success_exit();
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 #endif

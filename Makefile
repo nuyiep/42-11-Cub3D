@@ -6,7 +6,7 @@
 #    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/17 18:55:55 by plau             ###   ########.fr        #
+#    Updated: 2023/06/19 15:20:53 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME		= cub3d
 CC			= gcc
 MLX			= mlx/libmlx.a
 CFLAGS		= -Wall -Wextra -Werror -Imlx
+# MLXFLAGS	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
 MLXFLAGS	= -L /usr/local/lib -lmlx -framework OpenGL -framework AppKit
 FSANS		= -fsanitize=address -g3
 
@@ -23,6 +24,7 @@ DSRCS		= srcs					\
 			  srcs/parsing			\
 			  srcs/render			\
 			  srcs/controls			\
+			  srcs/initialize		\
 			  srcs/utils			\
 			  srcs/initialize		\
 
@@ -33,13 +35,17 @@ FILES		=	init_vars \
 				parse_directions \
 				parse_elements \
 				parse_store_map \
-				utils_map \
-				utils \
 				valid_file \
 				valid_map \
 				valid_map_wall \
 				valid_element \
-				valid_map_elements
+				valid_map_elements \
+				render_main			\
+				render_minimap		\
+				render_raycast		\
+				ctrl_run_hooks		\
+				utils				\
+				utils_map 			\
 
 FOBJS		= $(addprefix $(DOBJS), $(addsuffix .o, $(FILES:.c=.o)))
 
