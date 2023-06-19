@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:41:51 by plau              #+#    #+#             */
-/*   Updated: 2023/06/19 19:22:12 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/19 19:31:39 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,14 +135,16 @@ char	**get_map_trim_newline(t_vars *vars, char **temp_map)
 /* If there is empty lines, exit the program */
 void	check_empty_lines(char **temp_map)
 {
-	int	i;
-	int	len;
+	int		i;
+	int		len;
+	char	*after_trim;
 
 	i = 0;
 	while (temp_map[i] != NULL)
 	{
-		temp_map[i] = ft_strtrim(temp_map[i], " \t\n");
-		len = ft_strlen(temp_map[i]);
+		after_trim = ft_strtrim(temp_map[i], " \t\n");
+		len = ft_strlen(after_trim);
+		free(after_trim);
 		if (len == 0)
 			utils_print_error_exit("Map contains empty line");
 		i++;
