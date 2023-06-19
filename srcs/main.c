@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:14 by plau              #+#    #+#             */
-/*   Updated: 2023/06/19 19:32:15 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/19 19:44:47 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	temp_map = valid_check_file_textures(argc, argv, &vars);
 	map_checking(&vars, temp_map);
 	print_map(vars.map.map);
+	system("leaks -q cub3d");
 	ctrl_run_hooks(&vars);
 	free_all(&vars);
 	return (0);

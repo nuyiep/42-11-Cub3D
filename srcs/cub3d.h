@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/19 19:21:13 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/19 21:15:15 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,51 @@
 # define ROT_SPD	0.1
 # define MOV_SPD	3
 
-/* X and Y vector */
+/* Bonus */
+# define D_OPEN		1
+# define D_CLOSE	0
+
+/**
+ * @brief Int vector struct
+ * @param x X value in int
+ * @param y Y value in int
+ */
 typedef struct s_vector
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 }	t_vector;
 
-/* Doubles X and Y vector */
+/**
+ * @brief Double vector struct
+ * @param x X value in double
+ * @param y Y value double
+ */
 typedef struct s_dvector
 {
 	double	x;
 	double	y;
 }	t_dvector;
 
+/**
+ * @brief Image struct 
+ * 		  (for North, South, East, West)
+ * @param ptr 		Image pointer
+ * @param addr  	Address of image
+ * @param bpp		Bits per pixel of image 
+ * 					(value will be set by the function)
+ * @param line_len	Size in bytes of a single image row 
+ * 					(value will be set by the function)
+ * @param endian    endian value (value will be set by the function)
+ * 					A pointer to an integer variable
+ * 					The value will be either 0 (little-endian) or 
+ * 					1 (big-endian)
+ * @param size      size (vector) (x & y) for the image
+ * 
+ * After calling the mlx_get_data_addr, the provided pointers bpp, 
+ * line_len, endian will be updated with the corresponding values 
+ * for the image.
+ */
 typedef struct s_img
 {
 	void		*ptr;
@@ -75,6 +106,13 @@ typedef struct s_img
 	t_vector	size;
 }	t_img;
 
+/**
+ * @brief RGB struct 
+ * 		  for floor and ceiling texture
+ * @param r Red value
+ * @param g Green value
+ * @param b Blue value 
+ */
 typedef struct s_rgb
 {
 	unsigned int	r;
@@ -83,6 +121,24 @@ typedef struct s_rgb
 	int				hex;
 }	t_rgb;
 
+/**
+ * @brief Map struct
+ * @param map			Map
+ * @param c_rgb			RGB struct for ceiling
+ * @param f_rgb			RGB struct for floor
+ * @param n_img			North image
+ * @param e_img			East image
+ * @param s_img			South image
+ * @param w_img			West image
+ * @param d_img			Door image
+ * @param main			Main image
+ * @param imgw			Window image
+ * @param size			Size of the map (struct)- x, y
+ * @param mm_scale		(??)
+ * @param mini			Image struct for minimap
+ * @param door_state	To be set manually (0 or 1)
+ * 						Whether there is a door in the map
+ */
 typedef struct s_map
 {
 	char		**map;
@@ -98,9 +154,14 @@ typedef struct s_map
 	t_vector	size;
 	double		mm_scale;
 	t_img		*mini;
-	// int		door_state;
+	int			door_state;
 }	t_map;
 
+/**
+ * @brief Player struct
+ * @param img	
+ * 
+ */
 typedef struct s_ply
 {
 	t_img		img;
@@ -131,6 +192,10 @@ typedef struct s_rayinfo
 }	t_rayinfo;
 
 /* Master struct for variables */
+/**
+ * @brief Master struct for variables
+ * @param 
+ */
 typedef struct s_vars
 {
 	void		*mlx;
@@ -185,7 +250,7 @@ void	print_error_exit(char *str, char *arg);
 int		ft_count_lines(int fd);
 void	free_all(t_vars *vars);
 void	print_map(char **map);
-int		success_exit();
+int		success_exit(void);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
 #endif

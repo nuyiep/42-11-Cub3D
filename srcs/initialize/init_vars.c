@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:18 by plau              #+#    #+#             */
-/*   Updated: 2023/06/19 15:40:13 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/19 20:14:10 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	init_map(t_vars *vars)
 	vars->map.size.y = 0;
 	vars->map.imgw.addr = mlx_get_data_addr(vars->map.imgw.ptr, &vars->map.imgw.bpp,
 			&vars->map.imgw.line_len, &vars->map.imgw.endian);
-	// vars->map.door_state = D_OPEN;
+	vars->map.door_state = D_CLOSE;
 }
 
 // HARDCODED player position and direction to NORTH
