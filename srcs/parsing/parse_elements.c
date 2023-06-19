@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:59 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 17:57:51 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/19 18:50:37 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	split_elements(t_vars *vars, int count, int fd, char **temp_map)
 		if (x == 7)
 		{
 			check = check_correct_order(str, check);
-			k = store_map(str, k, temp_map);
+			k = store_temp_map(str, k, temp_map);
 		}
 		i++;
 		free(str);

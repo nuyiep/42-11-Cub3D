@@ -6,7 +6,7 @@
 #    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/19 15:20:53 by plau             ###   ########.fr        #
+#    Updated: 2023/06/19 18:55:16 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ FILES		=	init_vars \
 				render_raycast		\
 				ctrl_run_hooks		\
 				utils				\
-				utils_map 			\
+				utils_map 			
 
 FOBJS		= $(addprefix $(DOBJS), $(addsuffix .o, $(FILES:.c=.o)))
 

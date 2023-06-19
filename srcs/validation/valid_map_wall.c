@@ -6,19 +6,11 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:57:29 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 18:45:32 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/19 18:45:38 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-/* Find map size x / the max length of each line of the map */
-int	find_map_size_x(int temp_len, int max)
-{
-	if (temp_len > max)
-		max = temp_len;
-	return (max);
-}
 
 /* Reading in context: when map content is 0 or player pos (NSWE) */
 /* check its up, down, left, right, if is not 10NSWE  */
@@ -40,16 +32,13 @@ void	check_middle_map_line(t_vars *vars, char **temp_map)
 	int	i;
 	int	j;
 	int	temp_len;
-	int	max;
 
 	i = 0;
 	temp_len = 0;
-	max = -1;
 	while (i < vars->map.size.y)
 	{
 		j = 0;
 		temp_len = ft_strlen(temp_map[i]);
-		max = find_map_size_x(temp_len, max);
 		while (j < (temp_len - 1))
 		{
 			if (temp_map[i][j] == '0' || temp_map[i][j] == 'N'
@@ -60,7 +49,6 @@ void	check_middle_map_line(t_vars *vars, char **temp_map)
 		}
 		i++;
 	}
-	vars->map.size.x = max;
 }
 
 /* If there is more than one N, S, W or E, exit the program */

@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:00:50 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 18:58:12 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/19 18:56:31 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,66 @@ void	surrounded_by_walls(t_vars *vars, char **temp_map)
 	check_middle_map_line(vars, temp_map);
 }
 
+char	*trim_from_back(int len, char *temp_map)
+{
+	char	*after_trim;
+	int		i;
+
+	i = 0;
+	after_trim = malloc(sizeof(char) * (len + 1));
+	while (i <= len)
+	{
+		after_trim[i] = temp_map[i];
+		i++;
+	}
+	after_trim[i] = '\0';
+	free(temp_map);
+	return (after_trim);
+}
+
+/* Get the postion of last character 1 in temp_map[i] */
+char	**map_trim_spaces_tab_from_the_back(char **temp_map)
+{
+	int		i;
+	int		len;
+	int		max;
+
+	i = 0;
+	len = 0;
+	max = -1;
+	while (temp_map[i] != NULL)
+	{
+		len = ft_strlen(temp_map[i]);
+		len--;
+		while (len > 0)
+		{
+			if (temp_map[i][len] == '1')
+			{
+				temp_map[i] = trim_from_back(len, temp_map[i]);
+				break ;
+			}
+			len--;
+		}
+		i++;
+	}
+	return (temp_map);
+}
+
 /* Main function for map checking 	*/
 /* Rules:   						*/
 /* 	 our map allows for empty lines between map */
 /*   doesnt allow for tabs after the last character */
 void	map_checking(t_vars *vars, char **temp_map)
 {
+	int	len;
+
+	len = 0;
 	check_invalid_character(temp_map);
 	temp_map = get_map_trim_newline(vars, temp_map);
 	check_only_one_player(temp_map);
 	surrounded_by_walls(vars, temp_map);
+	temp_map = map_trim_spaces_tab_from_the_back(temp_map);
+	store_map_size_x(vars, temp_map);
+	print_map(temp_map);
 	pad_map_with_spaces(vars, temp_map);
 }

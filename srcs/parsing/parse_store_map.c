@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:23:37 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 18:29:26 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/19 18:50:41 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,31 @@
 
 /* Store map into a temporary char ** */
 /* temp_map will include all empty lines (if any) before and after map */
-int	store_map(char *str, int k, char **temp_map)
+int	store_temp_map(char *str, int k, char **temp_map)
 {
 	temp_map[k] = ft_strdup(str);
 	k++;
 	return (k);
+}
+
+/* Store map size x */
+void	store_map_size_x(t_vars *vars, char **temp_map)
+{
+	int	i;
+	int	len;
+	int	max;
+
+	i = 0;
+	len = 0;
+	max = -1;
+	while (temp_map[i] != NULL)
+	{
+		len = ft_strlen(temp_map[i]);
+		if (len > max)
+			max = len;
+		i++;
+	}
+	vars->map.size.x = max;
 }
 
 /* Malloc my map struct - preparing for padding spaces */
