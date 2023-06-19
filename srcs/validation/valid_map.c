@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:00:50 by plau              #+#    #+#             */
-/*   Updated: 2023/06/19 18:56:31 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/19 19:22:58 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ char	**map_trim_spaces_tab_from_the_back(char **temp_map)
 /* Main function for map checking 	*/
 /* Rules:   						*/
 /* 	 our map allows for empty lines between map */
-/*   doesnt allow for tabs after the last character */
+/*   doesnt allow for tabs in the map */
+/*	 doesnt allow duplicate textures	*/
 void	map_checking(t_vars *vars, char **temp_map)
 {
 	int	len;
@@ -106,9 +107,9 @@ void	map_checking(t_vars *vars, char **temp_map)
 	check_invalid_character(temp_map);
 	temp_map = get_map_trim_newline(vars, temp_map);
 	check_only_one_player(temp_map);
+	check_empty_lines(temp_map);
 	surrounded_by_walls(vars, temp_map);
 	temp_map = map_trim_spaces_tab_from_the_back(temp_map);
 	store_map_size_x(vars, temp_map);
-	print_map(temp_map);
 	pad_map_with_spaces(vars, temp_map);
 }
