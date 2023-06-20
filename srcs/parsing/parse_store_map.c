@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:23:37 by plau              #+#    #+#             */
-/*   Updated: 2023/06/19 18:50:41 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/20 20:56:42 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,15 +81,14 @@ void	pad_map_with_spaces(t_vars *vars, char **temp_map)
 		j = 0;
 		while (j < vars->map.size.x)
 		{
-			if (j < len && temp_map[i][j] != '\0')
+			if (j <= len && temp_map[i][j] != '\0')
 				store_final_map_pad_spaces(vars, temp_map, i, j);
-			else if (j == (vars->map.size.x - 1))
-				vars->map.map[i][j] = '\n';
 			else
 				vars->map.map[i][j] = '_';
 			j++;
 		}
-		vars->map.map[i][j] = '\0';
+		vars->map.map[i][j] = '\n';
+		vars->map.map[i][j + 1] = '\0';
 		i++;
 	}
 	ft_freesplit(temp_map);

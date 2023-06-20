@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:59 by plau              #+#    #+#             */
-/*   Updated: 2023/06/20 12:57:37 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/20 19:06:16 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	split_elements_without_door(t_vars *vars, int count,
 	x = 0;
 	k = 0;
 	check = 0;
+
 	while (i < count - 1)
 	{
 		str = get_next_line(fd);
@@ -70,8 +71,8 @@ void	split_elements_without_door(t_vars *vars, int count,
 			check = check_correct_order(str, check);
 			k = store_temp_map(str, k, temp_map);
 		}
-		i++;
 		free(str);
+		i++;
 	}
 	temp_map[k] = NULL;
 	if (check == 0)

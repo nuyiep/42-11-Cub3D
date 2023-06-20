@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:18 by plau              #+#    #+#             */
-/*   Updated: 2023/06/20 17:38:20 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/20 20:38:40 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,15 @@ static void	init_map(t_vars *vars)
 	vars->map.imgw.ptr = mlx_new_image(vars->mlx, WIN_W, WIN_H);
 	vars->map.size.x = 0;
 	vars->map.size.y = 0;
-	vars->map.imgw.addr = mlx_get_data_addr(vars->map.imgw.ptr, &vars->map.imgw.bpp,
-			&vars->map.imgw.line_len, &vars->map.imgw.endian);
+	vars->map.imgw.addr = mlx_get_data_addr(vars->map.imgw.ptr,
+			&vars->map.imgw.bpp, &vars->map.imgw.line_len,
+			&vars->map.imgw.endian);
 	vars->map.door_state = D_CLOSE;
 }
 
 void	update_player(t_vars *vars)
 {
 	get_player_mpos(vars);
-	// vars->player.pos.x = vars->player.mpos.x * MINI_PX; // mpos * MINI_PX
-	// vars->player.pos.y = vars->player.mpos.y * MINI_PX; // mpos * MINI_PX
 }
 
 // HARDCODED player position and direction to NORTH

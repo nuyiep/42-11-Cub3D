@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:55 by plau              #+#    #+#             */
-/*   Updated: 2023/06/20 12:16:16 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/20 19:14:41 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int	split_elements_west(t_vars *vars, char *str, int x)
 {
 	char	**split;
 	char	*after_trim;
+	char	*new_split_2;
 
 	split = ft_split_charset(str, " \t");
 	if (ft_strcmp(split[0], "WE") == 0)
@@ -103,13 +104,14 @@ int	split_elements_west(t_vars *vars, char *str, int x)
 		after_trim = ft_strtrim(split[1], " \t\n");
 		vars->map.w_img.ptr = mlx_xpm_file_to_image(vars->mlx,
 				after_trim, &vars->map.w_img.size.x, &vars->map.w_img.size.y);
-		split[2] = ft_strtrim(split[2], " \t\n");
-		if ((vars->map.n_img.ptr == NULL) || ft_strlen(split[2]) != 0)
+		new_split_2 = ft_strtrim(split[2], " \t\n");
+		if ((vars->map.n_img.ptr == NULL) || ft_strlen(new_split_2) != 0)
 			utils_print_error_exit("Invalid west element");
 		vars->map.w_img.addr = mlx_get_data_addr(vars->map.w_img.ptr,
 				&vars->map.w_img.bpp, &vars->map.w_img.line_len,
 				&vars->map.w_img.endian);
 		free(after_trim);
+		free(new_split_2);
 		x++;
 	}
 	ft_freesplit(split);

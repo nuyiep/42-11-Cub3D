@@ -6,7 +6,7 @@
 #    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/20 16:48:11 by plau             ###   ########.fr        #
+#    Updated: 2023/06/20 21:12:38 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,13 +61,13 @@ all:		$(NAME)
 $(DOBJS)%.o: %.c
 	@mkdir -p objs/
 	@echo "Compiling: $<"
-	@$(CC) $(CFLAGS) -I. -c $< -o $@
-	# @$(CC) $(CFLAGS) $(FSANS) -I. -c $< -o $@
+	# @$(CC) $(CFLAGS) -I. -c $< -o $@
+	@$(CC) $(CFLAGS) $(FSANS) -I. -c $< -o $@
 
 ${NAME}:	srcs/main.c ${LIBD}/${LIBA} ${PRINTFD}/${PRINTFA} ${FOBJS}
 	@echo "Compiling: srcs/main.c"
-	@${CC} ${CFLAGS} -I. srcs/main.c ${FOBJS} ${LIBD}/${LIBA} ${MLX} ${MLXFLAGS} -o ${NAME}
-	# @${CC} ${CFLAGS} $(FSANS) -I. srcs/main.c ${FOBJS} ${LIBD}/${LIBA} ${MLX} ${MLXFLAGS} -o ${NAME}
+	# @${CC} ${CFLAGS} -I. srcs/main.c ${FOBJS} ${LIBD}/${LIBA} ${MLX} ${MLXFLAGS} -o ${NAME}
+	@${CC} ${CFLAGS} $(FSANS) -I. srcs/main.c ${FOBJS} ${LIBD}/${LIBA} ${MLX} ${MLXFLAGS} -o ${NAME}
 
 ${LIBD}/${LIBA}:
 	@make -C ${LIBD}

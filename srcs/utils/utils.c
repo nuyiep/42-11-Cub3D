@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
-/*   Updated: 2023/06/19 15:17:56 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/20 19:15:27 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	utils_print_error_exit(char *str)
 	ft_printf("Error\n");
 	ft_printf(str);
 	ft_printf("\n");
+	system("leaks -q cub3d");
 	exit(EXIT_FAILURE);
 }
 
