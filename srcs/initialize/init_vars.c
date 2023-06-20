@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:18 by plau              #+#    #+#             */
-/*   Updated: 2023/06/20 12:31:45 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/20 17:38:20 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,22 @@ static void	init_map(t_vars *vars)
 	vars->map.door_state = D_CLOSE;
 }
 
+void	update_player(t_vars *vars)
+{
+	get_player_mpos(vars);
+	// vars->player.pos.x = vars->player.mpos.x * MINI_PX; // mpos * MINI_PX
+	// vars->player.pos.y = vars->player.mpos.y * MINI_PX; // mpos * MINI_PX
+}
+
 // HARDCODED player position and direction to NORTH
-static void	init_player(t_vars *vars)
+/* Initialize player struct */
+/* Plater direction in char is stored via check_only_one_player function */
+void	init_player(t_vars *vars)
 {
 	// CHANGE BELOW
 	vars->player.mpos.x = 8; // change this to actual map position
 	vars->player.mpos.y = 11; // change this to actual map position
-	
+
 	vars->player.pos.x = 8 * MINI_PX; // mpos * MINI_PX
 	vars->player.pos.y = 11 * MINI_PX; // mpos * MINI_PX
 	

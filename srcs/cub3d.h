@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/20 12:56:23 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/20 16:50:00 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,15 +159,22 @@ typedef struct s_map
 
 /**
  * @brief Player struct
- * @param img	
+ * @param char_dir		character for direction (N, S, W, E)
+ * @param img		Image
+ * @param map_pos	Map position (x, y)
+ * @param pos		Position * MINI_PX (x, y)
+ * @param dir		Direction | E.g. North is x = 0, y = -1
+ * @param plane		Plane (x, y)
+ * @param rotate	Rotate (x, y) 
  * 
  */
 typedef struct s_ply
 {
+	char		char_dir;
 	t_img		img;
-	t_vector	mpos; // map positions
-	t_dvector	pos; // this is mpos * MINI_PX
-	t_dvector	dir; // North is x = 0. y = -1
+	t_vector	mpos;
+	t_dvector	pos;
+	t_dvector	dir;
 	t_dvector	plane;
 	double		rotate;
 }	t_ply;
@@ -211,16 +218,17 @@ typedef struct s_vars
 char	**valid_check_file_textures(int argc, char **argv, t_vars *vars);
 void	map_checking(t_vars *vars, char **temp_map);
 int		check_correct_order(char *str, int check);
-void	check_only_one_player(char **temp_map);
+void	check_only_one_player(t_vars *vars, char **temp_map);
 void	check_invalid_character(char **temp_map, t_vars *vars);
 void	check_middle_map_line(t_vars *vars, char **temp_map);
 void	check_rgb_format(char **split);
 void	check_extra_character(char **split);
 void	check_empty_lines(char **temp_map);
-void	check_door(t_vars* vars);
 
 /* Initialization */
 void	init_vars(t_vars *vars);
+void	get_player_mpos(t_vars *vars);
+void	update_player(t_vars *vars);
 
 /* Parsing */
 int		store_temp_map(char *str, int k, char **temp_map);

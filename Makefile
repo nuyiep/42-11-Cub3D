@@ -6,7 +6,7 @@
 #    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/20 12:55:57 by plau             ###   ########.fr        #
+#    Updated: 2023/06/20 16:48:11 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ DOBJS		= objs/
 FILES		=	init_vars \
 				parse_directions \
 				parse_elements \
+				parse_player \
 				parse_floor_ceiling \
 				parse_store_map \
 				valid_file \
