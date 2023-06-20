@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/19 21:15:15 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/20 12:56:23 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define ROT_SPD	0.1
 # define MOV_SPD	3
 
-/* Bonus */
+/* Door */
 # define D_OPEN		1
 # define D_CLOSE	0
 
@@ -212,11 +212,12 @@ char	**valid_check_file_textures(int argc, char **argv, t_vars *vars);
 void	map_checking(t_vars *vars, char **temp_map);
 int		check_correct_order(char *str, int check);
 void	check_only_one_player(char **temp_map);
-void	check_invalid_character(char **temp_map);
+void	check_invalid_character(char **temp_map, t_vars *vars);
 void	check_middle_map_line(t_vars *vars, char **temp_map);
 void	check_rgb_format(char **split);
 void	check_extra_character(char **split);
 void	check_empty_lines(char **temp_map);
+void	check_door(t_vars* vars);
 
 /* Initialization */
 void	init_vars(t_vars *vars);
@@ -231,6 +232,9 @@ int		split_elements_north(t_vars *vars, char *str, int x);
 int		split_elements_south(t_vars *vars, char *str, int x);
 int		split_elements_east(t_vars *vars, char *str, int x);
 int		split_elements_west(t_vars *vars, char *str, int x);
+int		split_elements_door(t_vars *vars, char *str, int x);
+int		split_elements_floor(t_vars *vars, char *str, int x);
+int		split_elements_ceiling(t_vars *vars, char *str, int x);
 void	pad_map_with_spaces(t_vars *vars, char **temp_map);
 
 /* 3. Render */

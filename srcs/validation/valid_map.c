@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:00:50 by plau              #+#    #+#             */
-/*   Updated: 2023/06/19 19:32:03 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/20 12:23:54 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	surrounded_by_walls(t_vars *vars, char **temp_map)
 	check_middle_map_line(vars, temp_map);
 }
 
+/* Allocate memory and replace the string after trimmed */
 char	*trim_from_back(int len, char *temp_map)
 {
 	char	*after_trim;
@@ -104,7 +105,7 @@ void	map_checking(t_vars *vars, char **temp_map)
 	int	len;
 
 	len = 0;
-	check_invalid_character(temp_map);
+	check_invalid_character(temp_map, vars);
 	temp_map = get_map_trim_newline(vars, temp_map);
 	check_only_one_player(temp_map);
 	check_empty_lines(temp_map);
