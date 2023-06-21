@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:55 by plau              #+#    #+#             */
-/*   Updated: 2023/06/20 19:14:41 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/21 15:31:48 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	split_elements_north(t_vars *vars, char *str, int x)
 {
 	char	**split;
 	char	*after_trim;
+	char	*after_trim_split_two;
 
 	split = ft_split_charset(str, " \t");
 	if (ft_strcmp(split[0], "NO") == 0)
@@ -25,13 +26,14 @@ int	split_elements_north(t_vars *vars, char *str, int x)
 		after_trim = ft_strtrim(split[1], " \t\n");
 		vars->map.n_img.ptr = mlx_xpm_file_to_image(vars->mlx,
 				after_trim, &vars->map.n_img.size.x, &vars->map.n_img.size.y);
-		split[2] = ft_strtrim(split[2], " \t\n");
-		if ((vars->map.n_img.ptr == NULL) || ft_strlen(split[2]) != 0)
+		after_trim_split_two = ft_strtrim(split[2], " \t\n");
+		if ((vars->map.n_img.ptr == NULL) || ft_strlen(after_trim_split_two) != 0)
 			utils_print_error_exit("Invalid north element");
 		vars->map.n_img.addr = mlx_get_data_addr(vars->map.n_img.ptr,
 				&vars->map.n_img.bpp, &vars->map.n_img.line_len,
 				&vars->map.n_img.endian);
 		free(after_trim);
+		free(after_trim_split_two);
 		x++;
 	}
 	ft_freesplit(split);
@@ -52,7 +54,7 @@ int	split_elements_south(t_vars *vars, char *str, int x)
 		vars->map.s_img.ptr = mlx_xpm_file_to_image(vars->mlx,
 				after_trim, &vars->map.s_img.size.x, &vars->map.s_img.size.y);
 		split[2] = ft_strtrim(split[2], " \t\n");
-		if ((vars->map.n_img.ptr == NULL) || ft_strlen(split[2]) != 0)
+		if ((vars->map.s_img.ptr == NULL) || ft_strlen(split[2]) != 0)
 			utils_print_error_exit("Invalid south element");
 		vars->map.s_img.addr = mlx_get_data_addr(vars->map.s_img.ptr,
 				&vars->map.s_img.bpp, &vars->map.s_img.line_len,
@@ -78,7 +80,7 @@ int	split_elements_east(t_vars *vars, char *str, int x)
 		vars->map.e_img.ptr = mlx_xpm_file_to_image(vars->mlx,
 				after_trim, &vars->map.e_img.size.x, &vars->map.e_img.size.y);
 		split[2] = ft_strtrim(split[2], " \t\n");
-		if ((vars->map.n_img.ptr == NULL) || ft_strlen(split[2]) != 0)
+		if ((vars->map.e_img.ptr == NULL) || ft_strlen(split[2]) != 0)
 			utils_print_error_exit("Invalid east element");
 		vars->map.e_img.addr = mlx_get_data_addr(vars->map.e_img.ptr,
 				&vars->map.e_img.bpp, &vars->map.e_img.line_len,
@@ -105,7 +107,7 @@ int	split_elements_west(t_vars *vars, char *str, int x)
 		vars->map.w_img.ptr = mlx_xpm_file_to_image(vars->mlx,
 				after_trim, &vars->map.w_img.size.x, &vars->map.w_img.size.y);
 		new_split_2 = ft_strtrim(split[2], " \t\n");
-		if ((vars->map.n_img.ptr == NULL) || ft_strlen(new_split_2) != 0)
+		if ((vars->map.w_img.ptr == NULL) || ft_strlen(new_split_2) != 0)
 			utils_print_error_exit("Invalid west element");
 		vars->map.w_img.addr = mlx_get_data_addr(vars->map.w_img.ptr,
 				&vars->map.w_img.bpp, &vars->map.w_img.line_len,

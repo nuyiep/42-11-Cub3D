@@ -6,17 +6,18 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:57:29 by plau              #+#    #+#             */
-/*   Updated: 2023/06/20 16:21:47 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/21 19:24:00 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-/* Reading in context: when map content is 0 or player pos (NSWE) */
-/* check its up, down, left, right, if is not 10NSWE  */
+/* Reading in context: when map content is 0 or player pos (NSWE) or D */
+/* check its up, down, left, right, if it is a space then is an error  */
 /* print error and exit */
 void	check_for_spaces(char **temp_map, int i, int j, t_vars *vars)
 {
+	
 	if (vars->map.door_state == D_CLOSE)
 	{
 		if (ft_strchr("10NSWE", temp_map[i - 1][j]) == NULL
@@ -41,17 +42,18 @@ void	check_for_spaces(char **temp_map, int i, int j, t_vars *vars)
 /* up, down, left, right need to be surrounded by ones */
 void	check_middle_map_line(t_vars *vars, char **temp_map)
 {
-	int	i;
-	int	j;
-	int	temp_len;
+	int		i;
+	int		j;
+	int		temp_len;
+	char	*after_trim;
 
-	i = 0;
+	i = 1;
 	temp_len = 0;
-	while (i < vars->map.size.y)
+	while (i < (vars->map.size.y - 1))
 	{
 		j = 0;
-		temp_len = ft_strlen(temp_map[i]);
-		while (j < (temp_len - 1))
+		temp_len = ft_strlen(temp_map);
+		while (j < temp_len)
 		{
 			if (temp_map[i][j] == '0' || temp_map[i][j] == 'N'
 				|| temp_map[i][j] == 'S' || temp_map[i][j] == 'W'
@@ -118,6 +120,36 @@ void	check_invalid_character(char **temp_map, t_vars *vars)
 			}
 			j++;
 		}
+		i++;
+	}
+}
+
+/* Checks the first character in each line whether is 1 */
+void	check_first_and_last_char(char **temp_map)
+{
+	int		i;
+	char	*copy_map_line;
+	char	*after_trim;
+	int		len;
+
+	i = 0;
+	while (temp_map[i] != NULL)
+	{
+		copy_map_line = ft_strdup(temp_map[i]);
+		after_trim = ft_strtrim(copy_map_line, " ");
+		len = ft_strlen(after_trim);
+		ft_printf("len: %d\n", len);
+		if (len > 1)
+		{
+			if (ft_strchr("1\n ", after_trim[0]) == NULL)
+				utils_print_error_exit(
+					"Map is not surrounded by walls- first character");
+			if (ft_strchr("1\n ", after_trim[len - 1]) == NULL)
+				utils_print_error_exit(
+					"Map is not surrounded by walls- last character");
+		}
+		free(after_trim);
+		free(copy_map_line);
 		i++;
 	}
 }

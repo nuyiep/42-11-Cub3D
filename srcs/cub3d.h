@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/20 16:50:00 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/21 18:42:59 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ typedef struct s_rgb
  * @param main			Main image
  * @param imgw			Window image
  * @param size			Size of the map (struct)- x, y
+ * map size x = max strlen + 2 (\n & \0)
  * @param mm_scale		(??)
  * @param mini			Image struct for minimap
  * @param door_state	To be set manually (0 or 1)
@@ -224,6 +225,7 @@ void	check_middle_map_line(t_vars *vars, char **temp_map);
 void	check_rgb_format(char **split);
 void	check_extra_character(char **split);
 void	check_empty_lines(char **temp_map);
+void	check_first_and_last_char(char **temp_map);
 
 /* Initialization */
 void	init_vars(t_vars *vars);

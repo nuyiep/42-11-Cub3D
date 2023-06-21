@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:00:50 by plau              #+#    #+#             */
-/*   Updated: 2023/06/20 20:42:57 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/21 19:03:19 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,6 @@ void	check_first_and_last_line(t_vars *vars, char **temp_map)
 {
 	int	i;
 
-	i = 0;
-	while (temp_map[0][i] != '\0')
-	{
-		if (ft_strchr("1 \n", temp_map[0][i]) == NULL)
-			utils_print_error_exit("Map not surrounded by walls- first line");
-		i++;
-	}
 	i = 0;
 	while (temp_map[vars->map.size.y - 1][i] != '\0')
 	{
@@ -46,6 +39,7 @@ void	surrounded_by_walls(t_vars *vars, char **temp_map)
 	i = 0;
 	j = 0;
 	check_first_and_last_line(vars, temp_map);
+	check_first_and_last_char(temp_map);
 	check_middle_map_line(vars, temp_map);
 }
 
@@ -56,7 +50,7 @@ char	*trim_from_back(int len, char *temp_map)
 	int		i;
 
 	i = 0;
-	after_trim = malloc(sizeof(char) * (len + 1));
+	after_trim = malloc(sizeof(char) * (len + 2));
 	while (i <= len)
 	{
 		after_trim[i] = temp_map[i];
@@ -83,7 +77,7 @@ char	**map_trim_spaces_tab_from_the_back(char **temp_map)
 		len--;
 		while (len > 0)
 		{
-			if (temp_map[i][len] == '1')
+			if (ft_strchr(" \n", temp_map[i][len]) == NULL)
 			{
 				temp_map[i] = trim_from_back(len, temp_map[i]);
 				break ;
@@ -100,6 +94,7 @@ char	**map_trim_spaces_tab_from_the_back(char **temp_map)
 /* 	 our map allows for empty lines between map */
 /*   doesnt allow for tabs in the map */
 /*	 doesnt allow duplicate textures	*/
+/*	 rgb must in the format of 23,23,23 (no spaces in between)	*/
 void	map_checking(t_vars *vars, char **temp_map)
 {
 	int	len;
@@ -109,8 +104,8 @@ void	map_checking(t_vars *vars, char **temp_map)
 	temp_map = get_map_trim_newline(vars, temp_map);
 	check_only_one_player(vars, temp_map);
 	check_empty_lines(temp_map);
-	surrounded_by_walls(vars, temp_map);
 	temp_map = map_trim_spaces_tab_from_the_back(temp_map);
 	store_map_size_x(vars, temp_map);
+	surrounded_by_walls(vars, temp_map);
 	pad_map_with_spaces(vars, temp_map);
 }

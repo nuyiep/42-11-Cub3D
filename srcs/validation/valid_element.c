@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 18:06:53 by plau              #+#    #+#             */
-/*   Updated: 2023/06/20 21:11:41 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/21 17:46:39 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,4 @@ void	check_extra_character(char **split)
 		free(after_trim);
 		i++;
 	}
-	// if (count > 2)
-	// {
-	// 	ft_printf("split[0]: %s\n", split[0]);
-	// 	ft_printf("split[1]: %s\n", split[1]);
-	// 	utils_print_error_exit("Invalid element :|");
-	// }
 }

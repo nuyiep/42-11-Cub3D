@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:23:37 by plau              #+#    #+#             */
-/*   Updated: 2023/06/20 20:56:42 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/21 15:37:59 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	malloc_map(t_vars *vars)
 	vars->map.map = malloc(sizeof(char *) * (vars->map.size.y + 1));
 	while (i < vars->map.size.y)
 	{
-		vars->map.map[i] = malloc(sizeof(char) * (vars->map.size.x + 1));
+		vars->map.map[i] = malloc(sizeof(char) * (vars->map.size.x + 2));
 		i++;
 	}
 	vars->map.map[i] = NULL;
@@ -61,8 +61,16 @@ void	malloc_map(t_vars *vars)
 void	store_final_map_pad_spaces(t_vars *vars, char **temp_map, int i, int j)
 {
 	vars->map.map[i][j] = temp_map[i][j];
-	if (ft_strchr("NSWE10\n", temp_map[i][j]) == NULL)
-		vars->map.map[i][j] = '_';
+	if (vars->map.door_state == D_OPEN)
+	{
+		if (ft_strchr("NSWE10D\n", temp_map[i][j]) == NULL)
+			vars->map.map[i][j] = '_';
+	}
+	else if (vars->map.door_state == D_CLOSE)
+	{
+		if (ft_strchr("NSWE10\n", temp_map[i][j]) == NULL)
+			vars->map.map[i][j] = '_';
+	}
 }
 
 /* Pad empty postion within the map with spaces */

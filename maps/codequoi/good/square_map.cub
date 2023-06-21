@@ -1,5 +1,5 @@
-C 235, 198, 52
-F   69, 222, 199
+C 235,198,52
+F   69,222,199
 EA ./sprites/east.xpm
 SO ./sprites/south.xpm
 NO      ./sprites/north.xpm
