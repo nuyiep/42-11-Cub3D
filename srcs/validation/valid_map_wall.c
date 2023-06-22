@@ -6,59 +6,44 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:57:29 by plau              #+#    #+#             */
-/*   Updated: 2023/06/21 19:24:00 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/22 14:30:09 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
+/* TODO: CHANGE _ BACK TO SPACE */
 /* Reading in context: when map content is 0 or player pos (NSWE) or D */
 /* check its up, down, left, right, if it is a space then is an error  */
 /* print error and exit */
-void	check_for_spaces(char **temp_map, int i, int j, t_vars *vars)
+void	check_for_spaces(char **temp_map, int i, int j)
 {
-	
-	if (vars->map.door_state == D_CLOSE)
-	{
-		if (ft_strchr("10NSWE", temp_map[i - 1][j]) == NULL
-			|| ft_strchr("10NSWE", temp_map[i + 1][j]) == NULL
-			|| ft_strchr("10NSWE", temp_map[i][j + 1]) == NULL
-			|| ft_strchr("10NSWE", temp_map[i][j - 1]) == NULL
-			)
-			utils_print_error_exit("Map is not surrounded by wall");
-	}
-	else if (vars->map.door_state == D_OPEN)
-	{
-		if (ft_strchr("10NSWED", temp_map[i - 1][j]) == NULL
-		|| ft_strchr("10NSWED", temp_map[i + 1][j]) == NULL
-		|| ft_strchr("10NSWED", temp_map[i][j + 1]) == NULL
-		|| ft_strchr("10NSWED", temp_map[i][j - 1]) == NULL
-		)
-			utils_print_error_exit("Map is not surrounded by wall");
-	}
+	ft_printf("HERE\n");
+	if ((int)ft_strlen(temp_map[i - 1]) < j + 1
+		|| (int)ft_strlen(temp_map[i + 1]) < j + 1
+		|| temp_map[i + 1][j] == ' ' || temp_map[i - 1][j] == ' '
+		|| temp_map[i][j + 1] == ' ' || temp_map[i][j - 1] == ' ')
+		utils_print_error_exit("Map is not surrounded by wall");
 }
 
 /* Check whether the middle zeros are surrounded by ones */
 /* up, down, left, right need to be surrounded by ones */
+/* Skipped first and last line */
 void	check_middle_map_line(t_vars *vars, char **temp_map)
 {
 	int		i;
 	int		j;
-	int		temp_len;
-	char	*after_trim;
 
 	i = 1;
-	temp_len = 0;
 	while (i < (vars->map.size.y - 1))
 	{
-		j = 0;
-		temp_len = ft_strlen(temp_map);
-		while (j < temp_len)
+		j = 1;
+		while (j < (vars->map.size.x - 1))
 		{
 			if (temp_map[i][j] == '0' || temp_map[i][j] == 'N'
 				|| temp_map[i][j] == 'S' || temp_map[i][j] == 'W'
-				|| temp_map[i][j] == 'E')
-				check_for_spaces(temp_map, i, j, vars);
+				|| temp_map[i][j] == 'E' || temp_map[i][j] == 'D')
+				check_for_spaces(temp_map, i, j);
 			j++;
 		}
 		i++;
@@ -138,7 +123,6 @@ void	check_first_and_last_char(char **temp_map)
 		copy_map_line = ft_strdup(temp_map[i]);
 		after_trim = ft_strtrim(copy_map_line, " ");
 		len = ft_strlen(after_trim);
-		ft_printf("len: %d\n", len);
 		if (len > 1)
 		{
 			if (ft_strchr("1\n ", after_trim[0]) == NULL)
