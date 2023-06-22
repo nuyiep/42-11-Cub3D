@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 15:37:55 by plau              #+#    #+#             */
-/*   Updated: 2023/06/21 15:31:48 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/22 15:13:29 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	split_elements_north(t_vars *vars, char *str, int x)
 		vars->map.n_img.ptr = mlx_xpm_file_to_image(vars->mlx,
 				after_trim, &vars->map.n_img.size.x, &vars->map.n_img.size.y);
 		after_trim_split_two = ft_strtrim(split[2], " \t\n");
-		if ((vars->map.n_img.ptr == NULL) || ft_strlen(after_trim_split_two) != 0)
+		if ((vars->map.n_img.ptr == NULL)
+			|| ft_strlen(after_trim_split_two) != 0)
 			utils_print_error_exit("Invalid north element");
 		vars->map.n_img.addr = mlx_get_data_addr(vars->map.n_img.ptr,
 				&vars->map.n_img.bpp, &vars->map.n_img.line_len,

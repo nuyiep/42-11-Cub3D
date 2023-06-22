@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:59 by plau              #+#    #+#             */
-/*   Updated: 2023/06/21 15:06:02 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/22 15:16:21 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,11 @@ void	split_elements_without_door(t_vars *vars, int count,
 	char	*str;
 	int		check;
 
-	i = 0;
+	i = -1;
 	x = 0;
 	k = 0;
 	check = 0;
-
-	while (i < count - 1)
+	while (++i < count - 1)
 	{
 		str = get_next_line(fd);
 		x = store_textures(vars, str, x);
@@ -72,7 +71,6 @@ void	split_elements_without_door(t_vars *vars, int count,
 			k = store_temp_map(str, k, temp_map);
 		}
 		free(str);
-		i++;
 	}
 	temp_map[k] = NULL;
 	if (check == 0)

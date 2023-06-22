@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/21 18:42:59 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/22 15:12:26 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,6 +226,7 @@ void	check_rgb_format(char **split);
 void	check_extra_character(char **split);
 void	check_empty_lines(char **temp_map);
 void	check_first_and_last_char(char **temp_map);
+void	check_for_ones(char *str, int i);
 
 /* Initialization */
 void	init_vars(t_vars *vars);

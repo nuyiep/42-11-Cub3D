@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:57:29 by plau              #+#    #+#             */
-/*   Updated: 2023/06/22 14:30:09 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/22 15:06:39 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 /* print error and exit */
 void	check_for_spaces(char **temp_map, int i, int j)
 {
-	ft_printf("HERE\n");
 	if ((int)ft_strlen(temp_map[i - 1]) < j + 1
 		|| (int)ft_strlen(temp_map[i + 1]) < j + 1
 		|| temp_map[i + 1][j] == ' ' || temp_map[i - 1][j] == ' '

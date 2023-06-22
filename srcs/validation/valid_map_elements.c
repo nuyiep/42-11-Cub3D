@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 17:41:51 by plau              #+#    #+#             */
-/*   Updated: 2023/06/21 17:49:23 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/22 15:12:48 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,7 @@ int	check_correct_order(char *str, int check)
 	{
 		while (str[i] != '\0')
 		{
-			if (str[i] != '1' && str[i] != ' ' && str[i] != '\n'
-				&& str[i] != '\t')
-			{
-				free(str);
-				utils_print_error_exit("Invalid map/element");
-			}
+			check_for_ones(str, i);
 			i++;
 		}
 		check++;

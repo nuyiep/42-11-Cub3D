@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 18:06:53 by plau              #+#    #+#             */
-/*   Updated: 2023/06/21 17:46:39 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/22 15:12:56 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,16 @@ void	check_extra_character(char **split)
 			count++;
 		free(after_trim);
 		i++;
+	}
+}
+
+/* Check whether the character is a 1 or space or newline or tab */
+void	check_for_ones(char *str, int i)
+{
+	if (str[i] != '1' && str[i] != ' ' && str[i] != '\n'
+		&& str[i] != '\t')
+	{
+		free(str);
+		utils_print_error_exit("Invalid map/element");
 	}
 }
