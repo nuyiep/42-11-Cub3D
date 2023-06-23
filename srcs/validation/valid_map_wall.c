@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:57:29 by plau              #+#    #+#             */
-/*   Updated: 2023/06/22 15:06:39 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/23 18:19:01 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	check_middle_map_line(t_vars *vars, char **temp_map)
 
 /* If there is more than one N, S, W or E, exit the program */
 /* Store player direction in player struct */
-void	check_only_one_player(t_vars *vars, char **temp_map)
+void	check_only_one_player(char **temp_map)
 {
 	int	i;
 	int	j;
@@ -66,10 +66,7 @@ void	check_only_one_player(t_vars *vars, char **temp_map)
 		{
 			if (temp_map[i][j] == 'N' || temp_map[i][j] == 'S'
 				|| temp_map[i][j] == 'W' || temp_map[i][j] == 'E')
-			{
-				vars->player.char_dir = temp_map[i][j];
 				count_player++;
-			}
 			if (count_player > 1)
 				utils_print_error_exit("More than one player in the map");
 			j++;

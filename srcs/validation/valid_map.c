@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:00:50 by plau              #+#    #+#             */
-/*   Updated: 2023/06/22 14:22:25 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/23 18:19:26 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	map_checking(t_vars *vars, char **temp_map)
 	len = 0;
 	check_invalid_character(temp_map, vars);
 	temp_map = get_map_trim_newline(vars, temp_map);
-	check_only_one_player(vars, temp_map);
+	check_only_one_player(temp_map);
 	check_empty_lines(temp_map);
 	temp_map = map_trim_spaces_tab_from_the_back(temp_map);
 	store_map_size_x(vars, temp_map);

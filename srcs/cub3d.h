@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/22 15:12:26 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/23 18:19:20 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 # define PI			3.141592653589793238
 # define ROT_SPD	0.1
 # define MOV_SPD	3
+# define PLY_PLANE	0.77
 
 /* Door */
 # define D_OPEN		1
@@ -160,9 +161,9 @@ typedef struct s_map
 
 /**
  * @brief Player struct
- * @param char_dir		character for direction (N, S, W, E)
+ * [OK] @param char_dir	character for direction (N, S, W, E)
  * @param img		Image
- * @param map_pos	Map position (x, y)
+ * [OK] @param map_pos	Map position (x, y)
  * @param pos		Position * MINI_PX (x, y)
  * @param dir		Direction | E.g. North is x = 0, y = -1
  * @param plane		Plane (x, y)
@@ -219,7 +220,7 @@ typedef struct s_vars
 char	**valid_check_file_textures(int argc, char **argv, t_vars *vars);
 void	map_checking(t_vars *vars, char **temp_map);
 int		check_correct_order(char *str, int check);
-void	check_only_one_player(t_vars *vars, char **temp_map);
+void	check_only_one_player(char **temp_map);
 void	check_invalid_character(char **temp_map, t_vars *vars);
 void	check_middle_map_line(t_vars *vars, char **temp_map);
 void	check_rgb_format(char **split);
@@ -230,12 +231,15 @@ void	check_for_ones(char *str, int i);
 
 /* Initialization */
 void	init_vars(t_vars *vars);
-void	get_player_mpos(t_vars *vars);
 void	update_player(t_vars *vars);
+void	store_player_mpos(t_vars *vars);
+void	store_player_dir(t_vars *vars);
 
 /* Parsing */
 int		store_temp_map(char *str, int k, char **temp_map);
 void	store_map_size_x(t_vars *vars, char **temp_map);
+void	store_player_dir_north_south(t_vars *vars);
+void	store_player_dir_east_west(t_vars *vars);
 char	**get_map_trim_newline(t_vars *vars, char **temp_map);
 void	split_file_into_two_parts(char *file, t_vars *vars,
 			int count, char **temp_map);

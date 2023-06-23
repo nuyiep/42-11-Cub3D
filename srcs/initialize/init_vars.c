@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:18 by plau              #+#    #+#             */
-/*   Updated: 2023/06/21 15:35:29 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/23 18:18:33 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,13 @@ static void	init_map(t_vars *vars)
 
 void	update_player(t_vars *vars)
 {
-	get_player_mpos(vars);
+	store_player_mpos(vars);
+	store_player_dir_north_south(vars);
+	store_player_dir_east_west(vars);
 }
 
 // HARDCODED player position and direction to NORTH
 /* Initialize player struct */
-/* Plater direction in char is stored via check_only_one_player function */
 void	init_player(t_vars *vars)
 {
 	// CHANGE BELOW
