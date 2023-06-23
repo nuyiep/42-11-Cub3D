@@ -52,7 +52,7 @@ Mkfile.old
 dkms.conf
 
 # extra
-minishell
+cub3d
 objects/
 .vscode
 test*
