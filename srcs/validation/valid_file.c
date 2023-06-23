@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:35:16 by plau              #+#    #+#             */
-/*   Updated: 2023/06/21 15:03:48 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/23 17:02:40 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ void	valid_check_argc_and_argc_format(int argc, char **argv)
 char	**valid_check_each_line(t_vars *vars, char *file)
 {
 	int		fd;
-	int		temp_map_size_x;
+	int		temp_map_size_y;
 	char	**temp_map;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		utils_print_error_exit("Failed to open file");
-	temp_map_size_x = ft_count_lines(fd);
-	temp_map = malloc(sizeof(char *) * (temp_map_size_x + 1));
+	temp_map_size_y = ft_count_lines(fd);
+	temp_map = malloc(sizeof(char *) * (temp_map_size_y + 1));
 	close(fd);
-	split_file_into_two_parts(file, vars, temp_map_size_x, temp_map);
+	split_file_into_two_parts(file, vars, temp_map_size_y, temp_map);
 	return (temp_map);
 }
 
