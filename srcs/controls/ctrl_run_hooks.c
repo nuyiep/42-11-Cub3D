@@ -4,13 +4,13 @@ void	move_player_vertical(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_W)
 	{
-		vars->player.pos.y += (vars->player.dir.y * MOV_SPD);
-		vars->player.pos.x += (vars->player.dir.x * MOV_SPD);
+		vars->player.pos.y += (double)(vars->player.dir.y * MOV_SPD);
+		vars->player.pos.x += (double)(vars->player.dir.x * MOV_SPD);
 	}
 	else if (keycode == KEY_S)
 	{
-		vars->player.pos.y -= (int)(vars->player.dir.y * MOV_SPD);
-		vars->player.pos.x -= (int)(vars->player.dir.x * MOV_SPD);
+		vars->player.pos.y -= (double)(vars->player.dir.y * MOV_SPD);
+		vars->player.pos.x -= (double)(vars->player.dir.x * MOV_SPD);
 	}
 }
 
@@ -79,8 +79,8 @@ static int	key_input(int keycode, t_vars *vars)
 
 	move_player_vertical(keycode, vars);
 	move_player_horizontal(keycode, vars);
-	vars->player.mpos.x = vars->player.pos.x / MINI_PX;
-	vars->player.mpos.y = vars->player.pos.y / MINI_PX;
+	// vars->player.mpos.x = vars->player.pos.x / MINI_PX;
+	// vars->player.mpos.y = vars->player.pos.y / MINI_PX;
 	rotate_player(keycode, vars);
 	return (0);
 }

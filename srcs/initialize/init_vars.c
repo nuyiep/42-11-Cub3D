@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_vars.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:18 by plau              #+#    #+#             */
-/*   Updated: 2023/06/23 18:18:33 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/26 17:52:01 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,18 +52,16 @@ void	update_player(t_vars *vars)
 void	init_player(t_vars *vars)
 {
 	// CHANGE BELOW
-	vars->player.mpos.x = 8; // change this to actual map position
-	vars->player.mpos.y = 11; // change this to actual map position
 
-	vars->player.pos.x = 8 * MINI_PX; // mpos * MINI_PX
-	vars->player.pos.y = 11 * MINI_PX; // mpos * MINI_PX
+	vars->player.pos.x = 0; // mpos * MINI_PX
+	vars->player.pos.y = 0; // mpos * MINI_PX
 	
 	// DO NOT CHANGE BELOW
 	vars->player.dir.x = 0; // N 0
-	vars->player.dir.y = -1; // N -1
+	vars->player.dir.y = 0; // N -1
 	vars->player.rotate = -PI/2; // don't change this is for North
 	
-	vars->player.plane.x = 1; // N 1
+	vars->player.plane.x = 0; // N 1
 	vars->player.plane.y = 0; // N 0
 	return ;
 }

@@ -9,10 +9,10 @@ void	create_new_ray(t_vars *vars, int ray_i)
 
 	// Setting player position in map. Need offset?
 	// printf("PLayer map pos: (%d, %d)\n", vars->player.mpos.x, vars->player.mpos.y);
-	vars->ray_info.offset.x = vars->player.mpos.x + 0;
-	vars->ray_info.offset.y = vars->player.mpos.y + 0;
-	vars->ray_info.map.x = vars->player.mpos.x + 0;
-	vars->ray_info.map.y = vars->player.mpos.y + 0;
+	vars->ray_info.offset.x = vars->player.pos.x + 0.5;
+	vars->ray_info.offset.y = vars->player.pos.y + 0.5;
+	vars->ray_info.map.x = vars->ray_info.offset.x;
+	vars->ray_info.map.y = vars->ray_info.offset.y;
 
 	// Setting the delta distance
 	if (vars->ray_info.raydir.x == 0)

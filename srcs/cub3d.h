@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/23 18:19:20 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/26 18:08:13 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,11 @@
 # define TGREY		0xE0E0E0E0
 # define TWHITE		0x80FFFFFF
 # define TBLACK		0x80000000
-# define BLACK		0xFF000000
+# define BLACK		0x00000000
 
 # define PI			3.141592653589793238
 # define ROT_SPD	0.1
-# define MOV_SPD	3
+# define MOV_SPD	0.2
 # define PLY_PLANE	0.77
 
 /* Door */
@@ -174,7 +174,7 @@ typedef struct s_ply
 {
 	char		char_dir;
 	t_img		img;
-	t_vector	mpos;
+	// t_vector	mpos;
 	t_dvector	pos;
 	t_dvector	dir;
 	t_dvector	plane;

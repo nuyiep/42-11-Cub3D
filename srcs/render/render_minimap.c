@@ -143,10 +143,10 @@ void	draw_minimap(t_vars *vars)
 
 	colour_block(vars->map.mini, 0, 0, MINI_S * MINI_PX, TGREY);
 
-	min.y = vars->player.pos.y - (5 * MINI_PX) - 1;
-	max.y = vars->player.pos.y + (5 * MINI_PX) + 1;
-	min.x = vars->player.pos.x - (5 * MINI_PX) - 1;
-	max.x = vars->player.pos.x + (5 * MINI_PX) + 1;
+	min.y = vars->player.pos.y * MINI_PX - (5 * MINI_PX) - 1;
+	max.y = vars->player.pos.y * MINI_PX + (5 * MINI_PX) + 1;
+	min.x = vars->player.pos.x * MINI_PX - (5 * MINI_PX) - 1;
+	max.x = vars->player.pos.x * MINI_PX + (5 * MINI_PX) + 1;
 
 	cur.y = min.y;
 	while (++cur.y < max.y)
@@ -164,8 +164,8 @@ void	draw_minimap(t_vars *vars)
 			else if (vars->map.map[map_y][map_x] == '1')
 				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, BLUE);
 				// my_mlx_pixel_put(vars->map.mini, cur.x - min.x, cur.y - min.y, BLUE);
-			else if (vars->map.map[map_y][map_x] == '0')
-				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, TGREY);
+			else
+				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, BLACK);
 				// my_mlx_pixel_put(vars->map.mini, cur.x - min.x, cur.y - min.y, TRANS);
 		}
 	}
@@ -177,6 +177,5 @@ void	render_minimap(t_vars *vars)
 	draw_player(vars);
 	draw_dir(vars);
 	draw_plane(vars);
-	// render_rays(vars);
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->map.mini->ptr, 0, 0);
 }

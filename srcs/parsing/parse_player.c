@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:32:58 by plau              #+#    #+#             */
-/*   Updated: 2023/06/23 18:25:59 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/26 18:07:48 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,17 @@ void	store_player_mpos(t_vars *vars)
 			if (vars->map.map[i][j] == 'N' || vars->map.map[i][j] == 'S'
 				|| vars->map.map[i][j] == 'W' || vars->map.map[i][j] == 'E')
 			{
-				vars->player.mpos.x = j;
-				vars->player.mpos.y = i;
+				vars->player.pos.x = j;
+				vars->player.pos.y = i;
 				vars->player.char_dir = vars->map.map[i][j];
 			}
 			j++;
 		}
 		i++;
 	}
+
+	// vars->player.pos.x = vars->player.mpos.x * MINI_PX;
+	// vars->player.pos.y = vars->player.mpos.y * MINI_PX;
 }
 
 /* Store player direction (x, y) */
