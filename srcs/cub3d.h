@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/26 18:08:13 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/26 18:38:40 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@
 /* Door */
 # define D_OPEN		1
 # define D_CLOSE	0
+
+typedef enum e_bool
+{
+	TRUE = 1,
+	FALSE = 0,
+}	t_bool;
 
 /**
  * @brief Int vector struct

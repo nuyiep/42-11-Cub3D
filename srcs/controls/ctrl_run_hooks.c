@@ -1,13 +1,54 @@
 #include "../cub3d.h"
 
+t_bool	is_wall(t_vars *vars, t_dvector pos)
+{
+	t_vector mpos;
+
+	mpos.x = (int)(round(pos.x));
+	mpos.y = (int)(round(pos.y));
+	printf("map pos: (%d, %d)\n", mpos.x, mpos.y);
+	if (mpos.x >= 0 && mpos.x < vars->map.size.x
+		&& mpos.y >= 0 && mpos.y < vars->map.size.y)
+	{
+		printf("checking\n");
+		if (vars->map.map[mpos.y][mpos.x] == '1')
+			return (TRUE);
+		// if (vars->map.map[mpos.y][mpos.x] == 'D'
+			// && vars->map.door_state == D_CLOSE)
+			// return (1);
+	}
+	return (FALSE);
+}
+
+t_bool	check_ver_collision(t_vars *vars, double dir)
+{
+	t_dvector	check_pos;
+	double		steps;
+
+	steps = 0.01;
+	while (steps < MOV_SPD)
+	{
+		check_pos.x = vars->player.pos.x + dir * (vars->player.dir.x * steps * 2);
+		check_pos.y = vars->player.pos.y + dir * (vars->player.dir.y * steps * 2);
+		if (is_wall(vars, check_pos))
+		{
+			printf("wall detected\n");
+			return (TRUE);
+		}
+		steps += 0.01;
+	}
+	printf("null\n");
+	return (FALSE);
+}
+
 void	move_player_vertical(int keycode, t_vars *vars)
 {
-	if (keycode == KEY_W)
+	if (keycode == KEY_W && check_ver_collision(vars, 1) == FALSE)
 	{
 		vars->player.pos.y += (double)(vars->player.dir.y * MOV_SPD);
 		vars->player.pos.x += (double)(vars->player.dir.x * MOV_SPD);
 	}
-	else if (keycode == KEY_S)
+	else if (keycode == KEY_S && check_ver_collision(vars, -1) == FALSE)
 	{
 		vars->player.pos.y -= (double)(vars->player.dir.y * MOV_SPD);
 		vars->player.pos.x -= (double)(vars->player.dir.x * MOV_SPD);
@@ -79,8 +120,6 @@ static int	key_input(int keycode, t_vars *vars)
 
 	move_player_vertical(keycode, vars);
 	move_player_horizontal(keycode, vars);
-	// vars->player.mpos.x = vars->player.pos.x / MINI_PX;
-	// vars->player.mpos.y = vars->player.pos.y / MINI_PX;
 	rotate_player(keycode, vars);
 	return (0);
 }

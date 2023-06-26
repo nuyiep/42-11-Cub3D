@@ -172,7 +172,7 @@ void	render_rays(t_vars *vars)
 		check_hit(vars);
 		set_length(vars);
 		// check sides
-		draw_line(vars, ray_i, vars->ray_info.d_start, vars->ray_info.d_end, BLUE);
+		draw_line(vars, ray_i, vars->ray_info.d_start, vars->ray_info.d_end, RED);
 		// my_mlx_pixel_put(&vars->map.imgw, ray_i, 500, RED);
 		// draw_line(vars, ray_i, 250, 750, BLUE);
 	}
