@@ -74,10 +74,10 @@ static void	check_hit(t_vars *vars)
 			vars->ray_info.side = 1;
 		}
 		// printf("Checking wall coordinate (%d, %d)\n", (int)vars->ray_info.map.x, (int)vars->ray_info.map.y);
-		if (vars->map.map[(int)vars->ray_info.map.y][(int)vars->ray_info.map.x] == '1')
-		{
+		if (vars->ray_info.map.y < 0 || vars->ray_info.map.y >= vars->map.size.y || vars->ray_info.map.x < 0 || vars->ray_info.map.x >= vars->map.size.x)
+			break ;
+		else if (vars->map.map[(int)vars->ray_info.map.y][(int)vars->ray_info.map.x] == '1')
 			vars->ray_info.hit = 1;
-		}
 	}
 
 	if (vars->ray_info.side == 0)

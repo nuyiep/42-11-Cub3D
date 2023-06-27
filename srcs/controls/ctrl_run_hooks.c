@@ -6,6 +6,7 @@ t_bool	is_wall(t_vars *vars, t_dvector pos)
 
 	mpos.x = (int)(round(pos.x));
 	mpos.y = (int)(round(pos.y));
+	// printf("pos: (%d, %d)\n", mpos.x, mpos.y);
 	if (mpos.x >= 0 && mpos.x < vars->map.size.x
 		&& mpos.y >= 0 && mpos.y < vars->map.size.y)
 	{
@@ -18,16 +19,47 @@ t_bool	is_wall(t_vars *vars, t_dvector pos)
 	return (FALSE);
 }
 
-t_bool	check_ver_collision(t_vars *vars, double dir)
+t_bool	check_front_collision(t_vars *vars, double dir)
 {
 	t_dvector	check_pos;
 	double		steps;
 
 	steps = 0.01;
+	if (is_wall(vars, vars->player.pos))
+	{
+		check_pos.x = vars->player.pos.x + dir * (vars->player.dir.x * (MOV_SPD));
+		check_pos.y = vars->player.pos.y + dir * (vars->player.dir.y * (MOV_SPD));
+		if (!is_wall(vars, check_pos))
+			return (FALSE);
+		else
+			return (TRUE);
+	}
+	else
+	{
+		while (steps < MOV_SPD)
+		{
+			check_pos.x = vars->player.pos.x + dir * (vars->player.dir.x * steps * 2);
+			check_pos.y = vars->player.pos.y + dir * (vars->player.dir.y * steps * 2);
+			if (is_wall(vars, check_pos))
+				return (TRUE);
+			steps += 0.01;
+		}
+	}
+	return (FALSE);
+}
+
+t_bool	check_side_collision(t_vars *vars)
+{
+	t_dvector	check_pos;
+	t_dvector	pdir;
+	double		steps;
+
+	pdir = vars->player.dir;
+	steps = 0.01;
 	while (steps < MOV_SPD)
 	{
-		check_pos.x = vars->player.pos.x + dir * (vars->player.dir.x * steps * 2);
-		check_pos.y = vars->player.pos.y + dir * (vars->player.dir.y * steps * 2);
+		check_pos.x = vars->player.pos.x + ((pdir.x * cos(-PI / 2) - pdir.y * sin(-PI / 2)) * steps);
+		check_pos.y = vars->player.pos.y + ((pdir.x * cos(-PI / 2) + pdir.y * sin(-PI / 2)) * steps);
 		if (is_wall(vars, check_pos))
 			return (TRUE);
 		steps += 0.01;
@@ -37,12 +69,12 @@ t_bool	check_ver_collision(t_vars *vars, double dir)
 
 void	move_player_vertical(int keycode, t_vars *vars)
 {
-	if (keycode == KEY_W && check_ver_collision(vars, 1) == FALSE)
+	if (keycode == KEY_W && check_front_collision(vars, 1) == FALSE)
 	{
 		vars->player.pos.y += (double)(vars->player.dir.y * MOV_SPD);
 		vars->player.pos.x += (double)(vars->player.dir.x * MOV_SPD);
 	}
-	else if (keycode == KEY_S && check_ver_collision(vars, -1) == FALSE)
+	else if (keycode == KEY_S && check_front_collision(vars, -1) == FALSE)
 	{
 		vars->player.pos.y -= (double)(vars->player.dir.y * MOV_SPD);
 		vars->player.pos.x -= (double)(vars->player.dir.x * MOV_SPD);
@@ -52,15 +84,15 @@ void	move_player_vertical(int keycode, t_vars *vars)
 // Weird bug moving abit forward, not 100% horizontal
 void	move_player_horizontal(int keycode, t_vars *vars)
 {
-	if (keycode == KEY_A)
+	if (keycode == KEY_A && check_side_collision(vars) == FALSE)
 	{
 		vars->player.pos.x = vars->player.pos.x + (vars->player.dir.x * cos(-PI / 2) //
-				- vars->player.dir.y * sin(-PI / 2) * (MOV_SPD));
+				- vars->player.dir.y * sin(-PI / 2)) * MOV_SPD;
 		vars->player.pos.y = vars->player.pos.y + (vars->player.dir.y * cos(-PI / 2)
-				+ vars->player.dir.x * sin(-PI / 2) * (MOV_SPD));
+				+ vars->player.dir.x * sin(-PI / 2)) * MOV_SPD;
 		
 	}
-	else if (keycode == KEY_D)
+	else if (keycode == KEY_D && check_side_collision(vars) == FALSE)
 	{
 		vars->player.pos.x = vars->player.pos.x + (vars->player.dir.x * cos(PI / 2)
 				- vars->player.dir.y * sin(PI / 2) * (MOV_SPD));
