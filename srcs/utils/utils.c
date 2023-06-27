@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
-/*   Updated: 2023/06/22 15:07:55 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/27 19:23:44 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int	success_exit()
 	return (0);
 }
 
+/* Puts a pixel on the screen */
+/* Divide by 8- */
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
 	char	*dst;

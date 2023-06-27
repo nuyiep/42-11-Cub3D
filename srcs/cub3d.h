@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/26 18:38:40 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/27 20:38:47 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@
 # define TWHITE		0x80FFFFFF
 # define TBLACK		0x80000000
 # define BLACK		0x00000000
+# define BABYBLUE	0x89CFF0
+# define LIGHTGREEN 0x90EE90
+# define LIGHTPINK  0xFFB6C1
 
 # define PI			3.141592653589793238
 # define ROT_SPD	0.1
@@ -180,7 +183,6 @@ typedef struct s_ply
 {
 	char		char_dir;
 	t_img		img;
-	// t_vector	mpos;
 	t_dvector	pos;
 	t_dvector	dir;
 	t_dvector	plane;
@@ -277,5 +279,6 @@ void	free_all(t_vars *vars);
 void	print_map(char **map);
 int		success_exit(void);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+void	convert_rgb_to_hex(t_vars *vars);
 
 #endif

@@ -140,7 +140,6 @@ void	rotate_player(int keycode, t_vars *vars)
  */
 static int	key_input(int keycode, t_vars *vars)
 {
-	(void)vars;
 	if (keycode == KEY_ESC)
 		success_exit();
 
