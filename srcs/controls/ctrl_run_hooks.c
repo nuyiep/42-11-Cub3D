@@ -27,8 +27,8 @@ t_bool	check_front_collision(t_vars *vars, double dir)
 	steps = 0.01;
 	if (is_wall(vars, vars->player.pos))
 	{
-		check_pos.x = vars->player.pos.x + dir * (vars->player.dir.x * (MOV_SPD));
-		check_pos.y = vars->player.pos.y + dir * (vars->player.dir.y * (MOV_SPD));
+		check_pos.x = vars->player.pos.x + dir * vars->player.dir.x * MOV_SPD;
+		check_pos.y = vars->player.pos.y + dir * vars->player.dir.y * MOV_SPD;
 		if (!is_wall(vars, check_pos))
 			return (FALSE);
 		else
@@ -38,8 +38,8 @@ t_bool	check_front_collision(t_vars *vars, double dir)
 	{
 		while (steps < MOV_SPD)
 		{
-			check_pos.x = vars->player.pos.x + dir * (vars->player.dir.x * steps * 2);
-			check_pos.y = vars->player.pos.y + dir * (vars->player.dir.y * steps * 2);
+			check_pos.x = vars->player.pos.x + dir * vars->player.dir.x * steps;
+			check_pos.y = vars->player.pos.y + dir * vars->player.dir.y * steps;
 			if (is_wall(vars, check_pos))
 				return (TRUE);
 			steps += 0.01;
