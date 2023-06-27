@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:14 by zwong             #+#    #+#             */
-/*   Updated: 2023/06/27 18:35:36 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/27 20:52:20 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,10 @@ void	convert_rgb_to_hex(t_vars *vars)
 							| vars->map.c_rgb.g << 8 | vars->map.c_rgb.b;
 	vars->map.f_rgb.hex = 0 << 24 | vars->map.f_rgb.r << 16
 							| vars->map.f_rgb.g << 8 | vars->map.f_rgb.b;
-	ft_printf("ceiling hex int: %d\n", vars->map.c_rgb.hex);
-	ft_printf("floor hex int: %d\n", vars->map.f_rgb.hex);
 }
 
 /* Update ceiling and floor color */
-void	update_pixel(t_vars *vars)
+void	clear_image_window(t_vars *vars)
 {
 	int	i;
 	int	k;
@@ -47,7 +45,7 @@ void	update_pixel(t_vars *vars)
 
 int	render_main(t_vars *vars)
 {
-	update_pixel(vars);
+	clear_image_window(vars);
 	mlx_clear_window(vars->mlx, vars->win);
 	render_rays(vars);
 	render_minimap(vars);
