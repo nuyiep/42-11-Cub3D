@@ -14,4 +14,6 @@ Raycasting
     looking direction, and the x-coordinate of the screen
 
 DDA Line Drawing Algorithm
-  -
+  
+chmod +x .sh 
+then run again ./.sh
