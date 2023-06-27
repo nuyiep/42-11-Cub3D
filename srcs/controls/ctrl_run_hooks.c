@@ -6,11 +6,9 @@ t_bool	is_wall(t_vars *vars, t_dvector pos)
 
 	mpos.x = (int)(round(pos.x));
 	mpos.y = (int)(round(pos.y));
-	printf("map pos: (%d, %d)\n", mpos.x, mpos.y);
 	if (mpos.x >= 0 && mpos.x < vars->map.size.x
 		&& mpos.y >= 0 && mpos.y < vars->map.size.y)
 	{
-		printf("checking\n");
 		if (vars->map.map[mpos.y][mpos.x] == '1')
 			return (TRUE);
 		// if (vars->map.map[mpos.y][mpos.x] == 'D'
@@ -31,13 +29,9 @@ t_bool	check_ver_collision(t_vars *vars, double dir)
 		check_pos.x = vars->player.pos.x + dir * (vars->player.dir.x * steps * 2);
 		check_pos.y = vars->player.pos.y + dir * (vars->player.dir.y * steps * 2);
 		if (is_wall(vars, check_pos))
-		{
-			printf("wall detected\n");
 			return (TRUE);
-		}
 		steps += 0.01;
 	}
-	printf("null\n");
 	return (FALSE);
 }
 

@@ -97,7 +97,11 @@ void	set_length(t_vars *vars)
 {
 	vars->ray_info.line_h = (int)(WIN_H / vars->ray_info.perp_wall_dist);
 	vars->ray_info.d_start = -vars->ray_info.line_h / 2 + WIN_H / 2;
+	if (vars->ray_info.d_start < 0)
+		vars->ray_info.d_start = 0;
 	vars->ray_info.d_end = vars->ray_info.line_h / 2 + WIN_H / 2;
+	if (vars->ray_info.d_end >= WIN_H)
+		vars->ray_info.d_end = WIN_H - 1;
 	if (vars->ray_info.side == 0)
 		vars->ray_info.wall_x = vars->ray_info.offset.y
 			+ vars->ray_info.perp_wall_dist * vars->ray_info.raydir.y;
