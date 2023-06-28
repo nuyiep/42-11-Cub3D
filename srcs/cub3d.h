@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/27 20:38:47 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/28 17:45:42 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,17 @@
 # define BLUE		0x0000FF
 # define TBROWN		0x80964B00
 # define TGREY		0xE0E0E0E0
+# define GREY		0x00606060
+# define BGREY		0x00E0E0EF
 # define TWHITE		0x80FFFFFF
 # define TBLACK		0x80000000
 # define BLACK		0x00000000
-# define BABYBLUE	0x89CFF0
-# define LIGHTGREEN 0x90EE90
-# define LIGHTPINK  0xFFB6C1
+# define TRANS		0xBB555555
+
+# define BABYBLUE	0x0084aed9
+# define LIGHTGREEN 0x0090EE90
+# define LIGHTPINK  0x00FFB6C1
+# define LIGHTPURPLE  0x007068d9
 
 # define PI			3.141592653589793238
 # define ROT_SPD	0.1

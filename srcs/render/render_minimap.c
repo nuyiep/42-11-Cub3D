@@ -160,12 +160,12 @@ void	draw_minimap(t_vars *vars)
 			scale.x = (cur.x - min.x) * SCALE;
 
 			if (map_x < 0 || map_y < 0 || map_x > (vars->map.size.x - 1) || map_y > (vars->map.size.y - 1))
-				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, BLACK);
+				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, TRANS);
 			else if (vars->map.map[map_y][map_x] == '1')
-				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, BLUE);
+				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, LIGHTPURPLE);
 				// my_mlx_pixel_put(vars->map.mini, cur.x - min.x, cur.y - min.y, BLUE);
 			else
-				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, BLACK);
+				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, BABYBLUE);
 				// my_mlx_pixel_put(vars->map.mini, cur.x - min.x, cur.y - min.y, TRANS);
 		}
 	}
