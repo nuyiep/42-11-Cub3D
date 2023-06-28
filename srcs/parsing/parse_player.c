@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:32:58 by plau              #+#    #+#             */
-/*   Updated: 2023/06/26 18:07:48 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/28 17:38:05 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	store_player_dir_north_south(t_vars *vars)
 	{
 		vars->player.dir.x = 0;
 		vars->player.dir.y = -1;
+		vars->player.rotate = -PI/2;
 		vars->player.plane.x = PLY_PLANE;
 		vars->player.plane.y = 0;
 	}
@@ -62,6 +63,7 @@ void	store_player_dir_north_south(t_vars *vars)
 	{
 		vars->player.dir.x = 0;
 		vars->player.dir.y = 1;
+		vars->player.rotate = PI/2;
 		vars->player.plane.x = -PLY_PLANE;
 		vars->player.plane.y = 0;
 	}
@@ -74,6 +76,7 @@ void	store_player_dir_east_west(t_vars *vars)
 	{
 		vars->player.dir.x = 1;
 		vars->player.dir.y = 0;
+		vars->player.rotate = -PI;
 		vars->player.plane.x = 0;
 		vars->player.plane.y = PLY_PLANE;
 	}
@@ -81,11 +84,9 @@ void	store_player_dir_east_west(t_vars *vars)
 	{
 		vars->player.dir.x = -1;
 		vars->player.dir.y = 0;
+		vars->player.rotate = PI;
 		vars->player.plane.x = 0;
 		vars->player.plane.y = -PLY_PLANE;
-		ft_printf("did u enetxer\n");
-		ft_printf("player dir x: %d\n", vars->player.dir.x);
-		ft_printf("player dir y: %d\n", vars->player.dir.y);
 	}
 }
 
