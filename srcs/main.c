@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:14 by plau              #+#    #+#             */
-/*   Updated: 2023/06/29 14:05:33 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/29 17:45:34 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	update_player(&vars);
 	convert_rgb_to_hex(&vars);
 	ctrl_run_hooks(&vars);
+	ft_printf("here\n");
 	free_all(&vars);
-	system("leaks -q cub3d");
 	return (0);
 }

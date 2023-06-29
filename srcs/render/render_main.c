@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:14 by zwong             #+#    #+#             */
-/*   Updated: 2023/06/28 17:45:42 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/29 16:53:36 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	render_main(t_vars *vars)
 {
 	reset_background(vars);
 	mlx_clear_window(vars->mlx, vars->win);
-	mouse_input(vars);
+	// mouse_input(vars);
 	render_rays(vars);
 	render_minimap(vars);
 	return (0);

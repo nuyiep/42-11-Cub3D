@@ -3,8 +3,8 @@ SO ./sprites/south.xpm
 WE ./sprites/west.xpm
 EA ./sprites/east.xpm
 
-C 135,206,235
-F 144,238,144
+C 148,192,252
+F 76,129,55
 
 
 11      111111111111111111111111111111111

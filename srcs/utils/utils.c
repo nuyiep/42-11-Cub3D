@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
-/*   Updated: 2023/06/27 21:05:05 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/29 17:47:57 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	utils_print_error_exit(char *str)
 	ft_printf("Error\n");
 	ft_printf(str);
 	ft_printf("\n");
-	// system("leaks -q cub3d");
+	system("leaks -q cub3d");
 	exit(EXIT_FAILURE);
 }
 
@@ -28,27 +28,10 @@ void	free_all(t_vars *vars)
 	ft_freesplit(vars->map.map);
 	free(vars->map.main);
 }
-/**
- * @brief Prints out an error message with an optional [argument] befre EXITING program
- * 
- * @param str error message
- * @param arg optional argument
- */
-void	print_error_exit(char *str, char *arg)
-{
-	ft_putstr_fd(str, 2);
-	
-	if (arg != NULL)
-	{
-		ft_putstr_fd(": ", 2);
-		ft_putstr_fd(arg, 2);
-	}
-	ft_putstr_fd("\n", 2);
-	exit(EXIT_FAILURE);
-}
 
 int	success_exit()
 {
+	system("leaks -q cub3d");
 	exit(EXIT_SUCCESS);
 	return (0);
 }

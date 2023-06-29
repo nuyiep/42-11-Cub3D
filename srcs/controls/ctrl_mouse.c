@@ -16,5 +16,4 @@ void	mouse_input(t_vars *vars)
 	vars->player.dir.y = sin(vars->player.rotate);
 	vars->player.plane.x = cos(plane_rotate);
 	vars->player.plane.y = sin(plane_rotate);
-	return (0);
 }
