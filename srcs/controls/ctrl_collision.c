@@ -2,7 +2,7 @@
 
 static t_bool	is_wall(t_vars *vars, t_dvector pos)
 {
-	t_vector mpos;
+	t_vector	mpos;
 
 	mpos.x = (int)(round(pos.x));
 	mpos.y = (int)(round(pos.y));
@@ -57,8 +57,10 @@ t_bool	check_side_collision(t_vars *vars)
 	steps = 0.01;
 	while (steps < MOV_SPD)
 	{
-		check_pos.x = vars->player.pos.x + ((pdir.x * cos(-PI / 2) - pdir.y * sin(-PI / 2)) * steps);
-		check_pos.y = vars->player.pos.y + ((pdir.x * cos(-PI / 2) + pdir.y * sin(-PI / 2)) * steps);
+		check_pos.x = vars->player.pos.x + ((pdir.x * cos(-PI / 2)
+					- pdir.y * sin(-PI / 2)) * steps);
+		check_pos.y = vars->player.pos.y + ((pdir.x * cos(-PI / 2)
+					+ pdir.y * sin(-PI / 2)) * steps);
 		if (is_wall(vars, check_pos))
 			return (TRUE);
 		steps += 0.01;

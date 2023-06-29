@@ -19,29 +19,31 @@ static void	move_player_horizontal(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_A && check_side_collision(vars) == FALSE)
 	{
-		vars->player.pos.x = vars->player.pos.x + (vars->player.dir.x * cos(-PI / 2) //
+		vars->player.pos.x = vars->player.pos.x
+			+ (vars->player.dir.x * cos(-PI / 2)
 				- vars->player.dir.y * sin(-PI / 2)) * MOV_SPD;
-		vars->player.pos.y = vars->player.pos.y + (vars->player.dir.y * cos(-PI / 2)
+		vars->player.pos.y = vars->player.pos.y
+			+ (vars->player.dir.y * cos(-PI / 2)
 				+ vars->player.dir.x * sin(-PI / 2)) * MOV_SPD;
-		
 	}
 	else if (keycode == KEY_D && check_side_collision(vars) == FALSE)
 	{
-		vars->player.pos.x = vars->player.pos.x + (vars->player.dir.x * cos(PI / 2)
+		vars->player.pos.x = vars->player.pos.x
+			+ (vars->player.dir.x * cos(PI / 2)
 				- vars->player.dir.y * sin(PI / 2) * (MOV_SPD));
-		vars->player.pos.y = vars->player.pos.y + (vars->player.dir.y * cos(PI / 2)
+		vars->player.pos.y = vars->player.pos.y
+			+ (vars->player.dir.y * cos(PI / 2)
 				+ vars->player.dir.x * sin(PI / 2) * (MOV_SPD));
 	}
 }
 
 static void	rotate_player(int keycode, t_vars *vars)
 {
-	double plane_rotate;
-	
+	double	plane_rotate;
+
 	if (keycode == KEY_LEFT)
 	{
 		vars->player.rotate -= ROT_SPD;
-		
 		plane_rotate = vars->player.rotate + (PI / 2);
 		if (vars->player.rotate < 0)
 			vars->player.rotate += (2 * PI);
@@ -54,7 +56,6 @@ static void	rotate_player(int keycode, t_vars *vars)
 	{
 		vars->player.rotate += ROT_SPD;
 		plane_rotate = vars->player.rotate + (PI / 2);
-
 		if (vars->player.rotate > 2 * PI)
 			vars->player.rotate -= (2 * PI);
 		vars->player.dir.x = cos(vars->player.rotate);
@@ -65,7 +66,8 @@ static void	rotate_player(int keycode, t_vars *vars)
 }
 
 /**
- * @brief Executes functions according to key pressed. WASD and LEFT & RIGHT ARROW KEY 
+ * @brief Executes functions according to key pressed. 
+ * 			WASD and LEFT & RIGHT ARROW KEY 
  * 
  * @param keycode Keyboard keys represented as integer
  * @param vars Master game vars
@@ -75,7 +77,6 @@ static int	key_input(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_ESC)
 		success_exit();
-
 	move_player_vertical(keycode, vars);
 	move_player_horizontal(keycode, vars);
 	rotate_player(keycode, vars);
