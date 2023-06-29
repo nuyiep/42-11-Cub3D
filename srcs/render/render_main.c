@@ -58,6 +58,7 @@ int	render_main(t_vars *vars)
 {
 	clear_image_window(vars);
 	mlx_clear_window(vars->mlx, vars->win);
+	mouse_input(vars);
 	render_rays(vars);
 	render_minimap(vars);
 	return (0);

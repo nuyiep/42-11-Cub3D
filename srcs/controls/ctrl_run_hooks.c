@@ -149,15 +149,13 @@ static int	key_input(int keycode, t_vars *vars)
 	return (0);
 }
 
-static int	mouse_input(int keycode, t_vars *vars)
+void	mouse_input(t_vars *vars)
 {
 	int x;
 	int y;
 	double rotate_spd;
 	double plane_rotate;
 
-	if (keycode > 0)
-		return (0);
 	rotate_spd = PI / (double)(WIN_W / 2);
 	mlx_mouse_get_pos(vars->win, &x, &y);
 	vars->player.rotate = rotate_spd * x;
@@ -182,7 +180,6 @@ static int	mouse_input(int keycode, t_vars *vars)
 void	ctrl_run_hooks(t_vars *vars)
 {
 	mlx_hook(vars->win, 2, 1L, &key_input, vars); // key hook
-	mlx_mouse_hook(vars->win, &mouse_input, vars);
 	mlx_hook(vars->win, 17, 0, &success_exit, vars); // exit hook
 	mlx_loop_hook(vars->mlx, &render_main, vars); // render hook
 	mlx_loop(vars->mlx);
