@@ -12,28 +12,8 @@
 
 #include "../cub3d.h"
 
-/* In MLX, colours are presented in int format that contains the TRGB values */
-/* Shift bits using the TRGB format */
-/* T - transparency */
-/* 0xTTRRGGBB format- 0x means that they are in hexa format */
-/* T - 0 is opaque and 255 is fully transparent */
-/* As the default background is black, fully transparent is black */
-/* ft_printf("hex value: %08x\n", vars->map.f_rgb.hex) */
-/* Bitshift formula is provided */
-/* https://harm-smits.github.io/42docs/libs/minilibx/colors.html */
-void	convert_rgb_to_hex(t_vars *vars)
-{
-	int	t;
-	
-	t = 0;
-	vars->map.c_rgb.hex = t << 24 | vars->map.c_rgb.r << 16
-							| vars->map.c_rgb.g << 8 | vars->map.c_rgb.b;
-	vars->map.f_rgb.hex = t << 24 | vars->map.f_rgb.r << 16
-							| vars->map.f_rgb.g << 8 | vars->map.f_rgb.b;
-}
-
 /* Update ceiling and floor color */
-void	clear_image_window(t_vars *vars)
+void	reset_background(t_vars *vars)
 {
 	int	i;
 	int	k;
@@ -56,7 +36,7 @@ void	clear_image_window(t_vars *vars)
 
 int	render_main(t_vars *vars)
 {
-	clear_image_window(vars);
+	reset_background(vars);
 	mlx_clear_window(vars->mlx, vars->win);
 	mouse_input(vars);
 	render_rays(vars);
