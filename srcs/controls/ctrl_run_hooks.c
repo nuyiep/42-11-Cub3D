@@ -154,6 +154,7 @@ static int	mouse_input(t_vars *vars)
 	int x;
 	int y;
 	double rotate_spd;
+	double plane_rotate;
 
 	rotate_spd = PI / (double)(WIN_W / 2);
 	mlx_mouse_get_pos(vars->win, &x, &y);
