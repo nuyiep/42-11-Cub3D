@@ -6,29 +6,16 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:57:29 by plau              #+#    #+#             */
-/*   Updated: 2023/06/27 21:43:32 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/29 14:16:40 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
-/* TODO: CHANGE _ BACK TO SPACE */
-/* Reading in context: when map content is 0 or player pos (NSWE) or D */
-/* check its up, down, left, right, if it is a space then is an error  */
-/* print error and exit */
-void	check_for_spaces(char **temp_map, int i, int j)
-{
-	if ((int)ft_strlen(temp_map[i - 1]) < j + 1
-		|| (int)ft_strlen(temp_map[i + 1]) < j + 1
-		|| temp_map[i + 1][j] == ' ' || temp_map[i - 1][j] == ' '
-		|| temp_map[i][j + 1] == ' ' || temp_map[i][j - 1] == ' ')
-		utils_print_error_exit("Map is not surrounded by wall");
-}
-
 /* Check whether the middle zeros are surrounded by ones */
 /* up, down, left, right need to be surrounded by ones */
 /* Skipped first and last line */
-void	check_middle_map_line(t_vars *vars, char **temp_map)
+void	check_middle_map_line(t_vars *vars)
 {
 	int		i;
 	int		j;
@@ -39,10 +26,16 @@ void	check_middle_map_line(t_vars *vars, char **temp_map)
 		j = 1;
 		while (j < (vars->map.size.x - 1))
 		{
-			if (temp_map[i][j] == '0' || temp_map[i][j] == 'N'
-				|| temp_map[i][j] == 'S' || temp_map[i][j] == 'W'
-				|| temp_map[i][j] == 'E' || temp_map[i][j] == 'D')
-				check_for_spaces(temp_map, i, j);
+			if (vars->map.map[i][j] == '0' || vars->map.map[i][j] == 'N'
+				|| vars->map.map[i][j] == 'S' || vars->map.map[i][j] == 'W'
+				|| vars->map.map[i][j] == 'E' || vars->map.map[i][j] == 'D')
+			{
+				if (vars->map.map[i + 1][j] == ' '
+					|| vars->map.map[i - 1][j] == ' '
+					|| vars->map.map[i][j + 1] == ' '
+					|| vars->map.map[i][j - 1] == ' ')
+					utils_print_error_exit("Map is not surrounded by wall");
+			}
 			j++;
 		}
 		i++;

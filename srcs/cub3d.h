@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/28 17:45:42 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/29 13:37:28 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@
 # define TBLACK		0x80000000
 # define BLACK		0x00000000
 # define TRANS		0xBB555555
+# define WHITE		0xffffffff
 
 # define BABYBLUE	0x0084aed9
 # define LIGHTGREEN 0x0090EE90
@@ -235,7 +236,7 @@ void	map_checking(t_vars *vars, char **temp_map);
 int		check_correct_order(char *str, int check);
 void	check_only_one_player(char **temp_map);
 void	check_invalid_character(char **temp_map, t_vars *vars);
-void	check_middle_map_line(t_vars *vars, char **temp_map);
+void	check_middle_map_line(t_vars *vars);
 void	check_rgb_format(char **split);
 void	check_extra_character(char **split);
 void	check_empty_lines(char **temp_map);

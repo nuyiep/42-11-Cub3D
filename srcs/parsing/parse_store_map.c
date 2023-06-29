@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 21:23:37 by plau              #+#    #+#             */
-/*   Updated: 2023/06/22 15:15:40 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/29 14:00:09 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,12 @@ void	store_final_map_pad_spaces(t_vars *vars, char **temp_map, int i, int j)
 	if (vars->map.door_state == D_OPEN)
 	{
 		if (ft_strchr("NSWE10D\n", temp_map[i][j]) == NULL)
-			vars->map.map[i][j] = '_';
+			vars->map.map[i][j] = ' ';
 	}
 	else if (vars->map.door_state == D_CLOSE)
 	{
 		if (ft_strchr("NSWE10\n", temp_map[i][j]) == NULL)
-			vars->map.map[i][j] = '_';
+			vars->map.map[i][j] = ' ';
 	}
 }
 
@@ -92,7 +92,7 @@ void	pad_map_with_spaces(t_vars *vars, char **temp_map)
 			if (j <= len && temp_map[i][j] != '\0')
 				store_final_map_pad_spaces(vars, temp_map, i, j);
 			else
-				vars->map.map[i][j] = '_';
+				vars->map.map[i][j] = ' ';
 			j++;
 		}
 		vars->map.map[i][j] = '\n';

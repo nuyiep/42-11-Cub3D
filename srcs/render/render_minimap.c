@@ -165,7 +165,7 @@ void	draw_minimap(t_vars *vars)
 				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, LIGHTPURPLE);
 				// my_mlx_pixel_put(vars->map.mini, cur.x - min.x, cur.y - min.y, BLUE);
 			else
-				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, BABYBLUE);
+				colour_block(vars->map.mini, scale.x, scale.y, MINI_PX * SCALE, TWHITE);
 				// my_mlx_pixel_put(vars->map.mini, cur.x - min.x, cur.y - min.y, TRANS);
 		}
 	}

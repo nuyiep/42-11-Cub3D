@@ -14,7 +14,8 @@ EA 					./sprites/east.xpm
 SO ./sprites/south.xpm
 
 1 1  1
-111 101
+111 111
+
 11111111
 1101W101 1                   
 11110001

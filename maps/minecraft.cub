@@ -1,17 +1,10 @@
-NO ./sprites/north.xpm
+NO ./sprites/minecraft_north.xpm
+SO ./sprites/minecraft_south.xpm
+WE ./sprites/minecraft_west.xpm
+EA ./sprites/minecraft_east.xpm
 
-WE ./sprites/west.xpm
-
-F 144,238,144 
-
-
-C 135,206,235 			
-
-EA 					./sprites/east.xpm
-
-        
-
-SO ./sprites/south.xpm
+C 135,206,235
+F 144,238,144
 
 111111111111111111111111111111111111
 100000000000000W00000000000000000001

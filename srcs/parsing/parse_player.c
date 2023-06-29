@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:32:58 by plau              #+#    #+#             */
-/*   Updated: 2023/06/28 17:38:05 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/29 14:18:07 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,11 @@ void	store_player_mpos(t_vars *vars)
 		}
 		i++;
 	}
-
-	// vars->player.pos.x = vars->player.mpos.x * MINI_PX;
-	// vars->player.pos.y = vars->player.mpos.y * MINI_PX;
 }
 
 /* Store player direction (x, y) */
 /* Store player plane (x, y) */
-/* MLX's y-axis is inverted */ 
+/* MLX's y-axis is inverted */
 /* +ve y-axis represents downward movement */
 /* -ve y-axis represents upward movement */
 /* plane: field of view */
@@ -55,7 +52,7 @@ void	store_player_dir_north_south(t_vars *vars)
 	{
 		vars->player.dir.x = 0;
 		vars->player.dir.y = -1;
-		vars->player.rotate = -PI/2;
+		vars->player.rotate = -PI / 2;
 		vars->player.plane.x = PLY_PLANE;
 		vars->player.plane.y = 0;
 	}
@@ -63,7 +60,7 @@ void	store_player_dir_north_south(t_vars *vars)
 	{
 		vars->player.dir.x = 0;
 		vars->player.dir.y = 1;
-		vars->player.rotate = PI/2;
+		vars->player.rotate = PI / 2;
 		vars->player.plane.x = -PLY_PLANE;
 		vars->player.plane.y = 0;
 	}
@@ -89,4 +86,3 @@ void	store_player_dir_east_west(t_vars *vars)
 		vars->player.plane.y = -PLY_PLANE;
 	}
 }
-
