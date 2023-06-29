@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/07 15:15:59 by plau              #+#    #+#             */
-/*   Updated: 2023/06/22 15:16:21 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/29 15:37:37 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,7 @@ void	split_file_into_two_parts(char *file, t_vars *vars, int count,
 				char **temp_map)
 {
 	int		fd;
-	int		i;
 
-	i = 0;
 	fd = open(file, O_RDONLY);
 	if (vars->map.door_state == D_OPEN)
 		split_elements_with_door(vars, count, fd, temp_map);
