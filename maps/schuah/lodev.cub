@@ -1,7 +1,7 @@
-NO ./sprites/jng.xpm
-EA ./sprites/joel.xpm
-SO ./sprites/amogus.xpm
-WE ./sprites/openthygates.xpm
+NO ./sprites/minecraft_north.xpm
+SO ./sprites/minecraft_south.xpm
+WE ./sprites/minecraft_west.xpm
+EA ./sprites/minecraft_east.xpm
 
 C 111,10,0				
 F 1,1,1     

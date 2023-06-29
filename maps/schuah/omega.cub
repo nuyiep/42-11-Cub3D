@@ -1,7 +1,7 @@
-NO ./sprites/north.xpm
-EA ./sprites/east.xpm
-SO ./sprites/south.xpm
-WE ./sprites/west.xpm
+NO ./sprites/minecraft_north.xpm
+SO ./sprites/minecraft_south.xpm
+WE ./sprites/minecraft_west.xpm
+EA ./sprites/minecraft_east.xpm
 
 C 225,30,0				
 F 1,1,1   
