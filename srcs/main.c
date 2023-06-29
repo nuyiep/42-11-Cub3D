@@ -22,7 +22,6 @@ int	main(int argc, char **argv)
 	temp_map = valid_check_file_textures(argc, argv, &vars);
 	map_checking(&vars, temp_map);
 	update_player(&vars);
-	// print_map(vars.map.map);
 	convert_rgb_to_hex(&vars);
 	ctrl_run_hooks(&vars);
 	free_all(&vars);
