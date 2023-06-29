@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:18 by plau              #+#    #+#             */
-/*   Updated: 2023/06/29 17:54:06 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/29 21:04:54 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	init_map(t_vars *vars)
 			&vars->map.imgw.bpp, &vars->map.imgw.line_len,
 			&vars->map.imgw.endian);
 	vars->map.door_state = D_CLOSE;
+	vars->mouse_key = 0;
 }
 
 void	update_player(t_vars *vars)

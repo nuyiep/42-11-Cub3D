@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/29 17:47:47 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/29 21:09:29 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define KEY_A		0
 # define KEY_S		1
 # define KEY_D		2
+# define KEY_M		46
 # define KEY_LEFT	123
 # define KEY_RIGHT	124
 # define EXIT_EVENT	17
@@ -228,6 +229,7 @@ typedef struct s_vars
 	t_map		map;
 	t_ply		player;
 	t_rayinfo	ray_info;
+	int			mouse_key;
 }	t_vars;
 
 /* 1. Validation */
@@ -276,7 +278,8 @@ void	set_textures(t_vars *vars, t_img *curimg);
 
 /* 4. Controls */
 void	ctrl_run_hooks(t_vars *vars);
-void	mouse_input(t_vars *vars);
+int		mouse_hook(int x, int y, t_vars *vars);
+void	toggle_mouse(t_vars *vars);
 t_bool	check_side_collision(t_vars *vars);
 t_bool	check_front_collision(t_vars *vars, double dir);
 

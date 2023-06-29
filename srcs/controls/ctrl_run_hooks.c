@@ -77,6 +77,8 @@ static int	key_input(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_ESC)
 		success_exit();
+	if (keycode == KEY_M)
+		toggle_mouse(vars);
 	move_player_vertical(keycode, vars);
 	move_player_horizontal(keycode, vars);
 	rotate_player(keycode, vars);
@@ -96,6 +98,7 @@ void	ctrl_run_hooks(t_vars *vars)
 {
 	mlx_hook(vars->win, 2, 1L, &key_input, vars);
 	mlx_hook(vars->win, 17, 0, &success_exit, vars);
+	mlx_hook(vars->win, 6, 1L << 6, &mouse_hook, vars);
 	mlx_loop_hook(vars->mlx, &render_main, vars);
 	mlx_loop(vars->mlx);
 }
