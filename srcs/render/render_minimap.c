@@ -1,6 +1,6 @@
 #include "../cub3d.h"
 
-void	draw_player(t_vars *vars)
+static void	draw_player(t_vars *vars)
 {
 	t_dvector	pos;
 
@@ -21,43 +21,11 @@ void	draw_player(t_vars *vars)
 	my_mlx_pixel_put(vars->map.mini,  pos.x + 1, pos.y + 1, GREEN);
 }
 
-void	draw_diagonal(t_vars *vars, t_dvector dir, t_dvector dest)
-{
-	t_dvector origin;
-	t_vector	max;
-	t_vector	min;
-	// (void)dest;
-	// (void)dir;
-	// (void)vars;
-	// int i = 0;
-
-	min.y = vars->player.pos.y - (5 * MINI_PX) - 1;
-	max.y = vars->player.pos.y + (5 * MINI_PX) + 1;
-	min.x = vars->player.pos.x - (5 * MINI_PX) - 1;
-	max.x = vars->player.pos.x + (5 * MINI_PX) + 1;
-
-	origin.x = MINI_S * MINI_PX / 2;
-	origin.y = MINI_S * MINI_PX / 2;
-	printf("dest (%f, %f)\n", dest.x, dest.y);
-	while (origin.x < (MINI_S * MINI_PX / 2 + (dest.x - min.x) * SCALE * MINI_PX))
-	{
-		origin.x += dir.x;
-		origin.y += dir.y;
-		my_mlx_pixel_put(vars->map.mini, (int)(origin.x), (int)origin.y, GREEN);
-	}
-
-
-}
-
-void	draw_dir(t_vars *vars)
+static void	draw_dir(t_vars *vars)
 {
 	t_dvector	pos;
 	t_dvector	dir;
 
-	// double h_ratio = (double)WIN_H / (double)(MINI_S * MINI_PX);
-	// double w_ratio = (double)WIN_W / (double)(MINI_S * MINI_PX);
-	// pos.x = vars->player.pos.x / w_ratio;
-	// pos.y = vars->player.pos.y / h_ratio;
 	pos.x = MINI_S * MINI_PX / 2;
 	pos.y = MINI_S * MINI_PX / 2;
 	dir.x = vars->player.dir.x;
@@ -79,15 +47,11 @@ void	draw_dir(t_vars *vars)
 	my_mlx_pixel_put(vars->map.mini,  (int)(dir.x * 1 + pos.x), (int)(dir.y * 1 + pos.y), RED);
 }
 
-void	draw_plane(t_vars *vars)
+static void	draw_plane(t_vars *vars)
 {
 	t_dvector	pos;
 	t_dvector	plane;
 
-	// double h_ratio = (double)WIN_H / (double)(MINI_S * MINI_PX);
-	// double w_ratio = (double)WIN_W / (double)(MINI_S * MINI_PX);
-	// pos.x = vars->player.pos.x / w_ratio;
-	// pos.y = vars->player.pos.y / h_ratio;
 	pos.x = MINI_S * MINI_PX / 2;
 	pos.y = MINI_S * MINI_PX / 2;
 	plane.x = vars->player.plane.x;
@@ -109,7 +73,7 @@ void	draw_plane(t_vars *vars)
 	my_mlx_pixel_put(vars->map.mini,  (int)(plane.x * 1 + pos.x), (int)(plane.y * 1 + pos.y), GREEN);
 }
 
-void	colour_block(t_img *img, int start_x, int start_y, int size, int colour)
+static void	colour_block(t_img *img, int start_x, int start_y, int size, int colour)
 {
 	int y;
 	int x;
@@ -127,8 +91,7 @@ void	colour_block(t_img *img, int start_x, int start_y, int size, int colour)
 	}
 }
 
-// NEXT: Wall collision stop movement
-void	draw_minimap(t_vars *vars)
+static void	draw_minimap(t_vars *vars)
 {
 	t_vector	cur;
 	t_vector	max;

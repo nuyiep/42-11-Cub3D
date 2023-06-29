@@ -268,14 +268,17 @@ void	pad_map_with_spaces(t_vars *vars, char **temp_map);
 
 /* 3. Render */
 int		render_main(t_vars *vars);
-void	draw_player(t_vars *vars);
-void	draw_dir(t_vars *vars);
 void	render_minimap(t_vars *vars);
 void	render_rays(t_vars *vars);
-void	draw_diagonal(t_vars *vars, t_dvector dir, t_dvector dest);
+void	set_length(t_vars *vars);
+t_img	*set_image(t_vars *vars);
+void	set_textures(t_vars *vars, t_img *curimg);
 
 /* 4. Controls */
 void	ctrl_run_hooks(t_vars *vars);
+void	mouse_input(t_vars *vars);
+t_bool	check_side_collision(t_vars *vars);
+t_bool	check_front_collision(t_vars *vars);
 
 /* Utils */
 void	utils_print_error_exit(char *str);

@@ -47,22 +47,16 @@ void	update_player(t_vars *vars)
 	store_player_dir_east_west(vars);
 }
 
-// HARDCODED player position and direction to NORTH
 /* Initialize player struct */
 void	init_player(t_vars *vars)
 {
-	// CHANGE BELOW
-
-	vars->player.pos.x = 0; // mpos * MINI_PX
-	vars->player.pos.y = 0; // mpos * MINI_PX
-	
-	// DO NOT CHANGE BELOW
-	vars->player.dir.x = 0; // N 0
-	vars->player.dir.y = 0; // N -1
-	vars->player.rotate = -PI/2; // don't change this is for North
-	
-	vars->player.plane.x = 0; // N 1
-	vars->player.plane.y = 0; // N 0
+	vars->player.pos.x = 0;
+	vars->player.pos.y = 0;	
+	vars->player.dir.x = 0;
+	vars->player.dir.y = 0;
+	vars->player.rotate = 0;
+	vars->player.plane.x = 0;
+	vars->player.plane.y = 0;
 	return ;
 }
 

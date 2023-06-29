@@ -31,21 +31,24 @@ DSRCS		= srcs					\
 DOBJS		= objs/
 
 # all these files doesn't require directory path ya
-FILES		=	init_vars \
-				parse_directions \
-				parse_elements \
-				parse_player \
-				parse_floor_ceiling \
-				parse_store_map \
-				valid_file \
-				valid_map \
-				valid_map_wall \
-				valid_element \
-				valid_map_elements \
+FILES		=	init_vars			\
+				parse_directions	\
+				parse_elements		\
+				parse_player		\
+				parse_floor_ceiling	\
+				parse_store_map		\
+				valid_file			\
+				valid_map			\
+				valid_map_wall		\
+				valid_element 		\
+				valid_map_elements	\
 				render_main			\
 				render_minimap		\
 				render_raycast		\
+				reder_ray_setters	\
 				ctrl_run_hooks		\
+				ctrl_collision		\
+				ctrl_mouse			\
 				utils				\
 				utils_map 			
 
