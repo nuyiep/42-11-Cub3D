@@ -276,6 +276,8 @@ void	draw_diagonal(t_vars *vars, t_dvector dir, t_dvector dest);
 /* 4. Controls */
 void	ctrl_run_hooks(t_vars *vars);
 void	mouse_input(t_vars *vars);
+t_bool	check_side_collision(t_vars *vars);
+t_bool	check_front_collision(t_vars *vars);
 
 /* Utils */
 void	utils_print_error_exit(char *str);

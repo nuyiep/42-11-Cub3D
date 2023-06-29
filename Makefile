@@ -46,6 +46,8 @@ FILES		=	init_vars \
 				render_minimap		\
 				render_raycast		\
 				ctrl_run_hooks		\
+				ctrl_collision		\
+				ctrl_mouse			\
 				utils				\
 				utils_map 			
 
