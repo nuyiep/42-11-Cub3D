@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+         #
+#    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/26 19:03:59 by zwong            ###   ########.fr        #
+#    Updated: 2023/06/29 16:43:06 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ FILES		=	init_vars			\
 				render_main			\
 				render_minimap		\
 				render_raycast		\
-				reder_ray_setters	\
+				render_ray_setters	\
 				ctrl_run_hooks		\
 				ctrl_collision		\
 				ctrl_mouse			\

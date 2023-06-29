@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/29 13:37:28 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/29 16:44:08 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,7 +278,7 @@ void	set_textures(t_vars *vars, t_img *curimg);
 void	ctrl_run_hooks(t_vars *vars);
 void	mouse_input(t_vars *vars);
 t_bool	check_side_collision(t_vars *vars);
-t_bool	check_front_collision(t_vars *vars);
+t_bool	check_front_collision(t_vars *vars, double dir);
 
 /* Utils */
 void	utils_print_error_exit(char *str);
