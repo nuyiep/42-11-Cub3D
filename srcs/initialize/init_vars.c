@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:18 by plau              #+#    #+#             */
-/*   Updated: 2023/06/30 11:48:10 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/30 11:54:08 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	init_map(t_vars *vars)
 			&vars->map.imgw.bpp, &vars->map.imgw.line_len,
 			&vars->map.imgw.endian);
 	vars->map.door_state = D_CLOSE;
-	vars->mouse_key = 0;
+	vars->mouse_key = 1;
 }
 
 void	update_player(t_vars *vars)
