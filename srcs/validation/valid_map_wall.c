@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 14:57:29 by plau              #+#    #+#             */
-/*   Updated: 2023/06/29 14:16:40 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/30 19:07:01 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* Check whether the middle zeros are surrounded by ones */
 /* up, down, left, right need to be surrounded by ones */
-/* Skipped first and last line */
+/* Skip first and last line */
 void	check_middle_map_line(t_vars *vars)
 {
 	int		i;

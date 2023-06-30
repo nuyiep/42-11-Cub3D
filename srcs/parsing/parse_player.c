@@ -6,14 +6,13 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 14:32:58 by plau              #+#    #+#             */
-/*   Updated: 2023/06/29 14:18:07 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/30 19:07:49 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
 
 /* Store player map position and direction character */
-/* Map postion starts calculating from 0 */
 void	store_player_mpos(t_vars *vars)
 {
 	int	i;

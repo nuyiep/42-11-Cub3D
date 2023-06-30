@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:00:50 by plau              #+#    #+#             */
-/*   Updated: 2023/06/30 18:55:16 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/30 19:06:15 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,6 @@ void	check_first_and_last_line(t_vars *vars, char **temp_map)
 	}
 }
 
-/* Check whether map is surrounded by walls (1) */
-void	surrounded_by_walls_first_last(t_vars *vars, char **temp_map)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	check_first_and_last_line(vars, temp_map);
-	check_first_and_last_char(temp_map);
-}
-
 /* Allocate memory and replace the string after trimmed */
 char	*trim_from_back(int len, char *temp_map)
 {
@@ -60,8 +48,7 @@ char	*trim_from_back(int len, char *temp_map)
 	return (after_trim);
 }
 
-/* Get the postion of last character 1 in temp_map[i] */
-char	**map_trim_spaces_tab_from_the_back(char **temp_map)
+char	**map_trim_spaces_newline_from_the_back(char **temp_map)
 {
 	int		i;
 	int		len;
@@ -90,7 +77,6 @@ char	**map_trim_spaces_tab_from_the_back(char **temp_map)
 
 /* Main function for map checking 	*/
 /* Rules:   						*/
-/* 	 our map allows for empty lines between map */
 /*   doesnt allow for tabs in the map */
 /*	 doesnt allow duplicate textures	*/
 /*	 rgb must in the format of 23,23,23 (no spaces in between) */
@@ -100,9 +86,10 @@ void	map_checking(t_vars *vars, char **temp_map)
 	temp_map = get_map_trim_newline(vars, temp_map);
 	check_only_one_player(temp_map);
 	check_empty_lines(temp_map);
-	temp_map = map_trim_spaces_tab_from_the_back(temp_map);
+	temp_map = map_trim_spaces_newline_from_the_back(temp_map);
 	store_map_size_x(vars, temp_map);
-	surrounded_by_walls_first_last(vars, temp_map);
+	check_first_and_last_line(vars, temp_map);
+	check_first_and_last_char(temp_map);
 	pad_map_with_spaces(vars, temp_map);
 	check_middle_map_line(vars);
 }
