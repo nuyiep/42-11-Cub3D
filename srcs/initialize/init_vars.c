@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_vars.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:18 by plau              #+#    #+#             */
-/*   Updated: 2023/06/30 13:20:54 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/30 18:54:15 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,29 @@ static void	init_mlx_window(t_vars *vars)
 	vars->win = mlx_new_window(vars->mlx, WIN_W, WIN_H, "cub3d");
 }
 
+/* Initialize image elements, map, color, state of mouse */
 static void	init_map(t_vars *vars)
 {
+	vars->map.size.x = 0;
+	vars->map.size.y = 0;
+	vars->mouse_key = 0;
+	vars->map.map = NULL;
+	vars->map.c_rgb.hex = -1;
+	vars->map.f_rgb.hex = -1;
 	vars->map.n_img.ptr = NULL;
 	vars->map.e_img.ptr = NULL;
 	vars->map.s_img.ptr = NULL;
 	vars->map.w_img.ptr = NULL;
 	vars->map.d_img.ptr = NULL;
-	vars->map.map = NULL;
-	vars->map.c_rgb.hex = -1;
-	vars->map.f_rgb.hex = -1;
+	vars->map.door_state = D_CLOSE;
 	vars->map.mini = ft_calloc(1, sizeof(t_img));
 	vars->map.imgw.ptr = mlx_new_image(vars->mlx, WIN_W, WIN_H);
-	vars->map.size.x = 0;
-	vars->map.size.y = 0;
 	vars->map.imgw.addr = mlx_get_data_addr(vars->map.imgw.ptr,
 			&vars->map.imgw.bpp, &vars->map.imgw.line_len,
 			&vars->map.imgw.endian);
-	vars->map.door_state = D_CLOSE;
-	vars->mouse_key = 1;
 }
 
+/* Update player position and direction */
 void	update_player(t_vars *vars)
 {
 	store_player_mpos(vars);

@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:00:50 by plau              #+#    #+#             */
-/*   Updated: 2023/06/29 13:49:26 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/30 18:55:16 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,6 @@ char	**map_trim_spaces_tab_from_the_back(char **temp_map)
 /*	 rgb must in the format of 23,23,23 (no spaces in between) */
 void	map_checking(t_vars *vars, char **temp_map)
 {
-	int	len;
-
-	len = 0;
 	check_invalid_character(temp_map, vars);
 	temp_map = get_map_trim_newline(vars, temp_map);
 	check_only_one_player(temp_map);

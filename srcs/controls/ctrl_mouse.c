@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ctrl_mouse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 11:43:27 by zwong             #+#    #+#             */
-/*   Updated: 2023/06/30 11:56:03 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/30 15:08:32 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	toggle_mouse(t_vars *vars)
 	if (vars->mouse_key == 0)
 	{
 		mlx_mouse_hide();
-		mlx_mouse_move(vars->win, WIN_W / 2, WIN_H / 2);
 		vars->mouse_key = 1;
 	}
 	else
 	{
 		mlx_mouse_show();
+		mlx_mouse_move(vars->win, WIN_W / 2, WIN_H / 2);
 		vars->mouse_key = 0;
 	}
 }

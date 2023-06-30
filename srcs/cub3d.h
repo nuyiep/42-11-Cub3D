@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/30 13:20:50 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/30 14:46:25 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@
 /* Player prefs */
 # define WIN_H		800
 # define WIN_W		1280
-# define MINI_S		19 // don't change
-# define MINI_PX	15 // don't change
-# define SCALE		1.725 // don't change
+# define MINI_S		19
+# define MINI_PX	15
+# define SCALE		1.725
 
 /* Colors */
 # define RED		0xFF0000
