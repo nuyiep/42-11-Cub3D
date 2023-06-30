@@ -1,85 +1,93 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render_raycast.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/30 11:32:22 by zwong             #+#    #+#             */
+/*   Updated: 2023/06/30 11:42:40 by zwong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 void	create_new_ray(t_vars *vars, int ray_i)
 {
-	vars->ray_info.camera_x = 2 * ray_i / (double)WIN_W - 1;
-	vars->ray_info.raydir.x = vars->player.dir.x + vars->player.plane.x * vars->ray_info.camera_x;
-	vars->ray_info.raydir.y = vars->player.dir.y + vars->player.plane.y * vars->ray_info.camera_x;
-
-	vars->ray_info.offset.x = vars->player.pos.x + 0.5;
-	vars->ray_info.offset.y = vars->player.pos.y + 0.5;
-	vars->ray_info.map.x = vars->ray_info.offset.x;
-	vars->ray_info.map.y = vars->ray_info.offset.y;
-
-	if (vars->ray_info.raydir.x == 0)
-		vars->ray_info.delta_dist.x = 1e30;
+	vars->ray.camera_x = 2 * ray_i / (double)WIN_W - 1;
+	vars->ray.raydir.x
+		= vars->player.dir.x + vars->player.plane.x * vars->ray.camera_x;
+	vars->ray.raydir.y
+		= vars->player.dir.y + vars->player.plane.y * vars->ray.camera_x;
+	vars->ray.offset.x = vars->player.pos.x + 0.5;
+	vars->ray.offset.y = vars->player.pos.y + 0.5;
+	vars->ray.map.x = vars->ray.offset.x;
+	vars->ray.map.y = vars->ray.offset.y;
+	if (vars->ray.raydir.x == 0)
+		vars->ray.del_dist.x = 1e30;
 	else
-		vars->ray_info.delta_dist.x = fabs(1 / vars->ray_info.raydir.x);
-	if (vars->ray_info.raydir.y == 0)
-		vars->ray_info.delta_dist.y = 1e30;
+		vars->ray.del_dist.x = fabs(1 / vars->ray.raydir.x);
+	if (vars->ray.raydir.y == 0)
+		vars->ray.del_dist.y = 1e30;
 	else
-		vars->ray_info.delta_dist.y = fabs(1 / vars->ray_info.raydir.y);
-
-	vars->ray_info.hit = 0;
+		vars->ray.del_dist.y = fabs(1 / vars->ray.raydir.y);
+	vars->ray.hit = 0;
 }
 
 static void	check_steps(t_vars *vars)
 {
-	if (vars->ray_info.raydir.x < 0)
+	if (vars->ray.raydir.x < 0)
 	{
-		vars->ray_info.step.x = -1;
-		vars->ray_info.side_dist.x = (vars->ray_info.offset.x - vars->ray_info.map.x)
-			* vars->ray_info.delta_dist.x;
+		vars->ray.step.x = -1;
+		vars->ray.side_dist.x = (vars->ray.offset.x - vars->ray.map.x)
+			* vars->ray.del_dist.x;
 	}
 	else
 	{
-		vars->ray_info.step.x = 1;
-		vars->ray_info.side_dist.x = (vars->ray_info.map.x + 1.0 - vars->ray_info.offset.x)
-			* vars->ray_info.delta_dist.x;
+		vars->ray.step.x = 1;
+		vars->ray.side_dist.x = (vars->ray.map.x + 1.0 - vars->ray.offset.x)
+			* vars->ray.del_dist.x;
 	}
-	if (vars->ray_info.raydir.y < 0)
+	if (vars->ray.raydir.y < 0)
 	{
-		vars->ray_info.step.y = -1;
-		vars->ray_info.side_dist.y = (vars->ray_info.offset.y - vars->ray_info.map.y)
-			* vars->ray_info.delta_dist.y;
+		vars->ray.step.y = -1;
+		vars->ray.side_dist.y = (vars->ray.offset.y - vars->ray.map.y)
+			* vars->ray.del_dist.y;
 	}
 	else
 	{
-		vars->ray_info.step.y = 1;
-		vars->ray_info.side_dist.y = (vars->ray_info.map.y + 1.0 - vars->ray_info.offset.y)
-			* vars->ray_info.delta_dist.y;
+		vars->ray.step.y = 1;
+		vars->ray.side_dist.y = (vars->ray.map.y + 1.0 - vars->ray.offset.y)
+			* vars->ray.del_dist.y;
 	}
 }
 
 static void	check_hit(t_vars *vars)
 {
-	while (vars->ray_info.hit == 0)
+	while (vars->ray.hit == 0)
 	{
-		if (vars->ray_info.side_dist.x < vars->ray_info.side_dist.y)
+		if (vars->ray.side_dist.x < vars->ray.side_dist.y)
 		{
-			vars->ray_info.side_dist.x += vars->ray_info.delta_dist.x;
-			vars->ray_info.map.x += vars->ray_info.step.x;
-			vars->ray_info.side = 0;
+			vars->ray.side_dist.x += vars->ray.del_dist.x;
+			vars->ray.map.x += vars->ray.step.x;
+			vars->ray.side = 0;
 		}
 		else
 		{
-			vars->ray_info.side_dist.y += vars->ray_info.delta_dist.y;
-			vars->ray_info.map.y += vars->ray_info.step.y;
-			vars->ray_info.side = 1;
+			vars->ray.side_dist.y += vars->ray.del_dist.y;
+			vars->ray.map.y += vars->ray.step.y;
+			vars->ray.side = 1;
 		}
-
-		if (vars->ray_info.map.y < 0 || vars->ray_info.map.y >= vars->map.size.y || vars->ray_info.map.x < 0 || vars->ray_info.map.x >= vars->map.size.x)
+		if (vars->ray.map.y < 0 || vars->ray.map.y >= vars->map.size.y
+			|| vars->ray.map.x < 0 || vars->ray.map.x >= vars->map.size.x)
 			break ;
-		else if (vars->map.map[(int)vars->ray_info.map.y][(int)vars->ray_info.map.x] == '1')
-			vars->ray_info.hit = 1;
+		else if (vars->map.map[vars->ray.map.y][vars->ray.map.x] == '1')
+			vars->ray.hit = 1;
 	}
-
-	if (vars->ray_info.side == 0)
-		vars->ray_info.perp_wall_dist = (vars->ray_info.side_dist.x
-				- vars->ray_info.delta_dist.x);
+	if (vars->ray.side == 0)
+		vars->ray.perp_wdist = (vars->ray.side_dist.x - vars->ray.del_dist.x);
 	else
-		vars->ray_info.perp_wall_dist = (vars->ray_info.side_dist.y
-				- vars->ray_info.delta_dist.y);
+		vars->ray.perp_wdist = (vars->ray.side_dist.y - vars->ray.del_dist.y);
 }
 
 static void	draw_line(t_vars *vars, t_img *img, int i)
@@ -91,17 +99,17 @@ static void	draw_line(t_vars *vars, t_img *img, int i)
 
 	y = 0;
 	factor = ((double)(img->size.y - 1)
-			/ (double)(vars->ray_info.d_end - vars->ray_info.d_start));
-	while (vars->ray_info.d_start < vars->ray_info.d_end)
+			/ (double)(vars->ray.d_end - vars->ray.d_start));
+	while (vars->ray.d_start < vars->ray.d_end)
 	{
-		if (vars->ray_info.d_start >= 0 && vars->ray_info.d_start < WIN_H)
+		if (vars->ray.d_start >= 0 && vars->ray.d_start < WIN_H)
 		{
 			dest = img->addr + ((int)y * img->line_len
-					+ vars->ray_info.tex_x * (img->bpp / 8));
+					+ vars->ray.tex_x * (img->bpp / 8));
 			color = *(unsigned int *)dest;
-			my_mlx_pixel_put(&vars->map.imgw, i, vars->ray_info.d_start, color);
+			my_mlx_pixel_put(&vars->map.imgw, i, vars->ray.d_start, color);
 		}
-		vars->ray_info.d_start++;
+		vars->ray.d_start++;
 		y = y + factor;
 	}
 }

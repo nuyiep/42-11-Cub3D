@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 16:07:03 by plau              #+#    #+#             */
-/*   Updated: 2023/06/17 18:25:39 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/30 11:45:19 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@
 void	convert_rgb_to_hex(t_vars *vars)
 {
 	int	t;
-	
+
 	t = 0;
 	vars->map.c_rgb.hex = t << 24 | vars->map.c_rgb.r << 16
-							| vars->map.c_rgb.g << 8 | vars->map.c_rgb.b;
+		| vars->map.c_rgb.g << 8 | vars->map.c_rgb.b;
 	vars->map.f_rgb.hex = t << 24 | vars->map.f_rgb.r << 16
-							| vars->map.f_rgb.g << 8 | vars->map.f_rgb.b;
+		| vars->map.f_rgb.g << 8 | vars->map.f_rgb.b;
 }
 
 int	is_trimchar(char c, char const *set)

@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ctrl_mouse.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/30 11:43:27 by zwong             #+#    #+#             */
+/*   Updated: 2023/06/30 11:48:19 by zwong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 int	mouse_hook(int x, int y, t_vars *vars)
 {
-	double rotate_spd;
-	double plane_rotate;
+	double	rotate_spd;
+	double	plane_rotate;
 
 	if (vars->mouse_key == 1)
 	{

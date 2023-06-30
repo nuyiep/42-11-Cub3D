@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_vars.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:18 by plau              #+#    #+#             */
-/*   Updated: 2023/06/29 21:04:54 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/30 11:48:10 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	update_player(t_vars *vars)
 void	init_player(t_vars *vars)
 {
 	vars->player.pos.x = 0;
-	vars->player.pos.y = 0;	
+	vars->player.pos.y = 0;
 	vars->player.dir.x = 0;
 	vars->player.dir.y = 0;
 	vars->player.rotate = 0;

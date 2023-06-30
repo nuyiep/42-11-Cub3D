@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/29 21:09:29 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/30 11:49:45 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 # define BABYBLUE	0x0084aed9
 # define LIGHTGREEN 0x0090EE90
 # define LIGHTPINK  0x00FFB6C1
-# define LIGHTPURPLE  0x007068d9
+# define LIGHTPURP  0x007068d9
 
 # define PI			3.141592653589793238
 # define ROT_SPD	0.1
@@ -198,13 +198,13 @@ typedef struct s_ply
 
 typedef struct s_rayinfo
 {
-	t_dvector	delta_dist;
+	t_dvector	del_dist;
 	t_dvector	side_dist;
 	t_dvector	offset;
 	t_dvector	raydir;
 	t_dvector	step;
 	t_vector	map;
-	double		perp_wall_dist;
+	double		perp_wdist;
 	double		camera_x;
 	double		wall_x;
 	int			line_h;
@@ -228,7 +228,7 @@ typedef struct s_vars
 	t_vector	img_size;
 	t_map		map;
 	t_ply		player;
-	t_rayinfo	ray_info;
+	t_rayinfo	ray;
 	int			mouse_key;
 }	t_vars;
 
@@ -291,5 +291,6 @@ void	print_map(char **map);
 int		success_exit(void);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	convert_rgb_to_hex(t_vars *vars);
+void	colour_block(t_img *img, t_vector start, int size, int colour);
 
 #endif

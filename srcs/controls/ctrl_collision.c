@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ctrl_collision.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/30 11:43:29 by zwong             #+#    #+#             */
+/*   Updated: 2023/06/30 11:43:30 by zwong            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../cub3d.h"
 
 static t_bool	is_wall(t_vars *vars, t_dvector pos)
@@ -11,9 +23,6 @@ static t_bool	is_wall(t_vars *vars, t_dvector pos)
 	{
 		if (vars->map.map[mpos.y][mpos.x] == '1')
 			return (TRUE);
-		// if (vars->map.map[mpos.y][mpos.x] == 'D'
-			// && vars->map.door_state == D_CLOSE)
-			// return (1);
 	}
 	return (FALSE);
 }

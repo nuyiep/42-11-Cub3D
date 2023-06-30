@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
+/*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:14 by zwong             #+#    #+#             */
-/*   Updated: 2023/06/29 21:02:12 by plau             ###   ########.fr       */
+/*   Updated: 2023/06/30 11:20:12 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	reset_background(t_vars *vars)
 		{
 			if (k < WIN_H / 2)
 				my_mlx_pixel_put(&vars->map.imgw, i, k, vars->map.c_rgb.hex);
-			else 
+			else
 				my_mlx_pixel_put(&vars->map.imgw, i, k, vars->map.f_rgb.hex);
 			k++;
 		}
