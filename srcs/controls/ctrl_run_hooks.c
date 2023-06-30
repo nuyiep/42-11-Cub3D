@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 11:43:32 by zwong             #+#    #+#             */
-/*   Updated: 2023/06/30 11:55:25 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/30 13:20:04 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static void	rotate_player(int keycode, t_vars *vars)
 static int	key_input(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_ESC)
-		success_exit();
+		success_exit(vars);
 	if (keycode == KEY_M)
 		toggle_mouse(vars);
 	move_player_vertical(keycode, vars);

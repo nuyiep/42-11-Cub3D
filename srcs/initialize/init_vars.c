@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/08 12:01:18 by plau              #+#    #+#             */
-/*   Updated: 2023/06/30 11:54:08 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/30 13:20:54 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	init_map(t_vars *vars)
 	vars->map.map = NULL;
 	vars->map.c_rgb.hex = -1;
 	vars->map.f_rgb.hex = -1;
-	vars->map.main = ft_calloc(1, sizeof(t_img));
 	vars->map.mini = ft_calloc(1, sizeof(t_img));
 	vars->map.imgw.ptr = mlx_new_image(vars->mlx, WIN_W, WIN_H);
 	vars->map.size.x = 0;

@@ -60,3 +60,4 @@ test*
 valgrind*
 .DS_store
 mlx_linux
+mlx.h

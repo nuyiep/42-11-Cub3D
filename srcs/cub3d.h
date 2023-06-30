@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 17:25:57 by plau              #+#    #+#             */
-/*   Updated: 2023/06/30 11:49:45 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/30 13:20:50 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,6 @@ typedef struct s_rgb
  * @param imgw			Window image
  * @param size			Size of the map (struct)- x, y
  * map size x = max strlen + 2 (\n & \0)
- * @param mm_scale		(??)
  * @param mini			Image struct for minimap
  * @param door_state	To be set manually (0 or 1)
  * 						Whether there is a door in the map
@@ -167,10 +166,8 @@ typedef struct s_map
 	t_img		s_img;
 	t_img		w_img;
 	t_img		d_img;
-	t_img		*main;
 	t_img		imgw;
 	t_vector	size;
-	double		mm_scale;
 	t_img		*mini;
 	int			door_state;
 }	t_map;
@@ -288,7 +285,7 @@ void	utils_print_error_exit(char *str);
 int		ft_count_lines(int fd);
 void	free_all(t_vars *vars);
 void	print_map(char **map);
-int		success_exit(void);
+int		success_exit(t_vars *vars);
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 void	convert_rgb_to_hex(t_vars *vars);
 void	colour_block(t_img *img, t_vector start, int size, int colour);

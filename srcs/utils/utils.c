@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 14:46:10 by plau              #+#    #+#             */
-/*   Updated: 2023/06/30 11:49:59 by zwong            ###   ########.fr       */
+/*   Updated: 2023/06/30 13:23:02 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	utils_print_error_exit(char *str)
 	ft_printf("Error\n");
 	ft_printf(str);
 	ft_printf("\n");
-	system("leaks -q cub3d");
 	exit(EXIT_FAILURE);
 }
 
@@ -26,12 +25,12 @@ void	utils_print_error_exit(char *str)
 void	free_all(t_vars *vars)
 {
 	ft_freesplit(vars->map.map);
-	free(vars->map.main);
+	free(vars->map.mini);
 }
 
-int	success_exit(void)
+int	success_exit(t_vars *vars)
 {
-	system("leaks -q cub3d");
+	free_all(vars);
 	exit(EXIT_SUCCESS);
 	return (0);
 }
