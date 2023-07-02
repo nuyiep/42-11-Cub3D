@@ -6,7 +6,7 @@
 /*   By: plau <plau@student.42.kl>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 21:00:50 by plau              #+#    #+#             */
-/*   Updated: 2023/06/30 19:06:15 by plau             ###   ########.fr       */
+/*   Updated: 2023/07/02 15:03:23 by plau             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,9 @@ char	**map_trim_spaces_newline_from_the_back(char **temp_map)
 {
 	int		i;
 	int		len;
-	int		max;
 
 	i = 0;
 	len = 0;
-	max = -1;
 	while (temp_map[i] != NULL)
 	{
 		len = ft_strlen(temp_map[i]);
