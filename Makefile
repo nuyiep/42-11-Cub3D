@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+         #
+#    By: plau <plau@student.42.kl>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/07 10:52:13 by schuah            #+#    #+#              #
-#    Updated: 2023/06/30 13:21:57 by zwong            ###   ########.fr        #
+#    Updated: 2023/07/03 20:55:17 by plau             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= cub3d
+NAME		= cub3D
 
 CC			= gcc
 MLX			= mlx/libmlx.a
