@@ -6,7 +6,7 @@
 /*   By: zwong <zwong@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 11:19:44 by zwong             #+#    #+#             */
-/*   Updated: 2023/06/30 11:41:11 by zwong            ###   ########.fr       */
+/*   Updated: 2023/07/03 13:06:16 by zwong            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ static void	draw_player(t_vars *vars)
 
 	pos.x = MINI_S * MINI_PX / 2;
 	pos.y = MINI_S * MINI_PX / 2;
-	my_mlx_pixel_put(vars->map.mini, pos.x - 1, pos.y - 1, GREEN);
-	my_mlx_pixel_put(vars->map.mini, pos.x, pos.y - 1, GREEN);
-	my_mlx_pixel_put(vars->map.mini, pos.x + 1, pos.y - 1, GREEN);
-	my_mlx_pixel_put(vars->map.mini, pos.x - 1, pos.y, GREEN);
-	my_mlx_pixel_put(vars->map.mini, pos.x, pos.y, GREEN);
-	my_mlx_pixel_put(vars->map.mini, pos.x + 1, pos.y, GREEN);
-	my_mlx_pixel_put(vars->map.mini, pos.x - 1, pos.y + 1, GREEN);
-	my_mlx_pixel_put(vars->map.mini, pos.x, pos.y + 1, GREEN);
-	my_mlx_pixel_put(vars->map.mini, pos.x + 1, pos.y + 1, GREEN);
+	my_mlx_pixel_put(vars->map.mini, pos.x - 1, pos.y - 1, BLACK);
+	my_mlx_pixel_put(vars->map.mini, pos.x, pos.y - 1, BLACK);
+	my_mlx_pixel_put(vars->map.mini, pos.x + 1, pos.y - 1, BLACK);
+	my_mlx_pixel_put(vars->map.mini, pos.x - 1, pos.y, BLACK);
+	my_mlx_pixel_put(vars->map.mini, pos.x, pos.y, BLACK);
+	my_mlx_pixel_put(vars->map.mini, pos.x + 1, pos.y, BLACK);
+	my_mlx_pixel_put(vars->map.mini, pos.x - 1, pos.y + 1, BLACK);
+	my_mlx_pixel_put(vars->map.mini, pos.x, pos.y + 1, BLACK);
+	my_mlx_pixel_put(vars->map.mini, pos.x + 1, pos.y + 1, BLACK);
 }
 
 static void	draw_dir(t_vars *vars)
